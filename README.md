@@ -63,6 +63,8 @@ The nine criteria are divided into three main categories: Profitability, Leverag
 3. **Interactive Query Tools**  
    - Jupyter notebook widgets enable dynamic selection of financial statements, on-demand F-Score computation, and quick inspection of null/NaN/zero values.
    - <img width="380" height="116" alt="image" src="https://github.com/user-attachments/assets/5a12537e-ea61-4a5c-abfe-b62a57d974d2" />
+   - <img width="310" height="94" alt="image" src="https://github.com/user-attachments/assets/df52e3f3-7766-47c5-ab47-4575005966f2" />
+
 
 4. **Piotroski F-Score Calculation**  
    - Implements the full **nine-criteria Piotroski model**, scoring each year between 0–9 to evaluate financial strength.
