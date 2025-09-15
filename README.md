@@ -52,11 +52,29 @@ The nine criteria are divided into three main categories: Profitability, Leverag
 |                                               | Change in Asset Turnover  | 1 if Asset Turnover (Sales ÷ Assets) higher than prior year | Assets used more efficiently                      |
 
 ## Features
-1. Automated Data Retrieval: Fetches yearly financial statements (Income Statement, Balance Sheet, Cash Flow) directly from Yahoo Finance using the yfinance library.
-2. Robust Data Handling: Includes functions to handle data cleaning, fuzzy string matching for financial line items, and flagging of missing or zero values.
-3. F-Score Calculation: Computes the Piotroski F-Score based on the nine criteria.
-4. Peer Analysis: Allows for easy comparison of the target company's F-score against a peer group.
-5. Data Visualization: Generates a bar chart to visually compare the average F-scores of the target company and its peers.
+1. **Automated Data Retrieval**  
+   - Seamlessly downloads yearly financial statements (Income Statement, Balance Sheet, Cash Flow) from **Yahoo Finance** via the `yfinance` library.
+
+2. **Robust Data Handling**  
+   - Cleans and structures raw financial data.  
+   - Supports **fuzzy string matching** to locate financial line items.  
+   - Flags missing, zero, or invalid values for transparency.
+
+3. **Interactive Query Tools**  
+   - Jupyter notebook widgets enable dynamic selection of financial statements, on-demand F-Score computation, and quick inspection of null/NaN/zero values.
+   - <img width="380" height="116" alt="image" src="https://github.com/user-attachments/assets/5a12537e-ea61-4a5c-abfe-b62a57d974d2" />
+
+4. **Piotroski F-Score Calculation**  
+   - Implements the full **nine-criteria Piotroski model**, scoring each year between 0–9 to evaluate financial strength.
+
+5. **Peer Group Analysis**  
+   - Benchmarks the target company’s F-Score against selected peers for comparative performance insights.
+
+6. **Data Visualization**  
+   - Produces clear and informative charts, including:  
+     - **Trend charts** (year-over-year F-Score evolution)  
+     - **Peer comparison charts** (average and individual F-Scores)
+
 
 ## Analysis of Ratios, Scores, and Outcome
 JD Wetherspoon plc (JDW.L), a UK-based pub and hotel operator, faced significant challenges during 2021-2024 due to COVID-19 recovery, inflation, labor shortages, and rising energy costs in the hospitality sector. This period marks a transition from heavy losses in 2021 (pandemic lockdowns) to profitability recovery by 2022-2024, though with persistent high leverage and liquidity strains. Below, I analyzed key financial ratios, Piotroski F-Scores, and overall performance outcomes based on fiscal years ending July 31 (data sourced from Yahoo Finance and financial databases). All figures are in millions of GBP unless noted; ratios are percentages where applicable.
