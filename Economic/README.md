@@ -19,19 +19,18 @@ Key findings include:
 1. [Project Overview](#-project-overview)  
 2. [Dataset](#-dataset)  
 3. [Methodology](#-methodology)  
-4. [Key Results](#-key-results)
-   - [Return (FTSE100)](#return-ftse100)
-   - [Return distribution versus Peers](#return-distribution-versus-peers)
-   - [Rolling 1-year Volatility](#rolling-1-year-volatility)
+4. [Key Results](#-key-results)  
+   - [Return (FTSE 100)](#return-ftse-100)  
+   - [Return Distribution vs Peers](#return-distribution-vs-peers)  
+   - [Rolling 1-Year Volatility](#rolling-1-year-volatility)  
    - [Correlations](#correlations)  
    - [Stationarity (ADF Tests)](#stationarity-adf-tests)  
    - [Cointegration](#cointegration-englegranger)  
-   - [Granger Causality](#granger-causality-δclose-aic-lags)  
-   - [ARIMA Model Selection](#arima-model-selection)
-   - [ARIMA(2,1,1) Results — FTSE100 (UK)](#arima-2,1,1-results-ftse100-uk)
-   - [Volatility (GARCH11) — FTSE100](#volatility-garch11-ftse100)
+   - [Granger Causality](#granger-causality)  
+   - [ARIMA Model Selection](#arima-model-selection)  
+   - [ARIMA(2,1,1) Results — FTSE 100 (UK)](#arima211-results--ftse-100-uk)  
+   - [Volatility (GARCH(1,1)) — FTSE 100](#volatility-garch11--ftse-100)  
    - [Forecast Evaluation](#forecast-evaluation)  
-
 
 ---
 
@@ -47,11 +46,35 @@ The objectives were:
 
 ---
 
-💡 Interpretation & Takeaways
-- Strong contemporaneous correlation with CAC/DAX/SMI; some lead–lag causality across continental indices but limited cointegration
-- ARIMA(2,1,1) for FTSE provides solid forecasts (MAPE ≈ 3.8%).
-- GARCH(1,1) confirms volatility clustering & persistence typical of equity indices.
-- The LSTM captures the general trend of the FTSE 100 but makes errors of 500–600 points on average. It is less precise than ARIMA-GARCH in this setup, highlighting the need for additional features or hybrid approaches for improved forecasting accuracy.
+## 💡 Interpretation & Takeaways
+This project provides a comprehensive look at the FTSE 100 index and its relationship with major European peers (CAC 40, DAX, SMI). The analysis combined econometric modeling (ARIMA, GARCH, ARIMA-GARCH) with a machine learning benchmark (LSTM).  
+
+### Key Insights
+- **Market Dynamics**
+  - Returns exhibit **fat tails** and **volatility clustering**, meaning extreme shocks occur more often than a normal distribution would predict.
+
+- **Cross-Market Relationships**
+  - All four indices are **highly correlated (≈0.8–0.9)** → European markets move closely together.
+  - **SMI (Switzerland)** acts as an early mover, influencing CAC, DAX, and FTSE.
+  - **CAC 40 (France)** is a key transmitter of shocks, especially to DAX and FTSE.
+  - **DAX (Germany)** plays a dual role, both absorbing and transmitting shocks.
+  - **FTSE 100 (UK)** is more of a **follower**, reacting to continental Europe rather than leading.
+
+- **Modeling & Forecasting**
+  - **ARIMA(2,1,1)** captured short-term dynamics well but could not model volatility.
+  - ARIMA(2,1,1) for FTSE provides solid forecasts (MAPE ≈ 3.8%).
+  - **GARCH(1,1)** confirmed strong **volatility persistence (α+β ≈ 0.99)** and fat tails. GARCH(1,1) confirms volatility clustering & persistence typical of equity indices.
+  - **ARIMA-GARCH combined** delivered the best forecasts of price levels with **MAPE ≈ 3.8%**, balancing accuracy and interpretability.
+  - **LSTM** captured the general trend but underperformed with **MAPE ≈ 6%**, showing the need for more features or hybridization to compete with econometric models. The LSTM captures the general trend of the FTSE 100 but makes errors of 500–600 points on average. It is less precise than ARIMA-GARCH in this setup, highlighting the need for additional features or hybrid approaches for improved forecasting accuracy.
+
+### Takeaways
+- **Diversification within Europe is limited**: correlations are very high, and crises affect all markets simultaneously.
+- **Risk is persistent**: once volatility spikes, it tends to remain elevated for a long time.
+- **Econometric models outperform deep learning** in this setup: ARIMA-GARCH offers stronger predictive accuracy and better captures risk dynamics.
+- **Machine learning has potential** but requires richer data inputs (e.g., macro indicators, sentiment, trading volume) to add value.
+
+**In summary:**  
+The FTSE 100 is strongly tied to European peers, behaves more as a **follower market**, and exhibits the classic features of financial time series (non-stationarity, volatility clustering, fat tails). For forecasting, **ARIMA-GARCH is the most reliable approach**, while deep learning methods like LSTM show promise but need further refinement.
 
 ---
 
