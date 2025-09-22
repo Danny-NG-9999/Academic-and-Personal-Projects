@@ -29,14 +29,6 @@ Key findings include:
    - [Forecast Evaluation](#forecast-evaluation)  
    - [Volatility (GARCH11)](#volatility-garch11)  
    - [Diagnostics](#diagnostics)  
-5. [Graphs](#-graphs)  
-6. [Repository Structure](#-repository-structure)  
-7. [How to Reproduce](#-how-to-reproduce)  
-8. [Interpretation & Takeaways](#-interpretation--takeaways)  
-9. [Skills Demonstrated](#-skills-demonstrated)  
-10. [License](#-license)  
-11. [Project Summary](#-project-summary)  
-12. [Contact](#-contact)  
 
 ---
 
@@ -49,6 +41,13 @@ The objectives were:
 - **Model** short-term dynamics using ARIMA and validate forecast accuracy.  
 - **Capture volatility clustering** using GARCH(1,1) models.  
 - **Communicate insights** through tables, diagnostics, and professional-quality plots.  
+
+---
+
+💡 Interpretation & Takeaways
+- Strong contemporaneous correlation with CAC/DAX/SMI; some lead–lag causality across continental indices but limited cointegration
+- ARIMA(2,1,1) for FTSE provides solid forecasts (MAPE ≈ 3.8%).
+- GARCH(1,1) confirms volatility clustering & persistence typical of equity indices.
 
 ---
 
@@ -72,13 +71,38 @@ The objectives were:
 ---
 
 ## 📈 Key Results
+### Return (FTSE100)
+<img width="1990" height="1380" alt="image" src="https://github.com/user-attachments/assets/14e27124-fe3d-4774-9ecd-a8688e556150" />
+
+- The top plot shows simple returns (% change in price from day to day).
+- The bottom plot shows log returns, which are mathematically smoother and preferred in financial modeling because they are time-additive.
+- Both series look very similar, but log returns slightly compress extreme values, making them more stable for statistical analysis.
+- Both charts show that returns are roughly symmetric around zero — positive and negative changes occur with similar frequency.
+- There are both positive (market surges) and negative (market crashes) outliers. However, the negative outliers tend to be larger in magnitude — showing that markets “fall faster than they rise” → extreme events happen more often than a normal distribution would predict (fat tails).
+
+### Return distribution versus Peers
+<img width="1989" height="1180" alt="image" src="https://github.com/user-attachments/assets/f604de4d-c244-43a7-98ee-d0bcb4771a05" />
+
+- All four indices have fat-tailed, peaked distributions → financial markets are prone to extreme events.
+- The mean daily return is very close to zero for all indices (≈0.01–0.02%). The median is also near zero, slightly higher than the mean, showing returns are balanced but small. This reflects the fact that while stock markets rise in the long term, on a daily basis, returns fluctuate randomly around zero.
+- Symmetry shows gains and losses are roughly balanced.
+- VaR highlights downside risk: Germany (−2.32%) and France (−2.19%) face larger tail losses than the UK (−1.80%) and Switzerland (−1.75%).
+
+### Rolling 1-year Volatility
+<img width="1589" height="778" alt="image" src="https://github.com/user-attachments/assets/2680bffa-e404-4e50-b24a-3d4a4871a77a" />
+
+- Crises line up in time. Peaks appear around the same dates for all indices, showing global or regional shocks move European markets together.
+- Mean reversion. After each spike, volatility gradually sinks back toward a lower “normal” level.
+- DAX (Germany): Consistently the most volatile of the four. Peaks tend to be the highest (e.g., ~3% daily vol in crisis years).
+- CAC 40 (France): High as well, often just below DAX, with very similar timing of spikes.
+- FTSE 100 (UK): Moderate volatility overall; noticeable extra bump around 2016 (Brexit) and again in 2020–2022.
+- SMI (Switzerland): Lowest and most stable of the group.
 
 ### Correlations
-| Pair                  | Correlation | p-value | Significance |
-|------------------------|-------------|---------|--------------|
-| FTSE 100 – CAC 40      | **0.858**   | 0.000   | *** |
-| FTSE 100 – DAX         | **0.797**   | 0.000   | *** |
-| FTSE 100 – SMI         | **0.781**   | 0.000   | *** |
+<img width="963" height="823" alt="image" src="https://github.com/user-attachments/assets/22197e69-16da-4f95-a0f9-c68ab4875a9b" />
+
+- Correlations are high across the board (≈0.78–0.89) → European markets tend to move together.
+- SMI (Switzerland) shows the lowest average correlations with others (~0.78–0.81), making it the best diversifier within this group—but benefits are still limited.
 
 ---
 
@@ -152,11 +176,4 @@ Example (FTSE 100):
 
 ---
 
-## 📊 Graphs
-Recommended figures (from notebook, save under `/figs/`):  
-- `ftse_levels.png` – FTSE 100 level (1985–2024)  
-- `ftse_returns.png` – Returns distribution & volatility clustering  
-- `acf_pacf.png` – ACF/PACF of returns  
-- `arima_forecast.png` – ARIMA forecast vs actual  
-- `garch_volatility.png` – Conditional volatility from GARCH  
 
