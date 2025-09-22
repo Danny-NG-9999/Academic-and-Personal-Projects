@@ -55,21 +55,19 @@ The objectives were:
 ## 📦 Dataset
 - **Source:** Yahoo Finance (`^FTSE`, plus peers: `^FCHI` CAC 40, `^GDAXI` DAX, `^SSMI` SMI)  
 - **Period:** 1985-01-01 → 2024-12-31  
-- **Frequency:** Daily (close, high, low, open, volume)  
-- **Engineered series:** First differences ΔClose, Simple returns, Log returns  
+- **Frequency:** Daily 
 
 ---
 
 ## 🔎 Methodology
 1. **Data ingestion & cleaning**: completeness checks, type coercion, date index, NA handling.  
-2. **Feature engineering**: ΔClose, simple & log returns; annual rollups for checks.  
-3. **Exploratory analysis**: level/return plots, ACF/PACF, correlation matrix.  
-4. **Stationarity tests**: ADF on levels, differences, and returns (AIC & BIC lag selection).  
-5. **Long-run relationships**: Engle–Granger cointegration tests.  
-6. **Lead–lag dynamics**: pairwise Granger causality on ΔClose.  
-7. **Univariate forecasting**: ARIMA orders via information criteria; walk-forward evaluation.  
-8. **Volatility modeling**: GARCH(1,1) on returns; persistence & clustering assessment.  
-9. **Model diagnostics**: residual ACF/PACF, Ljung–Box, JB normality.  
+2. **Exploratory analysis**: level/return plots, ACF/PACF, correlation matrix.  
+3. **Stationarity tests**: ADF on levels, differences, and returns (AIC & BIC lag selection).  
+4. **Long-run relationships**: Engle–Granger cointegration tests.  
+5. **Lead–lag dynamics**: pairwise Granger causality on ΔClose.  
+6. **Univariate forecasting**: ARIMA orders via information criteria; walk-forward evaluation.  
+7. **Volatility modeling**: GARCH(1,1) on returns; persistence & clustering assessment.  
+8. **Model diagnostics**: residual ACF/PACF, Ljung–Box, JB normality.  
 
 ---
 
