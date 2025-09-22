@@ -228,12 +228,32 @@ The GARCH(1,1) model effectively captures the time-varying volatility of the FTS
 
 ---
 ### Forecast Evaluation
-| Index        | RMSE ΔClose | MAPE ΔClose | RMSE Price | MAPE Price |
-|--------------|-------------|-------------|------------|------------|
-| FTSE 100     | 85.23       | 131.18%     | 364.93     | **3.83%** |
-| CAC 40       | 93.03       | 99.79%      | 457.34     | 5.00% |
-| DAX          | 311.49      | 99.00%      | 2455.63    | 9.65% |
-| SMI          | 147.51      | 100.63%     | 785.39     | 5.20% |
 
-> Price-level forecasts achieve **3.8–5.2% MAPE** for FTSE, CAC, SMI; higher error for DAX.
+#### **ARIMA-GARCH Forecast Results — FTSE 100 (UK)**
+To combine both mean dynamics (ARIMA) and volatility clustering (GARCH), I fitted an *ARIMA(2,1,1)-GARCH(1,1) model on FTSE 100 daily data.
+
+<img width="1169" height="626" alt="image" src="https://github.com/user-attachments/assets/5ae60c07-c9cb-479e-82b7-83a233d4a2fc" />
+
+- RMSE ΔClose = 85.2331
+- MAPE ΔClose = 131.1793%
+- RMSE Price  = 364.9334
+- MAPE Price  = 3.8258%
+
+**Forecast Evaluation**
+- **RMSE (ΔClose):** 85.23 → High error on daily returns (reflecting noisy, unpredictable short-term movements).  
+- **MAPE (ΔClose):** 131.18% → Confirms poor short-term return predictability.  
+- **RMSE (Price):** 364.93  
+- **MAPE (Price):** 3.83% → Low error on price levels, showing strong ability to capture overall index trend.  
+
+**Interpretation**
+- The model *tracks the long-term trajectory* of the FTSE 100 well, though it smooths over short-term volatility spikes.  
+- **Daily returns remain unpredictable**, but *index levels are forecasted reliably*, making the model more useful for medium-term forecasting than for short-term trading.  
+- These results build on earlier findings:  
+  - **ARIMA** captured short-term structure but missed volatility.  
+  - **GARCH** captured volatility clustering and fat tails.  
+  - **Combined ARIMA-GARCH** provides a more complete picture of both *trend and risk*.  
+
+**Takeaway**
+The ARIMA-GARCH model cannot precisely forecast daily returns, but it delivers *accurate price-level forecasts (MAPE <4%)*, making it valuable for *strategic risk management and long-term outlooks rather than day-to-day trading*.
+
 
