@@ -51,6 +51,7 @@ The objectives were:
 - Strong contemporaneous correlation with CAC/DAX/SMI; some lead–lag causality across continental indices but limited cointegration
 - ARIMA(2,1,1) for FTSE provides solid forecasts (MAPE ≈ 3.8%).
 - GARCH(1,1) confirms volatility clustering & persistence typical of equity indices.
+- The LSTM captures the general trend of the FTSE 100 but makes errors of 500–600 points on average. It is less precise than ARIMA-GARCH in this setup, highlighting the need for additional features or hybrid approaches for improved forecasting accuracy.
 
 ---
 
@@ -256,4 +257,20 @@ To combine both mean dynamics (ARIMA) and volatility clustering (GARCH), I fitte
 **Takeaway**
 The ARIMA-GARCH model cannot precisely forecast daily returns, but it delivers *accurate price-level forecasts (MAPE <4%)*, making it valuable for *strategic risk management and long-term outlooks rather than day-to-day trading*.
 
+### LSTM Forecast Results — FTSE 100 (UK)
+I applied an *LSTM neural network* to forecast FTSE 100 index prices using historical time series data.
 
+<img width="1304" height="530" alt="image" src="https://github.com/user-attachments/assets/da2b8386-e5b7-4452-82a8-2ee33b75604c" />
+
+**Forecast Evaluation**
+- **RMSE (560.58):** On average, forecasts deviate by ~561 index points from actual prices. This indicates the model sometimes makes large errors, especially during volatile periods.  
+- **MAE (520.38):** The typical forecast error is about 520 points, showing that the model consistently misses actual values by this margin.  
+- **MAPE (6.03%):** Forecasts are off by ~6% relative to the FTSE 100’s level (e.g., ~510 points error when the index is at 8,500). This is *moderate accuracy* but weaker than ARIMA-GARCH (≈3.8%).  
+
+**Interpretation**
+- The LSTM model captures the *overall price trajectory* but underperforms compared to ARIMA-GARCH in terms of error rates.  
+- With a *MAPE > 6%*, forecasts are less accurate at short horizons, showing that deep learning requires more tuning and richer feature sets (e.g., macroeconomic variables, sentiment data) for financial forecasting. 
+- Unlike ARIMA-GARCH, which balances mean dynamics and volatility clustering, LSTM relies on **pattern recognition**, making it less stable when trained only on closing prices.  
+
+**Takeaway**
+While LSTM demonstrates potential for capturing *non-linear patterns*, in this setup it *underperforms traditional econometric models*. It highlights the importance of feature engineering and hybrid approaches when applying deep learning to financial markets.
