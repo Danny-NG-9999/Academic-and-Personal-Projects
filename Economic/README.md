@@ -160,6 +160,3 @@ Recommended figures (from notebook, save under `/figs/`):
 - `arima_forecast.png` – ARIMA forecast vs actual  
 - `garch_volatility.png` – Conditional volatility from GARCH  
 
----
-
-## 🗂️ Repository Structure
