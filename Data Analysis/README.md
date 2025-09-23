@@ -14,7 +14,7 @@ The work not only builds a model but also evaluates performance and interprets t
 ---
 
 ## Data Structure Overview  
-The analysis is based on a dataset of house sales from King County, WA. The initial raw data (houseprice_raw.csv) contained 21 columns and over 4,600 rows. 
+The analysis is based on a dataset of house sales from King County, WA. The initial raw data (houseprice_raw.csv) contained 18 columns and over 4,600 rows. 
 | **Column**             | **Meaning**                                                                                         | **Data type** |
 |-------------------------|-----------------------------------------------------------------------------------------------------|-----------|
 | `date`                 | The date when the house was sold.                                                                   | object    |
@@ -34,13 +34,18 @@ The analysis is based on a dataset of house sales from King County, WA. The init
 | `street`               | Street address of the property.                                                                     | object    |
 | `city`                 | City where the house is located.                                                                    | object    |
 | `country`              | Country of the property (here, always "USA").                                                       | object    |
-| `state`                | U.S. state code (here, always "WA" = Washington).                                                   | object    |
-| `zip`                  | ZIP code of the property.                                                                           | int64     |
-| `price_per_sqft_living`| Sale price per square foot of living area (engineered feature).                                      | float64   |
+| `statezip`             | U.S. state code ("WA" = Washington) and ZIP code combined                                           | object    |
+
+
+
+
+The cleaned dataset remove outliers using Modified Z-score method have three more column as below which reduce the dataset to 4401 rows for focused analysis (modified Z-score to remove outliers and only keep data between 1%-99% range as it have most number of occurance (house)
+| `zip`                  | ZIP code of the property (engineered feature) -> state is in its own column now                     | int64     |
+| `price_per_sqft_living`| Sale price per square foot of living area (engineered feature).                                     | float64   |
 | `price_bin`            | Price segmentation bin for grouping properties into ranges (engineered feature).                    | float64   |
 
-The cleaned dataset aggregates some entries (e.g., averaged prices) and bins prices for categorization, reducing to ~118 rows for focused analysis. Data types are primarily floats (e.g., price, sqft) and integers (e.g., bedrooms), with dates as strings. After a thorough cleaning and feature engineering process, the final dataset (cleaned_price.csv) was used for modeling. Basic info about cleaned dataset are as follow:
-- **Cleaned Data (`cleaned_price.csv`)** – 4,399 records, 17 columns, with simplified and engineered features:
+After a thorough cleaning and feature engineering process, the final dataset (cleaned_price.csv) was used for modeling. Basic info about cleaned dataset are as follow:
+- **Cleaned Data (`cleaned_price.csv`)** – 4401 records, 21 columns, with simplified and engineered features:
   - Dropped redundant variables (`street`, `sqft_lot`, etc.).  
   - Added `price_per_sqft_living` (price normalized by house size).  
   - Created `price_bin` for categorical segmentation of price ranges.  
@@ -50,7 +55,7 @@ The cleaned dataset aggregates some entries (e.g., averaged prices) and bins pri
 
 ## Executive Summary  
 - **Data Cleaning**: Reduced noise by removing redundant or highly correlated variables.  
-- **Exploratory Insights**: Price strongly correlates with `sqft_living`, but surprisingly `condition` and `view` have minimal effect on price
+- **Exploratory Insights**: Price strongly correlates with `sqft_living` and `city`, but surprisingly `condition` and `view` have minimal effect on price
 - **Modeling**: Regression models were applied to predict house prices.  
 
 **Evaluation Results:**  
