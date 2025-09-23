@@ -1,6 +1,6 @@
 # House Price Prediction Project
 
-## Background and Overview  
+## 📖 Background and Overview  
 This project presents a comprehensive analysis and predictive modeling of residential real estate prices in King County, Washington (USA, 2014). The dataset includes property attributes such as size, condition, location, and sale prices. The aim is to transform raw housing data into actionable insights and accurate price predictions, demonstrating full-stack data science and machine learning capabilities.
 
 **Objectives**
@@ -30,7 +30,7 @@ This project aims to practice and demonstrate the ability to apply statistical a
 
 ---
 
-## Data Structure Overview  
+## 🗂 Data Structure Overview  
 **Original Dataset**
 - **Source:** Kaggle dataset (Washington house sales data in 2014)
 - **Initial Size:** ~4,600+ records with 18 columns
