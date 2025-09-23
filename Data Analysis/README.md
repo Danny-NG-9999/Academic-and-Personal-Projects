@@ -168,7 +168,13 @@ Many cities fall in the $500K–$700K range, suggesting a fairly balanced mid-ma
 
 Cities like Bellevue, Sammamish, etc are above this mid-tier, aligning with their status as highly desirable residential areas.
 
-### Predicted vs. Actual plot shows most predictions cluster closely around the diagonal line, indicating good performance.
+### Predicted vs. Actual Price distribution plot shows most predictions cluster closely around the diagonal line, indicating good performance.
+<img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/fc25ff51-95a3-4e0e-96ab-4cf9fc169e37" />
+
+- The model’s predicted price of ~$495K is well-supported by the actual market distribution, reinforcing that the model captures key value drivers for comparable properties.
+- The predicted price (~$495K) falls near the center of the actual price distribution, meaning the model’s estimate is consistent with observed comparable home sales.
+- This increases confidence in the model’s accuracy for this property type.
+
 
 Feature importance analysis highlights sqft_living, bathrooms, view, and waterfront as top predictors.
 ---
