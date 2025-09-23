@@ -1,20 +1,42 @@
 # House Price Prediction Project
 
 ## Background and Overview  
-This project focuses on analyzing and predicting house prices using a dataset from house sales in USA, primarily from 2014. The data includes details on property features such as size, condition, location, and sale prices. The goals of the project are to demonstrate skills and knowledge in data cleaning, exploratory data analysis (EDA), and building relevant predictive models (e.g., linear regression, decision trees, etc.) to estimate house prices using relevant features and drivers. By processing raw data into actionable insights, this project showcases proficiency in Python libraries like Pandas, NumPy, Matplotlib, and Seaborn, while highlighting the ability to derive business-relevant recommendations from data.
+This project presents a comprehensive analysis and predictive modeling of residential real estate prices in King County, Washington (USA, 2014). The dataset includes property attributes such as size, condition, location, and sale prices. The aim is to transform raw housing data into actionable insights and accurate price predictions, demonstrating full-stack data science and machine learning capabilities.
 
-Project showcases and goals:
-- To demonstrate skills in data preprocessing, feature engineering, exploratory data analysis (EDA), and predictive modeling.
-- To apply machine learning techniques to real-world datasets in order to understand the drivers of house prices.
-- To evaluate model performance and provide insights and business recommendations for stakeholders (e.g., real estate investors, policymakers, buyers).
-- This project showcases practical knowledge in Python, Jupyter notebooks, and data science workflows.
-  
-This project involves building a machine learning model to predict house prices using a dataset from King County, Washington. It serves as a practical demonstration of data science and machine learning skills, covering key stages from data preprocessing and exploratory data analysis (EDA) to model training and evaluation.
+**Objectives**
+- Develop a robust predictive model for housing prices using property features and location data.
+- Identify the key drivers of property values and uncover market patterns.
+- Provide data-driven recommendations for buyers, sellers, investors, and policymakers.
+- Showcase learning and proficiency in the data analysis workflow:
+  - Data cleaning and preprocessing
+  - Feature engineering
+  - Exploratory data analysis (EDA)
+  - Predictive modeling and evaluation
+  - Business insights and recommendations
+
+**Technical Stack**
+- **Programming & Analysis:** Python, Jupyter Notebooks
+- **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
+
+This project aims to practice and demonstrate the ability to apply statistical analysis, machine learning, and business reasoning to real-world that are both technically sound and practically valuable.
+
+## 📌 Table of Contents  
+- [Data Structure Overview](#data-structure-overview)  
+- [Methodology](#methodology)  
+- [Executive Summary](#executive-summary)  
+- [Insight Deepdive](#insight-deepdive)  
+- [Visual Insights](#visual-insights)  
+- [Recommendations](#recommendations)
 
 ---
 
 ## Data Structure Overview  
-The analysis is based on a dataset of house sales from King County, WA. The initial raw data (houseprice_raw.csv) contained 18 columns and over 4,600 rows. 
+**Original Dataset**
+- **Source:** Kaggle dataset (Washington house sales data in 2014)
+- **Initial Size:** ~4,600+ records with 18 columns
+- **Key Variables:** Property characteristics (e.g. size, rooms, condition, etc.), location details (e.g. city, statezip, etc.), temporal information (e.g. sale date, year built, year renovated), and sale price.
+
+
 | **Column**             | **Meaning**                                                                                         | **Data type** |
 |-------------------------|-----------------------------------------------------------------------------------------------------|-----------|
 | `date`                 | The date when the house was sold.                                                                   | object    |
@@ -33,23 +55,29 @@ The analysis is based on a dataset of house sales from King County, WA. The init
 | `yr_renovated`         | Year the house was last renovated (0 = never renovated).                                            | int64     |
 | `street`               | Street address of the property.                                                                     | object    |
 | `city`                 | City where the house is located.                                                                    | object    |
-| `country`              | Country of the property (here, always "USA").                                                       | object    |
+| `country`              | Country of the property                                                                             | object    |
 | `statezip`             | U.S. state code ("WA" = Washington) and ZIP code combined                                           | object    |
 
+**Cleaned Dataset**
+Following rigorous cleaning, outlier removal using the Modified Z-score method (retaining data within the 1%-99% range to focus on the most representative samples), and feature engineering, the dataset was refined to 4,401 rows. This process introduced three additional columns for enhanced analysis:
 
+| **Column**              | **Description**                                                                 | **Data Type** |
+|--------------------------|---------------------------------------------------------------------------------|---------------|
+| `zip`                   | ZIP code of the property (extracted from `statezip` for granular location analysis) | int64        |
+| `price_per_sqft_living` | Sale price per square foot of living area (normalized price feature)             | float64       |
+| `price_bin`             | Price segmentation bin for grouping properties into ranges (e.g., low, mid, high) | float64       |
 
+**Final Data Structure**
+The cleaned final dataset was expanded to 43 columns after transforming categorical variables (e.g., city) into dummy variables for modeling. Redundant features such as street and sqft_lot were dropped to streamline modeling prediction.
 
-The cleaned dataset Dropping missing/duplicate values and remove outliers using Modified Z-score method have three more column as below which reduce the dataset to 4401 rows for focused analysis (modified Z-score to remove outliers and only keep data between 1%-99% range as it have most number of occurance (house). This dataset was used for training and evaluating models.
-| `zip`                  | ZIP code of the property (engineered feature) -> state is in its own column now                     | int64     |
-| `price_per_sqft_living`| Sale price per square foot of living area (engineered feature).                                     | float64   |
-| `price_bin`            | Price segmentation bin for grouping properties into ranges (engineered feature).                    | float64   |
-
-After a thorough cleaning  and feature engineering process, the final dataset (cleaned_price.csv) was used for modeling. Basic info about cleaned dataset are as follow:
-- **Cleaned Data (`cleaned_price.csv`)** – 4401 records, 21 columns, with simplified and engineered features:
-  - Dropped redundant variables (`street`, `sqft_lot`, etc.).  
-  - Added `price_per_sqft_living` (price normalized by house size).  
-  - Created `price_bin` for categorical segmentation of price ranges.  
-  - Preserved key predictive features such as `bedrooms`, `bathrooms`, `floors`, `view`, `condition`, `city`, `state`, and `zip`.  
+The cleaned dataset was used for training and evaluating models. The final cleaned dataset consists of 43 columns (include dummy variable), with redundant features (e.g., street, sqft_lot) dropped to streamline modeling. Cities categorical variable are transformed into dummy variable for later prediction models.
+| **Feature Category**     | **Key Variables**                     | **Description**                                                                  |
+|---------------------------|---------------------------------------|---------------------------------------------------------------------------------|
+| Core Property Features    | `sqft_living`, `bedrooms`, `bathrooms`, `floors` | Structural characteristics with strong predictive power              |
+| Quality Indicators        | `waterfront`, `view`, `condition`    | Property quality metrics (`view`: 0–4 scale, `condition`: 1–5 scale)             |
+| Temporal Features         | `yr_built`, `yr_renovated`           | Age of the property and renovation history                                       |
+| Location Data             | Dummy variables for `city`           | Geographic segmentation for regional market effects                              |
+| Target Variable           | `price`                              | House sale price (prediction target)                                             |
 
 ---
 
