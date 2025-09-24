@@ -5,6 +5,14 @@ Training programs and universities increasingly assess students on these skills,
 
 This project analyzes a cohort of students with recorded scores in the five core skills above and their corresponding placement outcomes. The goal is to quantify the relationship between skill proficiency and placement success in order to highlight the skills that matter most for employability.
 
+**Objectives**:
+- Explain how each skill (individually and in combination) relates to student placement.
+- Prioritize the skills that matter most using interpretable importance metrics.
+- Identify thresholds and “minimum viable profiles” (balanced skill mixes that consistently correlate with successful placement).
+- Guide interventions for students and instructors (where to focus practice time to maximize placement probability).
+
+
+
 Technical Stack
 
 Programming & Analysis: Python, Jupyter Notebooks
