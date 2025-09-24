@@ -25,16 +25,50 @@ This project demonstrates the ability to combine statistical analysis, visualiza
 - [📌 Conclusion](#-conclusion)  
 
 ## 🗂 Data Structure Overview
+- **Source**: Kaggle dataset
+- **Initial Size**: 200 records with 6 columns
+- **Key Variables**: Programming language skills and Student Placement outcomes details
 
+| Column Name      | Dtype    | Description |
+|------------------|----------|-------------|
+| **Python**       | float64  | Score (0–1) representing student’s skill in Python programming. |
+| **Sql**          | float64  | Score (0–1) representing student’s skill in SQL (databases). |
+| **ML**           | float64  | Score (0–1) representing student’s skill in Machine Learning. |
+| **Tableau**      | float64  | Score (0–1) representing student’s skill in Tableau (data visualization). |
+| **Excel**        | float64  | Score (0–1) representing student’s skill in Microsoft Excel. |
+| **Student Placed** | object   | Placement outcome (`Yes` / `No`), indicates whether the student was placed. |
 
+## 🔧 Methodology
+- Exploratory Data Analysis (EDA):
+  - Distribution checks (histograms, skewness analysis)
+  - Correlation heatmap to examine relationships among skills
+  - Comparison of average skill levels between placed and not placed students
+- Skill Impact Analysis:
+  - Difference plots (Placed – Not Placed) to highlight which skills differentiate successful candidates\
+  - Translate statistical findings into practical guidance for students, instructors, and placement teams.
 
+## 📖 Executive Summary
+- 58% of students were placed, while 42% were not placed.
+- Skills show low inter-correlation, suggesting they are learned and assessed independently.
+- Python and SQL alone are not reliable skills for placement success, despite being essential technical skills.
+- Successful placement appears linked to a balanced skill mix, with both technical depth (ML) and applied/business tool proficiency (Tableau, Excel).
 
 Insight
 - Since no skill reached significance, technical skill scores alone do not explain placement.
 - The strongest trend is ML, but evidence suggests its effect is weaker than OR=2, and not a standalone predictor.
 - Future models should include non-technical predictors (e.g., interview performance, projects, work experience).
 
+## 🔍 Insights Deepdive
+- Correlation Heatmap: All skills are largely independent; no strong clustering.
+- Histograms: Skill distributions are balanced and symmetric, with no overrepresentation of experts or beginners.
+- Placement Outcomes: Majority placed (58%), but a large minority (42%) not placed indicates room for improvement.
+- Skill Averages by Placement: Placed students outperform in ML, Tableau, and Excel. Not placed students have slightly higher averages in Python and SQL.
+- Skill Differences (Placed – Not Placed):
+  - ML (+0.052) is the strongest differentiator.
+  - Tableau (+0.027) and Excel (+0.023) also contribute meaningfully.
+  - Python (-0.011) and SQL (-0.002) show negligible or negative differences.
 
+## 📊 Visualization
 <img width="1097" height="848" alt="image" src="https://github.com/user-attachments/assets/d1598d3e-b08a-444d-9fd8-c48aad506b3a" />
 
 - Minimal Linear Relationships: All correlation coefficients range from -0.08 to +0.08, indicating virtually no linear dependency between skills → Proficiency in one technical skill (Python, SQL, ML, Tableau, Excel) does not predict proficiency in others
