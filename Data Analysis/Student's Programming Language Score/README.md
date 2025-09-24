@@ -1,26 +1,24 @@
 ## 📘 Project Background & Overview
+Modern hiring for data and analytics roles is driven by demonstrable proficiency across a stack of practical skills—typically Python, SQL, Machine Learning (ML), Tableau, and Excel.
 
-Modern hiring for data and analytics roles is driven by demonstrable proficiency across a stack of practical skills—typically **Python**, **SQL**, **Machine Learning**, **Tableau**, and **Excel**. Training programs and universities increasingly assess students on these skills, yet it’s often unclear *which skills most influence placement outcomes (e.g., getting placed vs. not placed)
+Training programs and universities increasingly assess students on these skills, yet it is often unclear which skills most influence placement outcomes (e.g., securing a job placement vs. not).
 
-This project analyzes a cohort of students with recorded scores in the five core skills above and their corresponding placement outcomes. My aim is to *quantify the relationship* between skill proficiency and placement to identify *which skill areas carry the most predictive power*
+This project analyzes a cohort of students with recorded scores in the five core skills above and their corresponding placement outcomes. The goal is to quantify the relationship between skill proficiency and placement success in order to highlight the skills that matter most for employability.
 
-### Objectives
-- **Explain** how each skill (individually and in combination) relates to student placement.
-- **Prioritize** the skills that matter most using interpretable importance metrics.
-- **Identify thresholds** and “minimum viable profiles” (balanced skill mixes that consistently correlate with successful placement).
-- **Guide interventions** for students and instructors (where to focus practice time to maximize placement probability).
+Technical Stack
 
-### Stakeholders & Use Cases
-- **Students:** Understand which skills to improve first to cross critical placement thresholds.
-- **Instructors / Program Leads:** Calibrate curriculum emphasis and assessment rubrics to align with hiring signals.
-- **Placement Cells / Career Services:** Target workshops and mock interviews for skills that yield the highest uplift.
+Programming & Analysis: Python, Jupyter Notebooks
+Libraries: Pandas, NumPy, Matplotlib, Seaborn
+This project aims to practice and demonstrate the ability to apply statistical analysis, machine learning, and business reasoning to real-world that are both technically sound and practically valuable.
 
-### Assumptions & Limitations
-- The analysis is **observational**, not causal; results should be interpreted as **associations** rather than proofs of cause and effect.
-- Placement outcomes can be influenced by additional factors (projects, internships, interview performance, networking) that may not be fully captured in the dataset.
-- Thresholds and importance may shift across cohorts, markets, and time; periodic refresh is recommended.
-
-
+📌 Table of Contents
+🗂 Data Structure Overview
+🔧 Methodology
+📖 Executive Summary
+🔍 Insights Deepdive
+📊 Visualization
+✅ Recommendations
+📌 Conclusion
 
 
 
