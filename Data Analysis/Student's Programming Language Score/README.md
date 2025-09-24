@@ -11,7 +11,7 @@ This project analyzes a cohort of students with recorded scores in the five core
 
 **Technical Stack**
 - **Programming & Analysis**: Python, Jupyter Notebooks
-- **Libraries**: Pandas, NumPy, Matplotlib and Seaborn
+- **Libraries**: Pandas, NumPy, Scipy, Matplotlib and Seaborn
 
 This project demonstrates the ability to combine statistical analysis, visualization, and business reasoning to generate insights that are both technically sound and practically valuable.
 
