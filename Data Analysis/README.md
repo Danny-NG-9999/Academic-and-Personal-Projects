@@ -24,8 +24,8 @@ This project aims to practice and demonstrate the ability to apply statistical a
 - [Data Structure Overview](#data-structure-overview)  
 - [Methodology](#methodology)  
 - [Executive Summary](#executive-summary)  
-- [Insight Deepdive](#insight-deepdive)  
-- [Visual Insights](#visual-insights)  
+- [🔍Insight Deepdive](#🔍insight-deepdive)  
+- [Visualization](#visualization)  
 - [Recommendations](#recommendations)
 
 ---
@@ -105,114 +105,80 @@ Data Quality Enhancements Taken:
 
 ---
 
-## Executive Summary  
-- **Data Cleaning**: Reduced noise by removing some redundant or highly correlated variables.  
-- **Exploratory Insights**: Price strongly correlates with `sqft_living` and `city`, but surprisingly `condition` and `view` have minimal effect on price
-- **Modeling**: Regression models were applied to predict house prices.
+## 📊 Executive Summary   
+This project developed a **high-performing predictive model** for housing prices in King County, achieving an **R² of 0.76** on test data. The model demonstrates strong practical utility with a **mean absolute error (MAE) of ~$105K**, offering reliable accuracy for mid-range properties while highlighting market dynamics that drive valuation.  
 
-- A predictive model was built to estimate house prices based on features such as square footage, bedrooms, bathrooms, condition, location, and renovation status.
-- The cleaned dataset allowed for more meaningful insights and better model accuracy.
-- Model evaluation primarily used R² (coefficient of determination). From the notebook, different models achieved R² values ranging from ~0.70 to ~0.80, suggesting the model explains a large portion of price variability.
-
-This project successfully builds a house price prediction model using the house sales in USA dataset, demonstrating end-to-end data science skills. Key steps included data loading from Kaggle, cleaning (handling zeros/missing values, remove outliers, feature engineering), EDA (visualizations with Matplotlib/Seaborn), and Modeling.
-
-
-This analysis successfully developed a high-performance predictive model for King County housing prices, achieving 76% explanatory power (R² = 0.76) on test data. The model demonstrates strong practical utility with a mean absolute error of $105,000, representing reliable accuracy for mid-range residential properties.
-
-Key Achievements
-Data Quality: Transformed raw data into a clean, analysis-ready dataset through systematic preprocessing
-
-Model Performance: Delivered robust predictions that capture essential market dynamics
-
-Actionable Insights: Identified significant variation in renovation ROI across geographic markets
-
-Business Value: Provided evidence-based guidance for investment and pricing strategies
-
-Performance Metrics
-Metric	Training	Testing	Interpretation
-R² Score	0.74	0.76	Model explains 76% of price variance
-MAE	$105,460	$105,000	Average prediction error
-RMSE	$157,826	$165,339	Error magnitude for high-value properties
-The model shows minimal overfitting with consistent performance across training and test sets, indicating strong generalization capability for practical applications.
-
-This project delivers a high-performing machine learning model for predicting house prices, achieving an R² score of approximately 0.76 on the test set—indicating that the model explains 76% of the variance in property values. Key stages included data cleaning to eliminate noise and outliers, EDA to uncover correlations, and modeling to generate accurate predictions.
-
-
-Data Cleaning: Streamlined the dataset by removing redundancies and engineering features, resulting in a refined set of 4,401 high-quality records.
-
-Exploratory Insights: Revealed strong positive correlations between price and factors like living space (sqft_living, ~0.70 correlation) and location, with minimal influence from condition and view.
-
-Modeling Outcomes: Regression models demonstrated robust performance, with training R² of 0.74 and test R² of 0.76, alongside an average prediction error (MAE) of ~$105K—suitable for mid-range properties.
-Detailed Evaluation Metrics:
-
-
-Training Data: MAE: $105,459.54 | MSE: 24,909,092,053.70 | RMSE: $157,826.15 | R²: 0.7403
-
-Test Data: MAE: $105,000.22 | MSE: 27,336,994,553.19 | RMSE: $165,339.03 | R²: 0.7593
-Cross-validation confirmed model stability with minimal overfitting (train R² ~0.72, test R² ~0.70). Feature importance underscored sqft_living, bathrooms, waterfront, and view as top predictors. Overall, this baseline model provides reliable estimates and sets the stage for enhancements like XGBoost integration, offering stakeholders actionable intelligence for informed real estate decisions.
-
-
-- **Data Cleaning**: Removed redundant/noisy variables and created engineered features.  
+**🔑 Key Achievements**  
+- **Data Quality**: Transformed 4,600 raw records into a*clean, analysis-ready dataset of 4,401 entries through systematic preprocessing, outlier removal, and feature engineering.  
 - **Exploratory Insights**:  
-  - Strongest predictor: `sqft_living`.  
-  - `city` location is a key driver.  
-  - `condition` and `view` had weaker impacts than expected.  
+  - Strongest predictor: `sqft_living` (~0.70 correlation with price).
+  - Additional drivers: `city`, `bathrooms`, `bedrooms`, and `view` (~0.37–0.57 correlation with price).
+  - `condition` and `waterfront` showed unexpectedly limited influence.
 
-### Model Results  
+- **Model Performance**: Regression models explained **74–76% of price variance** with minimal overfitting (consistent training and test results).  
+- **Actionable Insights**: Identified significant variation in **renovation ROI across cities**, providing location-specific guidance for investment.  
+- **Business Value**: Delivered evidence-based intelligence to support **investment, pricing, and renovation strategies**.
 
-**Training Set**  
-- MAE: `105,459`  
-- RMSE: `157,826`  
-- R²: `0.74`  
+**📈 Performance Metrics**  
 
-**Test Set**  
-- MAE: `105,000`  
-- RMSE: `165,339`  
-- R²: `0.76`  
+| Metric        | Training       | Testing        | Interpretation                                   |
+|---------------|---------------|---------------|--------------------------------------------------|
+| **R² Score**  | 0.74          | 0.76          | Explains ~76% of price variance                  |
+| **MAE**       | $105,460      | $105,000      | Avg. error per prediction                        |
+| **RMSE**      | $157,826      | $165,339      | Larger errors concentrated in luxury properties  |
 
-✅ The model explains **74–76% of price variance**.  
-✅ Average prediction error: ~$105K (reasonable for mid-market, less precise for luxury homes).  
-✅ Minimal overfitting — model generalizes well.  
+- Cross-validation using K-Fold and ShuffleSplit confirmed stability (train R² ~0.72, test R² ~0.71).
+- **Key predictors**: `sqft_living`, `city`, `bathrooms`, `bedrooms` and `view`.  
 
-**Key Predictors**: `sqft_living`, `waterfront`, `view`, `bathrooms`.  
-
-
-**Evaluation Results:**  
-- **Training Data**  
-MAE: 105459.5371
-MSE: 24909092053.6957
-RMSE: 157826.1450
-R²: 0.7403
-
-- **Test Data**  
-MAE: 105000.2165
-MSE: 27336994553.1909
-RMSE: 165339.0291
-R²: 0.7593 
-
-**Interpretation**:  
-- The model explains about **74–76% of price variance** and achieves an average prediction error of around **$105K**, which is reasonable for mid-range homes but less accurate for very high-end properties.  
-- The model achieved an R² score of around 0.75 on the test set, indicating it explains 76% of the variance in house prices.
-
-Evaluation result
-Cross-validation confirmed stability, with minimal overfitting (train R² ~0.72, test R² ~0.70).
-Key predictors: sqft_living (strong positive correlation, ~0.70 with price), waterfront (premium for waterfront properties), and view/condition (higher ratings boost prices by 10-20%).
-Overall, the model performs well for a baseline but could improve with advanced techniques like XGBoost or geospatial features. This project highlights practical skills in handling real-world data and deriving actionable insights.
+✅ Overall, this baseline model provides **robust, generalizable predictions** and sets the stage for further improvements using advanced methods (e.g., XGBoost, Random Forests, geospatial features).  
 
 ---
 
-## Insight Deepdive  
-- **Living Space Matters**: `sqft_living` is the single most powerful predictor of house price, explaining a large share of price variation.
-- **City Effect**: Prices vary substantially across cities, with premium urban locations outperforming suburban areas.  \
-- **Price Segmentation**: Using `price_bin` shows clustering of mid-market properties, with only a small fraction in the high-end luxury category.
-- Living area (sqft_living) had the strongest correlation with price — larger homes command significantly higher prices.
-- Number of bathrooms and more urban city can also be factor increased property values.
-- Renovations positively impacted prices, with recently renovated houses showing a notable premium.
-- House age had a negative relationship with price, though recently built or renovated houses countered this effect.
-- Location mattered: Certain ZIP codes and cities consistently showed higher market values (e.g., Bellevue, Redmond).
+## 🔍 Insights Deepdive
+This analysis highlights the **primary drivers of housing prices** in King County and reveals how property characteristics, renovations, and geography interact to shape market values.  
+
+<details>
+<summary>📌 Core Value Drivers</summary>
+
+- **Living Space Dominance**: `sqft_living` is the strongest predictor (~0.70 correlation), confirming that larger homes consistently command higher prices.  
+- **Bathroom Premium**: Each additional bathroom adds more value than an extra bedroom, reflecting higher marginal utility.  
+- **View Quality**: Properties with desirable views capture notable premiums, though they represent fewer than 10% of listings..  
+- **Condition & Waterfront**:  Both exert weaker-than-expected influence, suggesting subjectivity in ratings or undervaluation of these features. 
+
+</details>
+
+<details>
+<summary>🌍 Geographic Segmentation</summary>
+
+- **Premium Markets**: Cities like **Medina, Clyde Hill, Mercer Island** command 2–3× county averages, driven by location desirability and affluence.  
+- **Mid-Tier Clusters**: The majority of cities fall in the **$400K–$700K range**, representing stable mid-market housing.  
+- **Affordable Segments**: Cities like **Algona, Pacific, Skykomish** provide entry-level affordability but with limited growth potential.  
+
+</details>
+
+<details>
+<summary>🛠 Renovation ROI</summary>
+
+- **Positive ROI**: Affluent areas such as **Mercer Island, Normandy Park, Maple Valley** yield **+10–13% price premiums** for renovated homes.  
+- **Negative ROI**: More saturated or affordability-driven markets like **SeaTac, Tukwila, Kirkland** show **–20% to –28% discounts** for renovated homes.  
+- **Age Effect**: Renovations on **newer or mid-aged homes** generate stronger returns, while older properties may not recoup renovation costs.  
+
+</details>
+
+<details>
+<summary>📊 Price Segmentation</summary>
+
+- Most homes cluster in the **mid-market (<$1M)**, with luxury properties driving distribution skewness.  
+- Renovations and premium features are more valued in high-demand markets but provide limited returns in lower-value areas.  
+
+</details>
 
 ---
-## Visualization
+
+✅ **Key Takeaway**: Housing prices are primarily driven by **living space, location, and selective renovations**, with geographic and market nuances significantly shaping ROI. Stakeholders should adopt **location-specific strategies**—focusing on premium upgrades in affluent markets while prioritizing affordability in mid- and lower-tier segments.  
+
+---
+## Visualization 
 ### Distribution of Housing Prices per Sqft (Living Area after cleaning)
 House prices were right-skewed, with most properties concentrated under $1M ($400 per living sqft), but a few luxury homes significantly increased variance.
 <img width="1315" height="605" alt="image" src="https://github.com/user-attachments/assets/eb24d394-901d-4563-837b-749cf938a6f4" />
