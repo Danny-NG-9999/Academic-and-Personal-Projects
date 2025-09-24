@@ -1,6 +1,6 @@
 # House Price Prediction Project
 
-## 📖 Background and Overview  
+## 🧩 Background and Overview  
 This project presents a comprehensive analysis and predictive modeling of residential real estate prices in King County, Washington (USA, 2014). The dataset includes property attributes such as size, condition, location, and sale prices. The aim is to transform raw housing data into actionable insights and accurate price predictions, demonstrating full-stack data science and machine learning capabilities.
 
 **Objectives**
@@ -105,7 +105,7 @@ Data Quality Enhancements Taken:
 
 ---
 
-## 📊 Executive Summary   
+## 📖 Executive Summary   
 This project developed a **high-performing predictive model** for housing prices in King County, achieving an **R² of 0.76** on test data. The model demonstrates strong practical utility with a **mean absolute error (MAE) of ~$105K**, offering reliable accuracy for mid-range properties while highlighting market dynamics that drive valuation.  
 
 **🔑 Key Achievements**  
@@ -173,112 +173,116 @@ This analysis highlights the **primary drivers of housing prices** in King Count
 
 </details>
 
----
 
-✅ **Key Takeaway**: Housing prices are primarily driven by **living space, location, and selective renovations**, with geographic and market nuances significantly shaping ROI. Stakeholders should adopt **location-specific strategies**—focusing on premium upgrades in affluent markets while prioritizing affordability in mid- and lower-tier segments.  
+✅ **Key Takeaway**: Housing prices are primarily driven by **living space, location, and selective renovations**, with geographic and market nuances significantly shaping ROI. Stakeholders should adopt location-specific strategies — focusing on premium upgrades in affluent markets while prioritizing affordability in mid- and lower-tier segments.  
 
 ---
-## Visualization 
-### Distribution of Housing Prices per Sqft (Living Area after cleaning)
-House prices were right-skewed, with most properties concentrated under $1M ($400 per living sqft), but a few luxury homes significantly increased variance.
+## 📊 Visualization 
+### Average House Price by City
+<img width="1589" height="1234" alt="image" src="https://github.com/user-attachments/assets/986c2bb0-6dc4-47ba-b56f-f99d14147493" />
+
+- **Top-End Markets**: Medina, Clyde Hill, and Mercer Island lead with average prices well above $1M–$1.7M, reflecting luxury, exclusivity, and proximity to economic hubs.
+- **Mid-Market Cluster**: Most cities fall in the $500K–$700K range, forming the county’s core residential market.
+- **Affordable Markets**: Algona, Pacific, and Skykomish are the most affordable, averaging below $300K, highlighting entry-level opportunities.
+- **Geographic Inequality**: Significant spread between the most expensive and cheapest cities (>5× difference), underscoring sharp location-driven segmentation.
+
+
+### Distribution of Housing Prices per Square Foot (Living Area)
 <img width="1315" height="605" alt="image" src="https://github.com/user-attachments/assets/eb24d394-901d-4563-837b-749cf938a6f4" />
 
-### Correlation Analysis
-<img width="1398" height="1270" alt="image" src="https://github.com/user-attachments/assets/f3c18e0d-822a-4491-b961-5f645cb7fb4a" />
-Key variables strongly correlated with price with high signifcant:
-- Living area size (Square footage of living space was the most important determinant of price)
-- Number of Bathrooms and Bedrooms
-- View
-Weaker correlation with high significant
-- Waterfront
-- Condition of the house
+- **Right-Skewed Price Distribution**: House prices predominantly cluster in the $200–$300 per sqft range, with most homes valued under $600,000.
+- **Median vs. Mean**: Median price ($243 per sqft) is slightly below the mean ($256 per sqft), reflecting skewness driven by a small luxury segment.
+- **Luxury Outliers**: High-end properties ($400+ per sqft, $1M+) create a long right tail, increasing variance.
+- **Outlier Removal**: Prices below $109 and above $500 per sqft were excluded using the Modified Z-score method to focus on the core market.
 
-### Categorical Insights (Renovation Premium)
+
+### Correlation Heatmap Analysis
+<img width="1398" height="1270" alt="image" src="https://github.com/user-attachments/assets/f3c18e0d-822a-4491-b961-5f645cb7fb4a" />
+
+- **Living Area**: Strongest predictor of price (0.74 correlation) → larger homes drive higher values.
+- **Bathrooms & Bedrooms**: Both positively correlated with price (0.57 and 0.38 respectively), with bathrooms showing stronger influence.
+- **View**: Moderate correlation with price (0.37) → scenic properties add measurable value.
+- **Waterfront**: Positive but weaker correlation (0.15) → premium exists, but relatively rare in dataset.
+- **Condition**: Very weak correlation with price (~0.05) → likely due to subjective ratings and the fact that buyers prioritize location and size. In premium markets (e.g., Mercer Island), even homes in average condition still command high prices.
+
+### Renovation Premiums by City
 
 <img width="1390" height="745" alt="image" src="https://github.com/user-attachments/assets/ac073199-9847-4feb-bd7c-e2ef9c438165" />
 
-The effect of renovation on negative for most, especially more urban city, where there is significant p-value (they tend to have most negative renovation premium too)
-Renovation premiums vary widely by city
+- **Positive ROI**: Renovations add **+10–13% premium** in more affluent areas (e.g., Normandy Park, Maple Valley, Mercer Island).  
+- **Negative ROI**: Markets like **SeaTac, Tukwila, Kirkland** penalize renovations with **–20% to –28% discounts**.  
+- **Statistical Significance**:  
+  - **Blue dots** = significant impact (consistent effect).  
+  - **Gray dots** = no clear measurable effect.  
+- **Geographic Divergence**: Renovation ROI varies sharply by location — profitable in affluent markets where buyers value upgrades, but often negative in lower-value or saturated areas, where affordability outweighs improvements.
 
-Some cities (e.g., Normandy Park, Maple Valley, Mercer Island) show positive renovation premiums of +10–13%. Renovations are rewarded by the market there.
-
-Other cities (e.g., SeaTac, Tukwila, Kirkland) show negative premiums of –20% to –28%. Renovated houses are actually valued lower than comparable non-renovated ones.
-
-Significance matters
-
-Significant (blue dots): In cities like Seattle, Kenmore, Covington, Bellevue, Renton, Kirkland, Tukwila, SeaTac, the renovation premiums (mostly negative) are statistically significant. That means the discount effect is real and consistent.
-
-Not significant (gray dots): In some cities, premiums (positive or negative) are not statistically different from zero — suggesting renovations don’t have a clear measurable impact there.
-
-Geographic divergence
-
-Newer and Wealthier markets (e.g., Mercer Island) show positive returns on renovations. Buyers are willing to pay extra for updated homes in premium neighborhoods.
-
-In contrast, lower-value or more saturated markets (e.g., SeaTac, Tukwila) penalize renovated homes — possibly because buyers prioritize affordability over upgrades, or renovations can’t offset other negative location factors.
-
-
-**Impact of House Age on Renovation Premium**
+### Impact of House Age on Renovation Premium
 
 <img width="1189" height="832" alt="image" src="https://github.com/user-attachments/assets/2cec5f83-221d-4c83-a4ab-ba44117f961f" />
 
-Negative Relationship:
-The regression line slopes downward — meaning as the age difference increases (renovated homes are much older compared to non-renovated homes), the renovation premium decreases.
-Premium Exists for Newer Renovations:
-When renovated homes are not significantly older (or even newer) compared to non-renovated homes, the renovation premium is closer to 0% or slightly positive. This suggests buyers are willing to pay extra for relatively recent renovations.
-Penalty for Older Renovated Homes:
-When renovated homes are much older, buyers tend to discount them — in some cases, the premium turns negative (renovated homes are valued less than non-renovated ones). This may reflect structural aging or that renovations can’t fully compensate for being an older property.
-High Variability Across Cities:
-The wide spread of points (and the broad confidence interval) indicates city-level differences in how renovations are valued. Renovation premium is not consistent everywhere.
+- **Negative Trend**: Renovation premium decreases as the age gap increases — older renovated homes capture less value uplift.
+- **Younger Renovations Pay Off**: When renovated homes are similar in age (or newer) compared to non-renovated ones, premiums are slightly positive.
+- **Older Renovations Penalized**: Large positive age differences (older renovated homes) often result in negative premiums, suggesting buyers discount them.
+- **High Variability**: Considerable spread across cities indicates renovation ROI is not consistent and depends on local market dynamics.
 
-
-**Average house price by city**
-<img width="1589" height="1234" alt="image" src="https://github.com/user-attachments/assets/986c2bb0-6dc4-47ba-b56f-f99d14147493" />
-Top 3 most expensive cities:
-
-Medina, Clyde Hill, Mercer Island → Luxury markets with extremely high housing costs, driven by location desirability, amenities, and possibly proximity to high-income employers (e.g., tech hubs).
-
-Top 3 cheapest cities:
-
-Algona, Pacific, Skykomish → Affordable housing markets, possibly due to distance from economic centers, smaller populations, or less demand.
-
-Middle-tier clustering
-
-Many cities fall in the $500K–$700K range, suggesting a fairly balanced mid-market.
-
-Cities like Bellevue, Sammamish, etc are above this mid-tier, aligning with their status as highly desirable residential areas.
-
-### Predicted vs. Actual Price distribution plot shows most predictions cluster closely around the diagonal line, indicating good performance.
+### Predictive Accuracy
 <img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/fc25ff51-95a3-4e0e-96ab-4cf9fc169e37" />
 
-- The model’s predicted price of ~$495K is well-supported by the actual market distribution, reinforcing that the model captures key value drivers for comparable properties.
-- The predicted price (~$495K) falls near the center of the actual price distribution, meaning the model’s estimate is consistent with observed comparable home sales.
-- This increases confidence in the model’s accuracy for this property type.
+- **Model Validation**: The predicted price of $494,983 aligns well with the actual market distribution for comparable homes, confirming model reliability
+- **Market Concentration**: Most actual sales cluster between $450K-$550K, indicating the prediction falls within the high-probability price range
+- **Reasonable Variance**: The spread shows typical market variability of ±$50K around the predicted value, which is expected for real estate pricing
+- **Segment Accuracy**: The model performs well for mid-range Seattle properties (3BR, 2BA, ~1500 sqft), suggesting strong predictive power for this market segment
+- **Confidence Benchmark**: The prediction sits near the distribution peak, indicating high confidence in this valuation estimate
 
-
-Feature importance analysis highlights sqft_living, bathrooms, view, and waterfront as top predictors.
 ---
-## Recommendations  
-- **For Buyers**:  
-  - Focus on living space and properties with recent renovation with good renovation quality, as these add measurable value.  
-  - For long-term appreciation, properties in cities with sustained demand are strong investments.
-  - Affordability varies dramatically; location choice has the single largest impact on housing cost. Buyers priced out of premium areas may find mid-market alternatives within commuting distance.
- 
-    
-- For Homeowners:
-  - Renovating older homes may not guarantee a positive price premium. Renovations are more valuable when done on relatively newer or middle-aged homes.
-  - Renovation adds value in select markets (e.g., Mercer Island, Normandy Park), but in other cities (e.g., SeaTac, Tukwila), it may not pay off financially.
+## ✅ Recommendations  
+<details>
+<summary>🏡 For Buyers</summary>
 
-- **For Sellers**:  
-  - Renovations prior to listing can yield significant ROI, especially for recently renovate homes.
-  - Renovations may yield the best returns in areas where housing stock is not significantly aged compared to the market average.
+- Prioritize **living space and bathrooms** over peripheral features, as these drive the strongest value.  
+- Target **recent, high-quality renovations** in premium or high-demand markets for long-term appreciation.  
+- Explore **mid-market commuter-friendly cities** (e.g., Bellevue, Redmond) for a balance of affordability and ROI.  
 
-- **For Future Work**:  
-  - Incorporate external data (school quality, crime rates, economic indicators) for improved predictive performance.  
-  - Apply advanced models (e.g., gradient boosting, XGBoost) to reduce error on luxury homes.
-  - Incorporate external economic indicators (interest rates, employment, regional development).
-  - Experiment with non-linear models (e.g., XGBoost, Random Forests) for better performance.
-  - Perform hyperparameter tuning and cross-validation to avoid overfitting and improve generalization.
+</details>
 
+<details>
+<summary>🔨 For Homeowners</summary>
 
+- Focus renovations on **newer or middle-aged homes** to maximize returns.  
+- Renovations add measurable value in premium markets (e.g., Mercer Island, Normandy Park) but may yield negative ROI in affordability-driven areas (e.g., SeaTac, Tukwila).  
+- Avoid over-investing in older properties where upgrades cannot offset structural age.  
 
-This project is open for contributions—feel free to fork and enhance!
+</details>
+
+<details>
+<summary>📈 For Sellers</summary>
+
+- Highlight **living space, bathrooms, and recent renovations** in listings to capture buyer attention.  
+- Leverage **location-driven premiums** (e.g., waterfront, urban hotspots) in pricing strategies.  
+- Use predictive model outputs as a **baseline for competitive, data-backed pricing**.  
+
+</details>
+
+<details>
+<summary>🔬 For Future Model Enhancements</summary>
+
+- **Expand features**: integrate school quality, crime rates, transport access, and neighborhood amenities.  
+- **Advance algorithms**: adopt gradient boosting (XGBoost, LightGBM) and random forests for better luxury home predictions.  
+- **Add temporal and geospatial dynamics**: incorporate time-series trends and proximity to jobs, amenities, and transport hubs.  
+- **Refine accuracy**: apply hyperparameter tuning and cross-validation to improve generalization.  
+
+</details>
+
+---
+
+## 📌 Conclusion  
+
+This project highlights the effectiveness of **systematic data analysis in real estate valuation**, combining predictive accuracy with actionable market insights.  
+- The predictive model provides a **robust baseline for pricing decisions**, explaining ~76% of price variance.  
+- Insights reveal **unexpected market dynamics**, particularly the **location-dependent ROI of renovations**.  
+- Findings deliver **immediate value** to buyers, sellers, investors, and policymakers, while offering a scalable framework for continuous improvement.  
+
+Future enhancements can integrate **richer datasets** (e.g., schools, crime, transport) and **advanced algorithms** (e.g., XGBoost, geospatial models) to further improve accuracy, especially in luxury segments.  
+
+🚀 **This project is open for contributions** — feel free to fork, enhance, and extend!  
+
