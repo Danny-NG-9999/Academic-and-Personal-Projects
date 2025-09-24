@@ -21,12 +21,13 @@ This project presents a comprehensive analysis and predictive modeling of reside
 This project aims to practice and demonstrate the ability to apply statistical analysis, machine learning, and business reasoning to real-world that are both technically sound and practically valuable.
 
 ## 📌 Table of Contents  
-- [Data Structure Overview](#data-structure-overview)  
-- [Methodology](#methodology)  
-- [Executive Summary](#executive-summary)  
-- [🔍Insight Deepdive](#🔍insight-deepdive)  
-- [Visualization](#visualization)  
-- [Recommendations](#recommendations)
+- [🗂 Data Structure Overview](#-data-structure-overview)  
+- [🔧 Methodology](#-methodology)  
+- [📖 Executive Summary](#-executive-summary)  
+- [🔍 Insights Deepdive](#-insights-deepdive)  
+- [📊 Visualization](#-visualization)  
+- [✅ Recommendations](#-recommendations)  
+- [📌 Conclusion](#-conclusion)  
 
 ---
 
