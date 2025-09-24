@@ -1,25 +1,21 @@
-## 📘 Project Background & Overview
-Modern hiring for data and analytics roles is driven by demonstrable proficiency across a stack of practical skills—typically Python, SQL, Machine Learning (ML), Tableau, and Excel.
+## 🧩 Project Background & Overview
+Modern hiring in data and analytics roles increasingly depends on proficiency across a core stack of practical skills—notably Python, SQL, Machine Learning (ML), Tableau, and Excel.
 
-Training programs and universities increasingly assess students on these skills, yet it is often unclear which skills most influence placement outcomes (e.g., securing a job placement vs. not).
+While training programs and universities actively evaluate students on these skills, it remains unclear which specific skills most strongly influence placement outcomes (i.e., whether a student secures a job placement).
 
-This project analyzes a cohort of students with recorded scores in the five core skills above and their corresponding placement outcomes. The goal is to quantify the relationship between skill proficiency and placement success in order to highlight the skills that matter most for employability.
+This project analyzes a cohort of students with recorded scores in the five core skills alongside their placement outcomes. The objective is to quantify the relationship between skill proficiency and employability, and to identify which skills carry the greatest weight in determining placement success.
 
-**Objectives**:
-- Explain how each skill (individually and in combination) relates to student placement.
-- Prioritize the skills that matter most using interpretable importance metrics.
-- Identify thresholds and “minimum viable profiles” (balanced skill mixes that consistently correlate with successful placement).
-- Guide interventions for students and instructors (where to focus practice time to maximize placement probability).
+**Objectives**
+- Explain the role of each skill, individually and in combination, in shaping placement outcomes.
+- Guide students on where to focus practice time to maximize their likelihood of placement
 
+**Technical Stack**
+- **Programming & Analysis**: Python, Jupyter Notebooks
+- **Libraries**: Pandas, NumPy, Matplotlib and Seaborn
 
+This project demonstrates the ability to combine statistical analysis, visualization, and business reasoning to generate insights that are both technically sound and practically valuable.
 
-Technical Stack
-
-Programming & Analysis: Python, Jupyter Notebooks
-Libraries: Pandas, NumPy, Matplotlib, Seaborn
-This project aims to practice and demonstrate the ability to apply statistical analysis, machine learning, and business reasoning to real-world that are both technically sound and practically valuable.
-
-📌 Table of Contents
+## 📌 Table of Contents
 🗂 Data Structure Overview
 🔧 Methodology
 📖 Executive Summary
@@ -28,6 +24,7 @@ This project aims to practice and demonstrate the ability to apply statistical a
 ✅ Recommendations
 📌 Conclusion
 
+## 🗂 Data Structure Overview
 
 
 <img width="1097" height="848" alt="image" src="https://github.com/user-attachments/assets/d1598d3e-b08a-444d-9fd8-c48aad506b3a" />
