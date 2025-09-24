@@ -27,6 +27,14 @@ This project demonstrates the ability to combine statistical analysis, visualiza
 ## 🗂 Data Structure Overview
 
 
+
+
+Insight
+- Since no skill reached significance, technical skill scores alone do not explain placement.
+- The strongest trend is ML, but evidence suggests its effect is weaker than OR=2, and not a standalone predictor.
+- Future models should include non-technical predictors (e.g., interview performance, projects, work experience).
+
+
 <img width="1097" height="848" alt="image" src="https://github.com/user-attachments/assets/d1598d3e-b08a-444d-9fd8-c48aad506b3a" />
 
 - Minimal Linear Relationships: All correlation coefficients range from -0.08 to +0.08, indicating virtually no linear dependency between skills → Proficiency in one technical skill (Python, SQL, ML, Tableau, Excel) does not predict proficiency in others
@@ -79,3 +87,43 @@ Show slightly negative differences (Python: -0.011, SQL: -0.002).
 Non-placed students had marginally higher Python and SQL scores, but the gap is very small and likely not impactful.
 
 Suggests that strong coding/database skills alone are not sufficient for securing placements.
+
+
+<img width="653" height="579" alt="image" src="https://github.com/user-attachments/assets/4de8e0e3-94c5-44cd-b9ce-0faca6e61961" />
+
+None of the skill variables are statistically significant (all p-values > 0.1).
+
+Machine Learning has the strongest effect size (odds ratio ~2), suggesting a trend that stronger ML skills may improve placement chances — but sample size may be too small to confirm significance.
+
+Overall, the model shows very weak predictive power (pseudo R² ≈ 0.01).
+
+Placement outcome seems to be influenced by factors beyond technical skill scores (e.g., communication, internships, soft skills, GPA, networking).
+
+Overall Model Assessment
+Poor Model Fit: Pseudo R-squared of 0.0096 indicates the model explains less than 1% of variance in placement outcomes
+
+Statistically Insignificant: LLR p-value of 0.7583 confirms the model is not better than a null model
+
+Convergence Issue: Only 4 iterations suggest potential model specification problems
+
+Variable Significance Analysis
+No Significant Predictors: All variables have p-values > 0.05, indicating no statistical significance
+
+ML Shows Slight Promise: Highest coefficient (0.67) and lowest p-value (0.189), though still insignificant
+
+Contradictory Effects: Python/SQL show negative relationships with placement, while ML/Tableau/Excel show positive
+
+Predictor	Odds Ratio	Interpretation (Non-significant Effects)
+Python	0.877953	Odds are 12.2% lower (1−0.878) for those with this skill compared to those without. (Note: This is not a reliable effect due to the high P-value.)
+Sql	0.899956	Odds are 10.0% lower (1−0.900) for those with this skill. (Not reliable.)
+ML	1.987772	Odds are 98.8% higher (1.988−1) for those with this skill. (Not reliable, but the largest potential effect.)
+Tableau	1.416452	Odds are 41.6% higher for those with this skill. (Not reliable.)
+Excel	1.461086	Odds are 46.1% higher for those with this skill. (Not reliable.)
+
+Interpretation:
+
+The odds ratios for ML, Tableau, and Excel are greater than 1, suggesting a positive relationship (higher odds of placement).
+
+The odds ratios for Python and Sql are less than 1, suggesting a negative relationship (lower odds of placement).
+
+Crucially, since all the coefficients are not statistically significant, these relationships cannot be reliably distinguished from zero effect in the population.
