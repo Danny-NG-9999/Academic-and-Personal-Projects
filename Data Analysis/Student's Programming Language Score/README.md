@@ -53,4 +53,26 @@ Most significant difference
 
 - The largest gap is observed in Machine Learning (ML), where placed students scored notably higher than non-placed ones →This suggests that advanced, in-demand skills like ML may strongly influence placement success.
 
+<img width="1189" height="790" alt="image" src="https://github.com/user-attachments/assets/02ff47fb-75e5-4dca-9b9c-5c78952fa0ac" />
 
+Machine Learning (ML)
+
+Shows the largest positive difference (+0.052).
+
+Placed students had significantly stronger ML skills compared to not placed students.
+
+Suggests that ML proficiency is a strong driver of placement success.
+
+Tableau & Excel
+
+Both show positive differences (Tableau: +0.027, Excel: +0.023).
+
+Indicates that placed students had better performance in applied/business-oriented tools, reinforcing their employability.
+
+Python & SQL
+
+Show slightly negative differences (Python: -0.011, SQL: -0.002).
+
+Non-placed students had marginally higher Python and SQL scores, but the gap is very small and likely not impactful.
+
+Suggests that strong coding/database skills alone are not sufficient for securing placements.
