@@ -70,7 +70,6 @@ Following rigorous cleaning, outlier removal using the Modified Z-score method (
 **Final Data Structure**
 The cleaned final dataset was expanded to 43 columns after transforming categorical variables (e.g., city) into dummy variables for modeling. Redundant features such as street and sqft_lot were dropped to streamline modeling prediction.
 
-The cleaned dataset was used for training and evaluating models. The final cleaned dataset consists of 43 columns (include dummy variable), with redundant features (e.g., street, sqft_lot) dropped to streamline modeling. Cities categorical variable are transformed into dummy variable for later prediction models.
 | **Feature Category**     | **Key Variables**                     | **Description**                                                                  |
 |---------------------------|---------------------------------------|---------------------------------------------------------------------------------|
 | Core Property Features    | `sqft_living`, `bedrooms`, `bathrooms`, `floors` | Structural characteristics with strong predictive power              |
@@ -78,6 +77,31 @@ The cleaned dataset was used for training and evaluating models. The final clean
 | Temporal Features         | `yr_built`, `yr_renovated`           | Age of the property and renovation history                                       |
 | Location Data             | Dummy variables for `city`           | Geographic segmentation for regional market effects                              |
 | Target Variable           | `price`                              | House sale price (prediction target)                                             |
+
+Data Quality Enhancements Taken:
+- Removed outliers using Modified Z-score method (retaining 1%-99% range)
+- Eliminated redundant variables (street, sqft_lot)
+- Handled missing values and duplicates
+- Final Dataset: 4,401 records with 43 columns optimized for modeling
+
+---
+## 🔧 Methodology  
+1. **Data Preprocessing**
+   - Imported the raw dataset from Kaggle
+   - Removed missing/duplicate records.  
+   - Outlier detection using Modified Z-score. (Retaining the core within the 1%-99% range to minimize noise values while preserving data integrity)
+   - Feature engineering: `price_per_sqft_living`, `price_bin`.  
+
+2. **Exploratory Data Analysis (EDA)**  
+   - Distribution and correlation analysis 
+   - Categorical comparisons (renovation impact, city-level price variation).  
+   - Geographic segmentation by city and ZIP code.  
+
+3. **Modeling**  
+   - Split the data into training and test sets (e.g., 80/20 ratio) and trained models to predict price based on selected features
+   - Prediction models (Decision Tree, Lasso & Linear Regression).  
+   - Evaluation metrics: **R², MAE, MSE, RMSE**.  
+   - Cross-validation to ensure stability and avoid overfitting.  
 
 ---
 
@@ -91,6 +115,67 @@ The cleaned dataset was used for training and evaluating models. The final clean
 - Model evaluation primarily used R² (coefficient of determination). From the notebook, different models achieved R² values ranging from ~0.70 to ~0.80, suggesting the model explains a large portion of price variability.
 
 This project successfully builds a house price prediction model using the house sales in USA dataset, demonstrating end-to-end data science skills. Key steps included data loading from Kaggle, cleaning (handling zeros/missing values, remove outliers, feature engineering), EDA (visualizations with Matplotlib/Seaborn), and Modeling.
+
+
+This analysis successfully developed a high-performance predictive model for King County housing prices, achieving 76% explanatory power (R² = 0.76) on test data. The model demonstrates strong practical utility with a mean absolute error of $105,000, representing reliable accuracy for mid-range residential properties.
+
+Key Achievements
+Data Quality: Transformed raw data into a clean, analysis-ready dataset through systematic preprocessing
+
+Model Performance: Delivered robust predictions that capture essential market dynamics
+
+Actionable Insights: Identified significant variation in renovation ROI across geographic markets
+
+Business Value: Provided evidence-based guidance for investment and pricing strategies
+
+Performance Metrics
+Metric	Training	Testing	Interpretation
+R² Score	0.74	0.76	Model explains 76% of price variance
+MAE	$105,460	$105,000	Average prediction error
+RMSE	$157,826	$165,339	Error magnitude for high-value properties
+The model shows minimal overfitting with consistent performance across training and test sets, indicating strong generalization capability for practical applications.
+
+This project delivers a high-performing machine learning model for predicting house prices, achieving an R² score of approximately 0.76 on the test set—indicating that the model explains 76% of the variance in property values. Key stages included data cleaning to eliminate noise and outliers, EDA to uncover correlations, and modeling to generate accurate predictions.
+
+
+Data Cleaning: Streamlined the dataset by removing redundancies and engineering features, resulting in a refined set of 4,401 high-quality records.
+
+Exploratory Insights: Revealed strong positive correlations between price and factors like living space (sqft_living, ~0.70 correlation) and location, with minimal influence from condition and view.
+
+Modeling Outcomes: Regression models demonstrated robust performance, with training R² of 0.74 and test R² of 0.76, alongside an average prediction error (MAE) of ~$105K—suitable for mid-range properties.
+Detailed Evaluation Metrics:
+
+
+Training Data: MAE: $105,459.54 | MSE: 24,909,092,053.70 | RMSE: $157,826.15 | R²: 0.7403
+
+Test Data: MAE: $105,000.22 | MSE: 27,336,994,553.19 | RMSE: $165,339.03 | R²: 0.7593
+Cross-validation confirmed model stability with minimal overfitting (train R² ~0.72, test R² ~0.70). Feature importance underscored sqft_living, bathrooms, waterfront, and view as top predictors. Overall, this baseline model provides reliable estimates and sets the stage for enhancements like XGBoost integration, offering stakeholders actionable intelligence for informed real estate decisions.
+
+
+- **Data Cleaning**: Removed redundant/noisy variables and created engineered features.  
+- **Exploratory Insights**:  
+  - Strongest predictor: `sqft_living`.  
+  - `city` location is a key driver.  
+  - `condition` and `view` had weaker impacts than expected.  
+
+### Model Results  
+
+**Training Set**  
+- MAE: `105,459`  
+- RMSE: `157,826`  
+- R²: `0.74`  
+
+**Test Set**  
+- MAE: `105,000`  
+- RMSE: `165,339`  
+- R²: `0.76`  
+
+✅ The model explains **74–76% of price variance**.  
+✅ Average prediction error: ~$105K (reasonable for mid-market, less precise for luxury homes).  
+✅ Minimal overfitting — model generalizes well.  
+
+**Key Predictors**: `sqft_living`, `waterfront`, `view`, `bathrooms`.  
+
 
 **Evaluation Results:**  
 - **Training Data**  
