@@ -16,13 +16,13 @@ This project analyzes a cohort of students with recorded scores in the five core
 This project demonstrates the ability to combine statistical analysis, visualization, and business reasoning to generate insights that are both technically sound and practically valuable.
 
 ## 📌 Table of Contents
-🗂 Data Structure Overview
-🔧 Methodology
-📖 Executive Summary
-🔍 Insights Deepdive
-📊 Visualization
-✅ Recommendations
-📌 Conclusion
+- [🗂 Data Structure Overview](#-data-structure-overview)  
+- [🔧 Methodology](#-methodology)  
+- [📖 Executive Summary](#-executive-summary)  
+- [🔍 Insights Deepdive](#-insights-deepdive)  
+- [📊 Visualization](#-visualization)  
+- [✅ Recommendations](#-recommendations)  
+- [📌 Conclusion](#-conclusion)  
 
 ## 🗂 Data Structure Overview
 
