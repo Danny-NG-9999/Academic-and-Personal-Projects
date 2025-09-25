@@ -163,7 +163,6 @@ The odds ratios for Python and Sql are less than 1, suggesting a negative relati
 Crucially, since all the coefficients are not statistically significant, these relationships cannot be reliably distinguished from zero effect in the population.
 
 ## ✅ Recommendations
-
 For Students:
 
 Prioritize Machine Learning, Tableau, and Excel to maximize placement chances.
@@ -181,3 +180,9 @@ For Placement Cells / Career Services:
 Design workshops focused on ML model application and dashboarding tools (Tableau/Excel).
 
 Support mock interviews where students articulate applied skills, not just coding ability.
+
+## 📌 Conclusion
+
+This project shows that while Python and SQL remain essential, placement outcomes are most strongly associated with ML, Tableau, and Excel proficiency. Students with a balanced and practical skill portfolio are significantly more likely to be placed.
+
+The analysis provides actionable insights for students, instructors, and placement services, supporting data-driven curriculum design and targeted career preparation.
