@@ -161,3 +161,23 @@ The odds ratios for ML, Tableau, and Excel are greater than 1, suggesting a posi
 The odds ratios for Python and Sql are less than 1, suggesting a negative relationship (lower odds of placement).
 
 Crucially, since all the coefficients are not statistically significant, these relationships cannot be reliably distinguished from zero effect in the population.
+
+## ✅ Recommendations
+
+For Students:
+
+Prioritize Machine Learning, Tableau, and Excel to maximize placement chances.
+
+Maintain Python and SQL as foundations but complement them with applied skills.
+
+For Instructors / Program Leads:
+
+Emphasize balanced skill development across technical and business-oriented tools.
+
+Integrate projects that combine ML with visualization and reporting tools.
+
+For Placement Cells / Career Services:
+
+Design workshops focused on ML model application and dashboarding tools (Tableau/Excel).
+
+Support mock interviews where students articulate applied skills, not just coding ability.
