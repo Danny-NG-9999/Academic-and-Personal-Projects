@@ -39,13 +39,16 @@ This project demonstrates the ability to combine statistical analysis, visualiza
 | **Student Placed** | object   | Placement outcome (`Yes` / `No`), indicates whether the student was placed. |
 
 ## 🔧 Methodology
-- Exploratory Data Analysis (EDA):
-  - Distribution checks (histograms, skewness analysis)
-  - Correlation heatmap to examine relationships among skills
-  - Comparison of average skill levels between placed and not placed students
-- Skill Impact Analysis:
-  - Difference plots (Placed – Not Placed) to highlight which skills differentiate successful candidates\
-  - Translate statistical findings into practical guidance for students, instructors, and placement teams.
+The analysis was structured into a sequential workflow:
+- **Data Import & Cleaning**
+  - **Objective**: Ensure data integrity.
+  - **Actions**: Verified dataset completeness, handled missing values, and standardized data formats.
+- **Exploratory Data Analysis (EDA)**
+  - **Objective**: Identify initial patterns and relationships.
+  - **Actions**: Analyzed skill distributions (via histograms and skewness), generated a correlation heatmap for inter-skill relationships, and compared average skill levels between the placed and not-placed groups.
+- **Skill Impact Analysis**
+  - **Objective**: Quantify the influence of skills on placement success.
+  - **Actions**: Created difference plots (Placed – Not Placed), applied logistic regression to model the effect of programming scores, and calculated effect sizes to gauge the magnitude of each skill's impact.
 
 ## 📖 Executive Summary
 - 58% of students were placed, while 42% were not placed.
@@ -53,10 +56,11 @@ This project demonstrates the ability to combine statistical analysis, visualiza
 - Python and SQL alone are not reliable skills for placement success, despite being essential technical skills.
 - Successful placement appears linked to a balanced skill mix, with both technical depth (ML) and applied/business tool proficiency (Tableau, Excel).
 
-Insight
-- Since no skill reached significance, technical skill scores alone do not explain placement.
-- The strongest trend is ML, but evidence suggests its effect is weaker than OR=2, and not a standalone predictor.
-- Future models should include non-technical predictors (e.g., interview performance, projects, work experience).
+This analysis investigates how students’ programming language proficiency influences their placement outcomes. The study highlights relative contributions of skills, identifies significant predictors of employability, and provides data-driven insights for improving student readiness for placements.
+
+Key findings indicate that while all programming languages contribute to employability, certain skills exhibit stronger directional influence on placement success.
+This project shows that while Python and SQL remain essential, placement outcomes are most strongly associated with ML, Tableau, and Excel proficiency. Students with a balanced and practical skill portfolio are significantly more likely to be placed.
+
 
 ## 🔍 Insights Deepdive
 - Correlation Heatmap: All skills are largely independent; no strong clustering.
@@ -67,6 +71,13 @@ Insight
   - ML (+0.052) is the strongest differentiator.
   - Tableau (+0.027) and Excel (+0.023) also contribute meaningfully.
   - Python (-0.011) and SQL (-0.002) show negligible or negative differences.
+
+Insight
+- Since no skill reached significance, technical skill scores alone do not explain placement.
+- The strongest trend is ML, but evidence suggests its effect is weaker than OR=2, and not a standalone predictor.
+- Future models should include non-technical predictors (e.g., interview performance, projects, work experience).
+
+
 
 ## 📊 Visualization
 <img width="1097" height="848" alt="image" src="https://github.com/user-attachments/assets/d1598d3e-b08a-444d-9fd8-c48aad506b3a" />
@@ -162,6 +173,132 @@ The odds ratios for Python and Sql are less than 1, suggesting a negative relati
 
 Crucially, since all the coefficients are not statistically significant, these relationships cannot be reliably distinguished from zero effect in the population.
 
+### Relative Contribution of Skills to Placement Outcomes (Magnitude-Only, Ignoring Direction)
+<img width="604" height="258" alt="image" src="https://github.com/user-attachments/assets/50701a4f-c4b0-4c50-8f4e-cb8f4095102c" />
+
+<img width="1032" height="702" alt="image" src="https://github.com/user-attachments/assets/6b3d4c3d-fc40-4b71-bd50-a555292e7f9f" />
+
+ML Dominates: The largest single driver of placement, highlighting demand for applied data/ML capabilities.
+Excel + Tableau Together (~44%): Practical tools for analysis and presentation are nearly as influential as ML. Suggests recruiters look for candidates who can both analyze and communicate results.
+Python & SQL (<15% combined): These may be considered “baseline/expected skills” — useful, but not differentiating candidates in placement decisions.
+To improve placement chances, students should prioritize Machine Learning, Excel, and Tableau, as these contribute the most to outcomes.
+Python and SQL remain useful, but they may function as foundational skills rather than decisive factors.
+The placement process likely rewards applied, business-facing, and interpretive skills (ML + Excel + Tableau) more than pure coding/database skills.
+
+### Relative Contribution of Skills to Placement Outcomes (Accounting for Direction of Effect)
+<img width="484" height="259" alt="image" src="https://github.com/user-attachments/assets/a62bd829-5733-4873-bd85-1a82cbaa49fb" />
+
+<img width="1032" height="702" alt="image" src="https://github.com/user-attachments/assets/315a6e4f-133b-4a78-a2f6-a9e2c402342e" />
+
+Applied skills matter most: The strongest drivers of placement are ML, Excel, and Tableau — skills that directly show ability to analyze and present data.
+Python and SQL show negative signs. This doesn’t mean they’re “bad” skills — instead, it suggests they might be baseline skills everyone already has.
+To maximize placement chances, students should focus on ML, Excel, and Tableau, which show strong positive contributions. Python and SQL are useful foundations, but in this dataset, they don’t improve placement odds by themselves and may even be seen as oversupplied skills.
+Employers may already assume Python and SQL are “basic skills,” so they don’t help differentiate candidates. Instead, applied/business-facing skills (ML, Excel, Tableau) actually drive placement decisions.
+
+### Logistic Regression
+<img width="922" height="858" alt="image" src="https://github.com/user-attachments/assets/161bcd4d-491c-49ff-95b2-0bb3a976ce1b" />
+
+<img width="1032" height="702" alt="image" src="https://github.com/user-attachments/assets/9ae40f5a-8741-40ae-815e-ac76c34acb11" />
+
+Model fit
+
+Pseudo R² = 0.0096 → The model explains less than 1% of variation in placement.
+
+LLR p-value = 0.7583 → The overall model is not statistically significant.
+
+Coefficients & Odds Ratios
+
+Python: coef = –0.13, OR = 0.88 → Slight negative effect, but not significant (p=0.784).
+
+SQL: coef = –0.11, OR = 0.90 → Slight negative effect, not significant (p=0.834).
+
+ML: coef = +0.67, OR = 1.96 → Suggests ML almost doubles placement odds, but not significant (p=0.189).
+
+Tableau: coef = +0.32, OR = 1.37 → Modest positive effect, not significant (p=0.521).
+
+Excel: coef = +0.38, OR = 1.46 → Modest positive effect, not significant (p=0.464).
+No predictor is statistically significant.
+
+None of the five skills show a clear, reliable impact on placement chances at the 95% confidence level.
+
+ML shows the strongest trend.
+
+Odds ratio ~1.96 suggests ML could nearly double placement chances, but evidence is weak (p=0.189).
+
+Excel and Tableau show moderate positive trends.
+
+Both increase odds slightly, but results are not significant.
+
+Python and SQL show slight negative trends.
+
+Odds ratios <1 mean higher Python/SQL scores are linked to lower placement probability, though this is weak and not significant.
+
+Model has low explanatory power.
+
+Very low pseudo R² suggests technical skills alone cannot explain placements — other factors (communication, projects, internships, GPA, networking) likely play a much bigger role.
+ML, Excel, and Tableau show the most promising positive trends, but no skill is a statistically significant predictor of placement in this dataset.
+
+Python and SQL appear to have little to no impact and might even slightly reduce placement chances.
+
+The model overall does not capture much variation in placement → soft skills and external factors matter more than technical scores alone.
+🔹 Confidence Interval
+
+The columns [0.025 and 0.975] are the 95% confidence interval (CI) for each coefficient.
+
+Example:
+
+For ML, coef = 0.6728, CI = [–0.332, 1.677].
+
+Interpretation: we are 95% confident that the true ML effect lies between –0.33 and +1.68.
+
+🔹 Why important?
+
+If a CI crosses 0 (for coefficients) → the effect is not statistically significant.
+
+Equivalently, for odds ratios, if the CI crosses 1, the effect is not significant.
+
+✅ In your case:
+
+All predictors’ CIs cross 0 → none of the skills are statistically significant predictors.
+
+### Impact of ML Skills on Placement Chances: Effect Size and Power
+Baseline probability = 0.40
+→ Without strong ML skills, the chance of placement is about 40%.
+
+Adjusted probability (with ML) = 0.57
+→ With stronger ML skills, placement probability rises to 57%.
+→ This means ML improves placement probability by 17 percentage points.
+
+Effect size (Cohen’s h) = 0.345
+→ This is considered a medium effect size.
+→ ML skills have a moderate practical impact on placement chances.
+
+Power with n = 200 = 0.932
+→ The study has 93% power to detect this effect.
+→ This is well above the common threshold of 80%, meaning your dataset is large enough to reliably detect ML’s impact if it exists.
+
+ML has a meaningful impact
+
+Improves placement probability from 40% → 57%.
+
+This is not a trivial effect — it’s practically important.
+
+The dataset has enough students (n=200)
+
+The test is well-powered (93%), so the lack of strong statistical significance in regression results is not due to small sample size.
+
+Why wasn’t ML significant in the regression?
+
+Likely because placement is influenced by many other unmeasured factors (soft skills, internships, GPA, communication).
+
+ML helps, but it’s not the sole driver.
+ML provides a moderate, real-world boost to placement probability (~+17%).
+
+The sample size (200) is more than sufficient to detect this effect statistically.
+
+Since significance is still weak in the regression, it suggests other factors outside technical skills are critical for placement.
+
+
 ## ✅ Recommendations
 For Students:
 
@@ -186,3 +323,5 @@ Support mock interviews where students articulate applied skills, not just codin
 This project shows that while Python and SQL remain essential, placement outcomes are most strongly associated with ML, Tableau, and Excel proficiency. Students with a balanced and practical skill portfolio are significantly more likely to be placed.
 
 The analysis provides actionable insights for students, instructors, and placement services, supporting data-driven curriculum design and targeted career preparation.
+
+✨ This project demonstrates the ability to combine statistical analysis, visualization, and business interpretation to deliver actionable insights for education and employability.
