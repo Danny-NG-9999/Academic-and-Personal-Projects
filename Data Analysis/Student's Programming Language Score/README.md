@@ -164,15 +164,19 @@ Key takeaways include:
 - Employers may already assume Python and SQL proficiency as baseline; these do not improve placement odds on their own. Instead, applied skills that bridge technical analysis with business impact (ML, Excel, Tableau) are the true differentiators in securing placements.
 
 ## ✅ Recommendations
+<details>
+<summary> For Students</summary>
+- Prioritize Applied Skills: Focus on Machine Learning, Excel, and Tableau, as these strongly differentiate placed candidates.
+- Maintain Core Foundations: Build competence in Python and SQL, but recognize these are baseline expectations, not differentiators.
+- Aim for Multi-Skill Mastery: Combine technical, applied, and business-facing skills to stand out in the job market.
+- Go Beyond Technical Proficiency: Strengthen communication, interview skills, networking, and practical project experience to improve employability.
+
+</details>
+
+
 For Students
 
-Prioritize Applied Skills: Focus on Machine Learning, Excel, and Tableau, as these strongly differentiate placed candidates.
 
-Maintain Core Foundations: Build competence in Python and SQL, but recognize these are baseline expectations, not differentiators.
-
-Aim for Multi-Skill Mastery: Combine technical, applied, and business-facing skills to stand out in the job market.
-
-Go Beyond Technical Proficiency: Strengthen communication, interview skills, networking, and practical project experience to improve employability.
 
 For Instructors / Program Leads
 
