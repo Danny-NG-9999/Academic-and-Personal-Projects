@@ -165,7 +165,8 @@ Key takeaways include:
 
 ## ✅ Recommendations
 <details>
-<summary> For Students</summary>
+<summary>For Students</summary>
+  
 - Prioritize Applied Skills: Focus on Machine Learning, Excel, and Tableau, as these strongly differentiate placed candidates.
 - Maintain Core Foundations: Build competence in Python and SQL, but recognize these are baseline expectations, not differentiators.
 - Aim for Multi-Skill Mastery: Combine technical, applied, and business-facing skills to stand out in the job market.
@@ -173,37 +174,47 @@ Key takeaways include:
 
 </details>
 
+<details>
+<summary>For Teacher and Instructors</summary>
 
-For Students
+- Curriculum Design: Emphasize applied analytics and business intelligence tools (ML, Tableau, Excel) alongside foundational coding.
+- Targeted Upskilling: Offer tiered training programs for beginners, intermediate, and advanced learners, given the even skill distribution.
+- Integrative Learning: Encourage students to apply multiple skills together in projects, reinforcing real-world problem-solving.
+- Holistic Preparation: Embed employability-focused modules (presentation, teamwork, client communication) into technical training.
 
+</details>
 
+<details>
+<summary>For Career Servicess</summary>
 
-For Instructors / Program Leads
-
-Curriculum Design: Emphasize applied analytics and business intelligence tools (ML, Tableau, Excel) alongside foundational coding.
-
-Targeted Upskilling: Offer tiered training programs for beginners, intermediate, and advanced learners, given the even skill distribution.
-
-Integrative Learning: Encourage students to apply multiple skills together in projects, reinforcing real-world problem-solving.
-
-Holistic Preparation: Embed employability-focused modules (presentation, teamwork, client communication) into technical training.
-
-For Placement Cells / Career Services
-
-Industry Alignment: Partner with recruiters to validate the demand for applied skills and adjust training pathways accordingly.
-
-Employability Support: Provide structured mock interviews, soft skills workshops, and networking opportunities to complement technical training.
-
-Highlight Differentiators: Showcase students with strong ML, Excel, and Tableau skills when engaging with employers.
-
-Encourage Internships & Projects: Facilitate opportunities that integrate technical and applied skills in real-world contexts to enhance placement readiness.
-
-
+- Industry Alignment: Partner with recruiters to validate the demand for applied skills and adjust training pathways accordingly.
+- Employability Support: Provide structured mock interviews, soft skills workshops, and networking opportunities to complement technical training.
+- Highlight Differentiators: Showcase students with strong ML, Excel, and Tableau skills when engaging with employers.
+- Encourage Internships & Projects: Facilitate opportunities that integrate technical and applied skills in real-world contexts to enhance placement readiness.
+  
+</details>
 
 ## 📌 Conclusion
+This analysis highlights the nuanced relationship between technical skills and student placement outcomes. While **Python and SQL** remain essential foundations, they function largely as baseline expectations and do not significantly differentiate candidates. In contrast, **Machine Learning, Excel, and Tableau** emerge as the most influential skills in driving employability, reflecting industry demand for applied analytics and business-facing competencies.  
 
-This project shows that while Python and SQL remain essential, placement outcomes are most strongly associated with ML, Tableau, and Excel proficiency. Students with a balanced and practical skill portfolio are significantly more likely to be placed.
+The findings also demonstrate that **technical skills alone are insufficient** to explain placement outcomes. Logistic regression results confirm that non-technical factors such as **communication, internships, GPA, and networking** likely play a decisive role in student success.  
 
-The analysis provides actionable insights for students, instructors, and placement services, supporting data-driven curriculum design and targeted career preparation.
+### 🔎 Limitations  
+- **Scope of Data:** The dataset only covers five technical skills, excluding other potential drivers of placement such as project experience, domain knowledge, or extracurricular activities.  
+- **Statistical Power:** Despite adequate sample size, regression models showed weak explanatory power (Pseudo R² ≈ 0.01), suggesting important variables were missing.  
+- **Generalisability:** Results may be context-specific to this dataset and might not directly extend to all student populations or job markets.  
+
+### 🚀 Future Improvements  
+- **Broader Skill Coverage:** Incorporate additional variables such as communication skills, internships, GPA, or certifications to capture a more holistic view of employability.  
+- **Advanced Modeling:** Explore non-linear or ensemble methods (e.g., random forests, gradient boosting) that may capture complex relationships overlooked by logistic regression.  
+- **Longitudinal Analysis:** Track students over time to assess how skill development, internships, and career progression interact with placement success.  
+- **Industry Feedback:** Integrate employer insights to validate which skills and attributes are most valued in hiring decisions.  
+
+Overall, the study reinforces a dual message:  
+1. Students must cultivate both applied technical expertise and soft skills to maximize placement chances.  
+2. Institutions should align curricula, training, and placement support with evolving industry expectations, ensuring graduates are not only technically competent but also workplace-ready.  
+
+By bridging technical mastery with employability skills, students and institutions together can enhance placement outcomes and better prepare graduates for competitive job markets.  
+
 
 ✨ This project demonstrates the ability to combine statistical analysis, visualization, and business interpretation to deliver actionable insights for education and employability.
