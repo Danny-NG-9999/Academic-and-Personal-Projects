@@ -36,7 +36,7 @@ The empirical framework tests two central hypotheses:
    - [Passenger Activity and Regional Productivity](#passenger-activity-and-regional-productivity-a-time-dependent-relationship)  
    - [Freight Activity and Productivity](#freight-activity-and-productivity-a-demand-driven-relationship)  
    - [Granger Causality Analysis](#granger-causality-analysis)  
-   - [Impulse Response Analysis](#impulse-response-analysis-visualizing-dynamic-adjustment)  
+   - [Impulse Response Analysis](#impulse-response-analysis)  
    - [Regional Heterogeneity and Policy Implications](#regional-heterogeneity-and-policy-implications)  
 10. [Data Limitations and Measurement Challenges](#data-limitations-and-measurement-challenges)  
 11. [Conclusion](#conclusion)  
@@ -187,7 +187,7 @@ Interpretation: The unidirectional causality from passenger volumes to productiv
 
 Interpretation: The freight results highlight a demand-driven dynamic, contrasting with passenger activity. In the UK’s service-oriented economy, freight volumes respond to economic growth rather than independently driving it, unlike in manufacturing-heavy contexts like the US (Gorlorwulu, 2002). The two-year lag suggests that firms take time to scale logistics operations in response to productivity gains, reinforcing the need for aligned infrastructure planning.
 
-### Impulse Response Analysis: Visualizing Dynamic Adjustment
+### Impulse Response Analysis
 <img width="901" height="659" alt="image" src="https://github.com/user-attachments/assets/a8ca8862-4c64-4bcf-9536-ced6c5a843cd" />
 
 The IRF results provide crucial insights into the temporal structure of airport-productivity relationships:
