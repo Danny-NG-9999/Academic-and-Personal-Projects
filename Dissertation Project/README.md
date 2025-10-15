@@ -1,5 +1,4 @@
-# ✈️ Airport Activity and Regional Productivity in the United Kingdom  
-### An Empirical Study of Connectivity, Freight Operations, and Economic Growth (1998–2023)
+# ✈️ Airport Activity and Regional Productivity in the United Kingdom: An Empirical Study of Connectivity, Freight Operations, and Economic Growth (1998–2023)
 
 ## 📄 Project Overview
 This research project — “Airport Activity and Regional Productivity in the United Kingdom” — investigates the economic significance of airport infrastructure as a determinant of regional productivity, bridging a critical evidence gap in UK transportation economics.
