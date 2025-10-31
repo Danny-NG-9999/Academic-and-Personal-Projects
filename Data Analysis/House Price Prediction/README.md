@@ -1,24 +1,26 @@
 # House Price Prediction Project
 
 ## 🧩 Background and Overview  
-This project presents a comprehensive analysis and predictive modeling of residential real estate prices in King County, Washington (USA, 2014). The dataset includes property attributes such as size, condition, location, and sale prices. The aim is to transform raw housing data into actionable insights and accurate price predictions, demonstrating full-stack data science and machine learning capabilities.
+This project delivers a comprehensive data-driven analysis and predictive modeling framework for residential real estate valuation in King County, Washington (USA, 2014). Leveraging a rich dataset of property transactions, the analysis explores how structural features, condition, and geographic location interact to influence housing prices. The project combines data analytic and machine learning modeling to produce actionable intelligence for real estate stakeholders.
 
-**Objectives**
-- Develop a robust predictive model for housing prices using property features and location data.
-- Identify the key drivers of property values and uncover market patterns.
-- Provide data-driven recommendations for buyers, sellers, investors, and policymakers.
-- Showcase learning and proficiency in the data analysis workflow:
-  - Data cleaning and preprocessing
-  - Feature engineering
-  - Exploratory data analysis (EDA)
-  - Predictive modeling and evaluation
-  - Business insights and recommendations
+The primary goal is to transform raw housing data into meaningful insights and accurate price predictions, enabling data-informed decision-making across investment, pricing, and policy domains. By integrating statistical rigor with business relevance, this study offers a holistic view of market behavior and value determinants within one of the most dynamic housing markets in the U.S.
+
+**Project Objectives**
+- Identify key value drivers influencing residential property prices and quantify their relative impact.
+- Develop a robust predictive model capable of accurately estimating housing prices using both structural and locational attributes.
+- Generate actionable insights to support strategic decision-making for buyers, sellers, investors, and policymakers.
+
+**Workflow Approach**
+- Data Cleaning & Preprocessing – Addressed missing values, standardized variables, and removed outliers to ensure analytical consistency.
+- Feature Engineering – Created enhanced features capturing location-based, structural, and renovation-related attributes.
+- Exploratory Data Analysis (EDA) – Performed descriptive and inferential analysis to uncover key patterns and correlations.
+- Predictive Modeling – Developed and evaluated regression-based models to forecast property prices with high accuracy and minimal bias.
+- Insight Generation & Business Interpretation – Translated statistical findings into strategic recommendations aligned with real-world market dynamics.
 
 **Technical Stack**
-- **Programming & Analysis:** Python, Jupyter Notebooks
-- **Libraries:** Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
+- Programming & Analysis: Python (Jupyter Notebooks)
+- Core Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
 
-This project aims to practice and demonstrate the ability to apply statistical analysis, machine learning, and business reasoning to real-world that are both technically sound and practically valuable.
 
 ## 📌 Table of Contents  
 - [🗂 Data Structure Overview](#-data-structure-overview)  
