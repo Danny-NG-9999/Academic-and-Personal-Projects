@@ -33,7 +33,7 @@ This project aims to practice and demonstrate the ability to apply statistical a
 
 ## 🗂 Data Structure Overview  
 **Original Dataset**
-- **Source:** Kaggle dataset (Washington house sales data in 2014)
+- **Source:** [Washington house sales data in 2014 from Kaggle](https://www.kaggle.com/code/danielhnguyen24/house-price-prediction-intermediate-notebook/notebook)
 - **Initial Size:** ~4,600+ records with 18 columns
 - **Key Variables:** Property characteristics (e.g. size, rooms, condition, etc.), location details (e.g. city, statezip, etc.), temporal information (e.g. sale date, year built, year renovated), and sale price.
 
@@ -107,31 +107,36 @@ Data Quality Enhancements Taken:
 ---
 
 ## 📖 Executive Summary   
-This project developed a **high-performing predictive model** for housing prices in King County, achieving an **R² of 0.76** on test data. The model demonstrates strong practical utility with a **mean absolute error (MAE) of ~$105K**, offering reliable accuracy for mid-range properties while highlighting market dynamics that drive valuation.  
+This analysis provides a comprehensive overview of the key determinants influencing housing prices across King County, uncovering the interplay between property characteristics, geography, and renovation dynamics that shape market outcomes.
 
-**🔑 Key Achievements**  
-- **Data Quality**: Transformed 4,600 raw records into a*clean, analysis-ready dataset of 4,401 entries through systematic preprocessing, outlier removal, and feature engineering.  
-- **Exploratory Insights**:  
-  - Strongest predictor: `sqft_living` (~0.70 correlation with price).
-  - Additional drivers: `city`, `bathrooms`, `bedrooms`, and `view` (~0.37–0.57 correlation with price).
-  - `condition` and `waterfront` showed unexpectedly limited influence.
+**1. Data Foundation and Quality**
 
-- **Model Performance**: Regression models explained **74–76% of price variance** with minimal overfitting (consistent training and test results).  
-- **Actionable Insights**: Identified significant variation in **renovation ROI across cities**, providing location-specific guidance for investment.  
-- **Business Value**: Delivered evidence-based intelligence to support **investment, pricing, and renovation strategies**.
+The model and insights were underpinned by a rigorous data engineering process:
+- Raw dataset: 4,600 housing records from King County.
+- Refined dataset: 4,401 clean entries following systematic preprocessing, outlier removal, and feature engineering.
+- The transformation ensured high data integrity, enabling reliable statistical inference and predictive performance.
 
-**📈 Performance Metrics**  
+**2. Core Value Drivers**
 
-| Metric        | Training       | Testing        | Interpretation                                   |
-|---------------|---------------|---------------|--------------------------------------------------|
-| **R² Score**  | 0.74          | 0.76          | Explains ~76% of price variance                  |
-| **MAE**       | $105,460      | $105,000      | Avg. error per prediction                        |
-| **RMSE**      | $157,826      | $165,339      | Larger errors concentrated in luxury properties  |
+Housing prices in King County are primarily driven by living space, quality features, and functional amenities. The square footage of living area (`sqft_living`) emerges as the most significant factor, showing a strong positive correlation (~0.70) with price. Homes with more bathrooms command higher premiums than those with additional bedrooms, highlighting greater buyer emphasis on comfort and modern functionality. While view quality contributes notably to price premiums, its limited availability (<10% of listings) confines its overall market impact. Conversely, features like condition and waterfront access demonstrate weaker-than-expected influence, suggesting potential subjectivity in condition ratings or underappreciation of these attributes.
 
-- Cross-validation using K-Fold and ShuffleSplit confirmed stability (train R² ~0.72, test R² ~0.71).
-- **Key predictors**: `sqft_living`, `city`, `bathrooms`, `bedrooms` and `view`.  
+**3. Geographic Segmentation**
 
-✅ Overall, this baseline model provides **robust, generalizable predictions** and sets the stage for further improvements using advanced methods (e.g., XGBoost, Random Forests, geospatial features).  
+Price dynamics vary substantially across the county’s geographic landscape.
+- Premium markets — including Medina, Clyde Hill, and Mercer Island — command 2–3× higher prices than county averages, reflecting concentrated affluence and exceptional locational desirability.
+- Mid-tier markets, representing the bulk of transactions, cluster within the $400K–$700K range, offering balanced affordability and steady growth.
+- Affordable markets, such as Algona, Pacific, and Skykomish, provide accessible entry points for buyers but show limited appreciation potential.
+
+**4. Renovation Return on Investment (ROI)**
+
+Renovation effects vary notably by market tier and property age.
+- Positive ROI is concentrated in affluent areas like Mercer Island, Normandy Park, and Maple Valley, where upgrades deliver 10–13% price premiums.
+- In contrast, SeaTac, Tukwila, and Kirkland exhibit –20% to –28% value reductions for renovated homes, indicating oversaturation or limited demand elasticity.
+- The age of the property moderates renovation returns — newer or mid-aged homes tend to benefit most, while older properties often fail to recover improvement costs.
+
+**5. Market Segmentation**
+
+Most homes fall within the sub-$1M mid-market segment, while luxury properties introduce right-skewed price distributions. Renovations and premium features hold greater value in high-demand zones, offering marginal or negative returns in more affordable markets due to buyer price sensitivity.
 
 ---
 
