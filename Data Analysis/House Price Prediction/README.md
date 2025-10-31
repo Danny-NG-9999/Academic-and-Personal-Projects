@@ -1,4 +1,4 @@
-# House Price Prediction Project
+# King County Housing Market Analysis and Price Prediction: Data-Driven Valuation of Residential Real Estate (USA)
 
 ## 🧩 Background and Overview  
 This project delivers a comprehensive data-driven analysis and predictive modeling framework for residential real estate valuation in King County, Washington (USA, 2014). Leveraging a rich dataset of property transactions, the analysis explores how structural features, condition, and geographic location interact to influence housing prices. The project combines data analytic and machine learning modeling to produce actionable intelligence for real estate stakeholders.
