@@ -16,7 +16,7 @@ This model serves both as a **technical demonstration** of machine learning in f
 
 ---
 
-### **Data Sources and Structure**
+## **Data Sources and Structure**
 The dataset was designed to emulate realistic borrower profiles within the UK consumer credit market. It captures the interplay between demographic, financial, and behavioral characteristics that influence creditworthiness. The synthetic data structure intentionally reflects plausible relationships — for instance, higher loan amounts and interest rates are associated with increased default probability, while strong income levels and stable employment histories typically reduce credit risk.
 - **Dataset Name:** `credit_loan_generation.csv`  
 - **Type:** Synthetic (self-generated based on UK lending research and risk structure)  
@@ -37,7 +37,7 @@ The dataset was designed to emulate realistic borrower profiles within the UK co
 
 ---
 
-### **Data Preprocessing**
+## **Data Preprocessing**
 1. **Exploratory Data Analysis (EDA):**
    - Conducted a detailed exploratory assessment using `pandas`, `matplotlib`, and `seaborn` to understand variable distributions and detect outliers.
    - Descriptive statistics and data visualization using `matplotlib` and `seaborn`.
@@ -58,7 +58,7 @@ The dataset was designed to emulate realistic borrower profiles within the UK co
   
 ---
 
-### **Modeling and Algorithms**
+## **Modeling and Algorithms**
 
 Multiple supervised learning algorithms were implemented to benchmark predictive performance across linear and ensemble approaches:
 To benchmark predictive performance, following supervised learning algorithms were implemented:
@@ -73,7 +73,7 @@ The XGBoost Classifier demonstrated superior performance across all evaluation c
 
 ---
 
-### **Validation and Evaluation**
+## **Validation and Evaluation**
 
 A rigorous validation process was implemented to ensure that model results were both statistically robust and practically interpretable.
 
@@ -100,7 +100,7 @@ A rigorous validation process was implemented to ensure that model results were 
 
 ---
 
-### **Key Results**
+## **Key Results**
 
 - **Best-performing model:** XGBoost  
 - **Performance Summary:**
@@ -114,6 +114,53 @@ A rigorous validation process was implemented to ensure that model results were 
   - `loan_percent_income` — Ratio of loan amount to income  
   - `person_age` — Applicant’s age  
   - `loan_amnt` — Total loan amount requested  
+
+---
+## Visualisation
+
+### Interpretation of Threshold-Performance Results (Logistic Regression)
+<img width="976" height="576" alt="image" src="https://github.com/user-attachments/assets/8034fd9f-1834-458f-bb3f-048cd2aee725" />
+The chart visualises how Default Recall, Non-default Recall, and Overall Accuracy evolve as the probability threshold shifts from 0.1 to 0.9. This type of threshold sensitivity analysis is fundamental in credit risk modelling because it directly informs risk appetite calibration, cut-off strategy design, and the trade-offs between risk mitigation and customer acceptance.
+
+1. Default Recall (Blue Line)
+- Default Recall is highest at very low thresholds (≈0.1–0.2), indicating that the model captures the majority of true defaults when it adopts a more aggressive stance in predicting default.
+- Declines steadily as the threshold increases. If the objective is to minimise credit losses, a threshold lower than 0.5 should be considered.
+- If objective is to prioritise loss minimisation and early risk detection, thresholds below 0.5 would provide stronger protection, albeit at the expense of higher rejection rates.
+
+2. Non-default Recall (Orange Line)
+- Low at small thresholds (many borrowers incorrectly classified as defaulters).
+- Performance improves rapidly as the threshold moves toward 0.4–0.5 and stabilises thereafter, indicating more reliable identification of good customers.
+- Higher thresholds reduce false positives and improve customer acceptance rates. If business priority is to avoid rejecting good customers, thresholds above 0.5 are more favourable.
+
+3. Model Accuracy (Green Line)
+- Reaches a maximum around 0.40 (representing the threshold where the model best balances true positives and true negatives.), remains relatively stable through 0.60, and then exhibits a modest decline.
+- However, in credit risk modeling, accuracy is often misleading due to inherent class imbalance (defaults are typically rare, e.g., 5-10% of portfolios) and asymmetric misclassification costs of failing to detect a default is far costlier than rejecting a non-defaulter. From my experience, I advocate supplementing this with metrics like Precision-Recall curves, F1-score, or AUC-ROC for a more robust evaluation. The observed peak around 0.4 hints at a potentially optimal operating point for balanced performance, especially in imbalanced datasets.
+
+
+- Accuracy is highest when the balance between misclassifying defaults and non-defaults is optimal.
+- Accuracy alone is not sufficient for credit risk modelling due to class imbalance and asymmetric costs.
+- Still, the peak around ~0.4 suggests this may be a more balanced threshold than the default 0.5.
+
+Accuracy peaks around 0.35–0.45, where the model strikes a more balanced compromise between detecting defaults and preserving good-customer approvals.
+
+Although accuracy provides a high-level view of classification performance, it is not a sufficient metric in credit risk due to class imbalance and the substantially higher cost of missing a default compared with incorrectly flagging a non-default.
+
+Implication:
+The peak near 0.4 suggests this may be a more operationally balanced cut-off than the conventional 0.5 threshold.
+
+
+
+4. Current Threshold = 0.5 (Red Dashed Line)
+- Default Recall is relatively low, meaning the bank may underestimate default risk.
+- Non-default Recall is high, meaning more good customers are correctly approved.
+- Threshold = 0.5 favours customer acceptance over risk protection. Depending on the institution’s risk tolerance, this may be too lenient.
+
+Overall Conclusion
+- The model becomes more conservative toward defaults at lower thresholds, improving its ability to detect risky borrowers but increasing false positives.
+- At the standard 0.5 threshold, the model:
+  - Performs well for identifying non-defaulters
+  - Performs weaker for identifying defaulters
+  - A threshold between 0.30–0.40 appears to provide a better balance, improving Default Recall without overly sacrificing Non-default Recall.
 
 ---
 
