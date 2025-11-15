@@ -1,4 +1,4 @@
-## **Project Overview and Model Objective**
+<img width="1176" height="776" alt="image" src="https://github.com/user-attachments/assets/7c9c0237-1c62-4693-a644-d2bbfea7278d" />## **Project Overview and Model Objective**
 This project is a **working credit risk modeling file** created as part of my personal learning and practice in predictive analytics. The dataset used in this analysis is **self-generated**, designed to replicate realistic UK credit market conditions based on publicly available research on lending rates, income distributions, and borrower demographics.  
 
 The main goal of this project is to **understand, apply, and evaluate credit risk modeling techniques** — specifically focusing on predicting the likelihood of loan default using machine learning.  
@@ -98,20 +98,6 @@ A rigorous validation process was implemented to ensure that model results were 
 - **Ensemble methods** (e.g., XGBoost) outperform linear approaches in capturing complex, non-linear relationships within the data.  
 - The **feature importance structure** aligns closely with financial intuition, indicating that the model captures economically meaningful patterns.
 
-### Key Metrics and Estimated Losses
-- Predicted Defaults (predicted class = 1): 28,144 (True Positive + False Positive count)
-- Actual Defaults in Test Data: 40,239 (True Positive + False Negative count)
-- Number of Actual Defaults Captured (TP): 20,018
-- Default Recall (TP / (TP + FN)): 0.5025 → The model captures only ~50.25% of true defaulters, leaving 20,221 actual defaults undetected (FN).
-- Average Loan Amount: £9,583.51
-- Estimated Financial Impact (Expected Loss from Missed Defaults):
-  - Number of Missed Defaults (FN): 20,221
-  - Estimated Loss on Missed Defaults: £191,842,721.95(= 20,221 × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
-
-
-
----
-
 ## **Key Results**
 
 - **Best-performing model:** XGBoost  
@@ -125,7 +111,29 @@ A rigorous validation process was implemented to ensure that model results were 
   - `person_income` — Applicant’s annual income  
   - `loan_percent_income` — Ratio of loan amount to income  
   - `person_age` — Applicant’s age  
-  - `loan_amnt` — Total loan amount requested  
+  - `loan_amnt` — Total loan amount requested
+  
+
+---
+## Key Metrics and Estimated Losses (LR model)
+- Predicted Defaults (predicted class = 1): 28,144 (True Positive + False Positive count)
+- Actual Defaults in Test Data: 40,239 (True Positive + False Negative count)
+- Number of Actual Defaults Captured (TP): 20,018
+- Default Recall (TP / (TP + FN)): 0.5025 → The model captures only ~50.25% of true defaulters, leaving 20,221 actual defaults undetected (FN).
+- Average Loan Amount: £9,583.51
+- Estimated Financial Impact (Expected Loss from Missed Defaults):
+  - Number of Missed Defaults (FN): 20,221
+  - Estimated Loss on Missed Defaults: £191,842,721.95(= 20,221 × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
+
+## Key Metrics and Estimated Losses (LR model)
+- Predicted Defaults (predicted class = 1): 33,616 (True Positive + False Positive count)
+- Actual Defaults in Test Data: 40,239 (True Positive + False Negative count)
+- Number of Actual Defaults Captured (TP): 28,131
+- Default Recall (TP / (TP + FN)): 0.6991 → The model captures only ~50.25% of true defaulters, leaving 20,221 actual defaults undetected (FN).
+- Average Loan Amount: £9,583.51
+- Estimated Financial Impact (Expected Loss from Missed Defaults):
+  - Number of Missed Defaults (FN): 12,108 
+  - Estimated Loss on Missed Defaults: £116,037,150.43 (= 12,108  × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
 
 ---
 ## Visualisation
@@ -168,15 +176,21 @@ In credit risk modelling, evaluating how well a classification model distinguish
 
 3. Comparison to Random Prediction (Dashed Gray Diagonal) and Between Models
 - Versus Random Prediction (AUC = 0.50):
-  - Both models vastly outperform randomness, as their curves lie entirely above the diagonal. LR's AUC (0.8574) yields ~74% improvement in separability (calculated as (AUC - 0.5)/0.5), while GBT's (0.99) approaches perfection (~98% improvement). In credit contexts, random guessing would approve defaulters at baseline rates (~1–5%), inflating expected losses; these models enable targeted interventions, potentially reducing portfolio default rates by 20–50%.
-
-
-Overall Conclusion
-- The model becomes more conservative toward defaults at lower thresholds, improving its ability to detect risky borrowers but increasing false positives.
-- At the standard 0.5 threshold, the model:
-  - Performs well for identifying non-defaulters
-  - Performs weaker for identifying defaulters
+  - Both models vastly outperform randomness, as their curves lie entirely above the diagonal. LR's AUC (0.8574) yields ~72% improvement in separability (calculated as (AUC - 0.5)/0.5), while GBT's (0.9347) approaches perfection (~87% improvement).
   - A threshold between 0.30–0.40 appears to provide a better balance, improving Default Recall without overly sacrificing Non-default Recall.
+- LR versus GBT:
+  - Superiority of GBT: GBT dominates LR across all FPR levels. The ~0.078 AUC gap underscores GBT's edge in handling complex features common in credit datasets.
+  - When to Choose LR: Despite trailing, LR's interpretability (via logit coefficients) aids regulatory audits and quick iterations, making it preferable for smaller datasets or when explainability trumps raw accuracy.
+
+### Calibration Curve (Reliability Diagram) Analysis
+<img width="1176" height="776" alt="image" src="https://github.com/user-attachments/assets/fbc6d160-cc75-4893-a438-c5220e452cb4" />
+
+Perfectly Calibrated (Dotted Line): The diagonal dotted line represents a model that is perfectly calibrated. For any given predicted probability (x-axis), the actual observed fraction of positives (y-axis) is exactly the same.  For example, if a model assigns a 40% probability of default, then—under perfect calibration—approximately 40% of those borrowers should actually default. Achieving good calibration is especially important in credit risk and insurance, since predicted probabilities feed directly into financial metrics such as Expected Loss (EL = PD × LGD × EAD). Poor calibration leads to biased risk estimates and mispriced portfolios.
+
+| Model                                               | Interpretation                                                                                                   | Calibration Behaviour                                                                                                                                                                                                        |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Logistic Regression (Blue, Square Markers)**      | The curve sits **above** the perfect-calibration line for predicted probabilities roughly between 0.35 and 0.70. | **Underestimation (Optimistic Bias):** LR predicts probabilities that are too low in the mid-to-high risk range. For example, when LR predicts a 50% default probability, the actual observed default rate is closer to 60%. |
+| **Gradient Boosting Trees (Green, Circle Markers)** | The curve falls **below** the perfect-calibration line for probabilities between about 0.40 and 0.60.            | **Overestimation (Pessimistic Bias):** GBT assigns probabilities that are too high. For example, when GBT predicts a 60% chance of default, the true default rate is closer to 65%.                                          |
 
 ---
 
