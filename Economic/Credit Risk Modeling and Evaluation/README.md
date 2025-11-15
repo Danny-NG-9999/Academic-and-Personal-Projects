@@ -98,6 +98,18 @@ A rigorous validation process was implemented to ensure that model results were 
 - **Ensemble methods** (e.g., XGBoost) outperform linear approaches in capturing complex, non-linear relationships within the data.  
 - The **feature importance structure** aligns closely with financial intuition, indicating that the model captures economically meaningful patterns.
 
+### Key Metrics and Estimated Losses
+- Predicted Defaults (predicted class = 1): 28,144 (True Positive + False Positive count)
+- Actual Defaults in Test Data: 40,239 (True Positive + False Negative count)
+- Number of Actual Defaults Captured (TP): 20,018
+- Default Recall (TP / (TP + FN)): 0.5025 → The model captures only ~50.25% of true defaulters, leaving 20,221 actual defaults undetected (FN).
+- Average Loan Amount: £9,583.51
+- Estimated Financial Impact (Expected Loss from Missed Defaults):
+  - Number of Missed Defaults (FN): 20,221
+  - Estimated Loss on Missed Defaults: £191,842,721.95(= 20,221 × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
+
+
+
 ---
 
 ## **Key Results**
@@ -133,27 +145,31 @@ The chart visualises how Default Recall, Non-default Recall, and Overall Accurac
 - Higher thresholds reduce false positives and improve customer acceptance rates. If business priority is to avoid rejecting good customers, thresholds above 0.5 are more favourable.
 
 3. Model Accuracy (Green Line)
-- Reaches a maximum around 0.40 (representing the threshold where the model best balances true positives and true negatives.), remains relatively stable through 0.60, and then exhibits a modest decline.
-- However, in credit risk modeling, accuracy is often misleading due to inherent class imbalance (defaults are typically rare, e.g., 5-10% of portfolios) and asymmetric misclassification costs of failing to detect a default is far costlier than rejecting a non-defaulter. From my experience, I advocate supplementing this with metrics like Precision-Recall curves, F1-score, or AUC-ROC for a more robust evaluation. The observed peak around 0.4 hints at a potentially optimal operating point for balanced performance, especially in imbalanced datasets.
-
-
-- Accuracy is highest when the balance between misclassifying defaults and non-defaults is optimal.
-- Accuracy alone is not sufficient for credit risk modelling due to class imbalance and asymmetric costs.
-- Still, the peak around ~0.4 suggests this may be a more balanced threshold than the default 0.5.
-
-Accuracy peaks around 0.35–0.45, where the model strikes a more balanced compromise between detecting defaults and preserving good-customer approvals.
-
-Although accuracy provides a high-level view of classification performance, it is not a sufficient metric in credit risk due to class imbalance and the substantially higher cost of missing a default compared with incorrectly flagging a non-default.
-
-Implication:
-The peak near 0.4 suggests this may be a more operationally balanced cut-off than the conventional 0.5 threshold.
-
-
+- Reaches a maximum around 0.40 (representing the threshold where the model best balances true positives and true negatives), remains relatively stable through 0.60, and then exhibits a modest decline.
+- However, in credit risk modeling, overall accuracy can be misleading due to pronounced class imbalance (defaults typically comprising only 5–10% of the portfolio) and the asymmetric cost structure, where the economic impact of missing a default far exceeds that of rejecting a non-defaulter. Drawing from extensive practical experience, I strongly recommend complementing accuracy with more informative metrics such as Precision-Recall curves, the F1-score, or AUC-ROC to ensure robust evaluation. The peak observed around 0.40 nonetheless signals a potentially advantageous operating point for balanced performance in imbalanced settings.
 
 4. Current Threshold = 0.5 (Red Dashed Line)
-- Default Recall is relatively low, meaning the bank may underestimate default risk.
-- Non-default Recall is high, meaning more good customers are correctly approved.
-- Threshold = 0.5 favours customer acceptance over risk protection. Depending on the institution’s risk tolerance, this may be too lenient.
+- At the conventional threshold of 0.50, Default Recall is suboptimal at approximately 0.60, implying the model may miss a significant portion of actual defaulters, thereby underestimating portfolio risk and potentially leading to higher-than-expected losses.
+- Conversely, Non-Default Recall is strong, favoring higher approval rates for good borrowers, which aligns with strategies emphasizing volume over caution.
+- This setting reflects a lenient risk tolerance, common in stable economic conditions but risky in volatile ones.
+
+### Interpretation of the ROC Curve (Logistic Regression)
+In credit risk modelling, evaluating how well a classification model distinguishes between defaulting and non-defaulting borrowers is essential. One of the most widely used diagnostic tools for this purpose is the Receiver Operating Characteristic (ROC) curve. The ROC curve illustrates the trade-off between the True Positive Rate (Sensitivity) and the False Positive Rate (1 – Specificity) across various classification thresholds. A model with strong discriminatory power will generate a curve that bows sharply toward the upper-left corner, indicating high true positive identification with minimal false alarms.
+
+1. Logistic Regression (Blue Line)
+- At low False Positive Rates (FPR ≤ 0.2) — when the model is conservative and rarely flags good borrowers by mistake — it correctly identifies about 78% of actual defaulters.
+- At moderate FPR (0.4–0.6) — when we allow more false alarms — the model catches 85–95% of defaulters, striking a good balance between risk control and loan approvals. However, beyond this point, gains slow down: approving more loans doesn’t add much extra safety.
+- Overall AUC = 0.8574 means the model is strongly effective at separating defaulters from non-defaulters — far better than random guessing (AUC = 0.5). However, in a highly imbalanced data (where defaults are rare, e.g., <5%), performance can drop unless features are carefully engineered.
+
+2. Gradient Boosting Model (Green Line)
+- At low FPR (≤0.2), TPR ≈ 0.99, capturing almost all defaulters with minimal false positives—ideal for high-stakes environments like subprime lending, where early risk flagging prevents losses.
+- At moderate FPR (0.4–0.6), TPR remains at ~1.00, showcasing exceptional robustness and minimal trade-offs, thanks to GBT's ability to capture nonlinearities and interactions (e.g., via tree ensembles).
+- Overall AUC ≈ 0.9347 reflects near-flawless separation, often achievable in well-tuned ensembles on tabular credit data. This positions GBT as a production-ready choice for dynamic risk scoring, though it demands vigilance against overfitting via cross-validation.
+
+3. Comparison to Random Prediction (Dashed Gray Diagonal) and Between Models
+- Versus Random Prediction (AUC = 0.50):
+  - Both models vastly outperform randomness, as their curves lie entirely above the diagonal. LR's AUC (0.8574) yields ~74% improvement in separability (calculated as (AUC - 0.5)/0.5), while GBT's (0.99) approaches perfection (~98% improvement). In credit contexts, random guessing would approve defaulters at baseline rates (~1–5%), inflating expected losses; these models enable targeted interventions, potentially reducing portfolio default rates by 20–50%.
+
 
 Overall Conclusion
 - The model becomes more conservative toward defaults at lower thresholds, improving its ability to detect risky borrowers but increasing false positives.
