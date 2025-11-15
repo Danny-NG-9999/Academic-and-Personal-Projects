@@ -1,4 +1,4 @@
-<img width="1176" height="776" alt="image" src="https://github.com/user-attachments/assets/7c9c0237-1c62-4693-a644-d2bbfea7278d" />## **Project Overview and Model Objective**
+## **Project Overview and Model Objective**
 This project is a **working credit risk modeling file** created as part of my personal learning and practice in predictive analytics. The dataset used in this analysis is **self-generated**, designed to replicate realistic UK credit market conditions based on publicly available research on lending rates, income distributions, and borrower demographics.  
 
 The main goal of this project is to **understand, apply, and evaluate credit risk modeling techniques** — specifically focusing on predicting the likelihood of loan default using machine learning.  
@@ -143,7 +143,7 @@ A rigorous validation process was implemented to ensure that model results were 
 The chart visualises how Default Recall, Non-default Recall, and Overall Accuracy evolve as the probability threshold shifts from 0.1 to 0.9. This type of threshold sensitivity analysis is fundamental in credit risk modelling because it directly informs risk appetite calibration, cut-off strategy design, and the trade-offs between risk mitigation and customer acceptance.
 
 1. Default Recall (Blue Line)
-- Default Recall is highest at very low thresholds (≈0.1–0.2), indicating that the model captures the majority of true defaults when it adopts a more aggressive stance in predicting default.
+- Default Recall is highest at very low thresholds (≈0.1–0.2), 
 - Declines steadily as the threshold increases. If the objective is to minimise credit losses, a threshold lower than 0.5 should be considered.
 - If objective is to prioritise loss minimisation and early risk detection, thresholds below 0.5 would provide stronger protection, albeit at the expense of higher rejection rates.
 
@@ -161,7 +161,30 @@ The chart visualises how Default Recall, Non-default Recall, and Overall Accurac
 - Conversely, Non-Default Recall is strong, favoring higher approval rates for good borrowers, which aligns with strategies emphasizing volume over caution.
 - This setting reflects a lenient risk tolerance, common in stable economic conditions but risky in volatile ones.
 
-### Interpretation of the ROC Curve (Logistic Regression)
+### Interpretation of Threshold-Performance Results (XGBoost Model)
+<img width="976" height="576" alt="image" src="https://github.com/user-attachments/assets/101298c8-08e1-4004-aa9b-04331fb873b8" />
+The chart visualises how Default Recall, Non-default Recall, and Overall Accuracy evolve as the probability threshold shifts from 0.1 to 0.9. This type of threshold sensitivity analysis is fundamental in credit risk modelling because it directly informs risk appetite calibration, cut-off strategy design, and the trade-offs between risk mitigation and customer acceptance.
+
+1. Default Recall (Blue Line)
+- Peak performance at low thresholds (~0.1–0.2), indicating that the model captures the majority of true defaults when it adopts a more aggressive stance in predicting default.
+- Steady decline with rising threshold: By 0.5, recall drops to ~0.60, meaning 40% of true defaulters are missed — followed by a sharp drop beyond 0.5.
+- If objective is to prioritise loss minimisation and early risk detection, thresholds below 0.5 would provide stronger protection, albeit at the expense of higher rejection rates.
+
+2. Non-default Recall (Orange Line) – Specificity to Good Borrowers
+- Low at aggressive thresholds (<0.3): High false positive rate — many creditworthy applicants are wrongly declined, hurting revenue and customer experience.
+- Sharp improvement from 0.3 to 0.5, then plateaus above 0.5: Beyond this point, nearly all good borrowers are correctly approved.
+- For growth-focused strategies (e.g., acquisition campaigns), thresholds ≥ 0.5 maximize acceptance rates while maintaining acceptable risk.
+
+3. Model Accuracy (Green Line) – Overall Correct Classification
+- Peaks around 0.40 — the point of optimal balance between detecting defaulters and approving non-defaulters — then remains stable through ~0.60 before a modest decline.
+- However, in credit risk modeling, overall accuracy can be misleading due to pronounced class imbalance (defaults typically comprising only 5–10% of the portfolio) and the asymmetric cost structure, where the economic impact of missing a default far exceeds that of rejecting a non-defaulter. Drawing from extensive practical experience, I strongly recommend complementing accuracy with more informative metrics such as Precision-Recall curves, the F1-score, or AUC-ROC to ensure robust evaluation. The peak observed around 0.40 nonetheless signals a potentially advantageous operating point for balanced performance in imbalanced settings.
+
+4. Current Threshold = 0.50 (Red Dashed Line) – Evaluation
+- Default Recall ≈ 0.60: Suboptimal — the model fails to flag 40% of actual defaulters, leading to under-provisioning, capital inefficiency, and unexpected loss spikes.
+- Non-default Recall ≈ 0.95: Excellent — supports high approval rates and customer satisfaction.
+- Risk Posture: Lenient and growth-oriented. Suitable in low-default, stable environments but vulnerable in downturns.
+
+### Interpretation of the ROC Curve
 In credit risk modelling, evaluating how well a classification model distinguishes between defaulting and non-defaulting borrowers is essential. One of the most widely used diagnostic tools for this purpose is the Receiver Operating Characteristic (ROC) curve. The ROC curve illustrates the trade-off between the True Positive Rate (Sensitivity) and the False Positive Rate (1 – Specificity) across various classification thresholds. A model with strong discriminatory power will generate a curve that bows sharply toward the upper-left corner, indicating high true positive identification with minimal false alarms.
 
 1. Logistic Regression (Blue Line)
