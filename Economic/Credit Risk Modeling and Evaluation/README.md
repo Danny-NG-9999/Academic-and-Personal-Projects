@@ -123,7 +123,7 @@ A rigorous validation process was implemented to ensure that model results were 
 - Average Loan Amount: £9,583.51
 - Estimated Financial Impact (Expected Loss from Missed Defaults):
   - Number of Missed Defaults (FN): 20,221
-  - Estimated Loss on Missed Defaults: £191,842,721.95(= 20,221 × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
+  - Estimated Loss on Missed Defaults: £191,842,721.95 (= 20,221 × £9,583.51, assuming full principal exposure and zero recovery for simplicity)
 
 ## Key Metrics and Estimated Losses (LR model)
 - Predicted Defaults (predicted class = 1): 33,616 (True Positive + False Positive count)
@@ -212,8 +212,8 @@ Perfectly Calibrated (Dotted Line): The diagonal dotted line represents a model 
 
 | Model                                               | Interpretation                                                                                                   | Calibration Behaviour                                                                                                                                                                                                        |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Logistic Regression (Blue, Square Markers)**      | The curve sits **above** the perfect-calibration line for predicted probabilities roughly between 0.35 and 0.70. | **Underestimation (Optimistic Bias):** LR predicts probabilities that are too low in the mid-to-high risk range. For example, when LR predicts a 50% default probability, the actual observed default rate is closer to 60%. |
-| **Gradient Boosting Trees (Green, Circle Markers)** | The curve falls **below** the perfect-calibration line for probabilities between about 0.40 and 0.60.            | **Overestimation (Pessimistic Bias):** GBT assigns probabilities that are too high. For example, when GBT predicts a 60% chance of default, the true default rate is closer to 65%.                                          |
+| **Logistic Regression (Blue, Square Markers)**      | The curve sits above the perfect-calibration line for predicted probabilities roughly between 0.35 and 0.70. | Underestimation (Optimistic Bias): LR predicts probabilities that are too low in the mid-to-high risk range. When LR predicts a 50% default probability, the actual observed default rate is closer to 60%. (True risk is higher than predicted). |
+| **Gradient Boosting Trees (Green, Circle Markers)** | The curve falls below the perfect-calibration line for probabilities between about 0.40 and 0.90            | Overestimation (Pessimistic Bias): GBT assigns probabilities that are too high in the mid-to-high risk range. When GBT predicts a 60% chance of default, the actual observed default rate is closer to 55%. (True risk is lower than predicted).                                          |
 
 ---
 
