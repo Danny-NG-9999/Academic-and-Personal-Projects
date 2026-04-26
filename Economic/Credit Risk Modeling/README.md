@@ -134,7 +134,42 @@ In practical terms:
 
 While this approach inevitably increases false positives, the trade‑off is strategically acceptable: the marginal loss from rejected or reviewed low‑risk customers is outweighed by the reduction in credit losses from undetected defaults.
 
-### **2. Model Selection: ADASYN as Preferred Resampling Method** ##
+### **2. Model Interpretation: Key Drivers of Credit Risk Predictions**
+To ensure the model is both robust and interpretable, we evaluate features based on their ability to distinguish between classes. The selection is driven by two primary metrics:
+- Weight of Evidence (WoE): Measures the "strength" of a specific grouping (bin) of a feature in predicting the target.
+- Information Value (IV): Provides a score to rank the overall predictive power of the entire feature.
+
+**Continuous features (White Box)**
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/02771bb5-5125-4757-9267-cc3fa4de4e0e" />
+- `loan_to_value`: This is the strongest predictive feature, with an Information Value (IV) of 0.5639, indicating excellent discriminatory power. This confirms that leverage plays a critical role in differentiating between high- and low-risk borrowers, making it the primary driver in the dataset.
+- `int_rate serves`: This act as a key secondary driver, with an IV of 0.4057, reflecting moderate-to-strong predictive strength. Its importance highlights the role of risk-based pricing, where higher interest rates are typically associated with higher perceived default risk.
+- `annual_inc` and `emp_length`: Although these features are included in the model, they exhibit relatively low IV values. This suggests they contribute limited standalone predictive power compared to loan-specific variables. Their impact is more supplementary, providing incremental context rather than acting as core risk differentiators.
+
+**Categorical features (White Box)**
+
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/d46d82d9-c79d-4001-94fc-7a3bf860504c" />
+- `collateral`, `regularity_of_inflows` and `ltv_group`: These features are emerge as the most influential categorical features, providing strong differentiation in borrower risk profiles. A key insight is that income stability outweighs income magnitude: variables such as annual income (income_group) and employment length are less predictive than the consistency of cash inflows. This indicates that borrowers with steady and predictable income streams are significantly less likely to default, even if their total income level is relatively modest. In practical terms, cash flow reliability is a more critical indicator of creditworthiness than absolute income size.
+- `interest_band` and `grade`: These features are closely align with the underlying interest rate (int_rate) and serve as strong proxies for loan pricing and borrower credit quality. These variables reinforce the model’s ability to capture risk-based pricing dynamics, where higher interest rates and lower credit grades are associated with elevated default risk. As such, they function as complementary risk signals, strengthening the overall predictive power of the model.
+
+**Key insights**
+- Loan characteristics (such as loan-to-value ratio and interest rate) are more powerful predictors of default risk than traditional borrower demographics (such as income level and employment length). This highlights that structured loan terms capture risk more effectively than static personal attributes.
+- Cash flow stability emerges as a central determinant of creditworthiness. The consistency and regularity of income inflows are more influential than the absolute level of income, indicating that predictable liquidity is a stronger signal of repayment ability than earnings magnitude alone.
+- There is strong alignment between continuous variables (e.g., interest rate) and categorical proxies (e.g., credit grade, interest band). This consistency across feature types reinforces the robustness of the model and increases confidence in its underlying predictive structure.
+- For a more detailed assessment of potential data leakage risks, including feature selection decisions and preprocessing safeguards, please refer to the notebook `credit_loan_preprocess.ipynb`, which provides a comprehensive walkthrough of the data preparation pipeline and highlights key steps taken to ensure model integrity and prevent information leakage.
+  
+**LIME prediction (Black Box)**
+<img width="1589" height="1840" alt="image" src="https://github.com/user-attachments/assets/a4250837-b7b6-4b6e-9f55-6df95dc9ff08" />
+
+LIME (Local Interpretable Model-Agnostic Explanations) provides a local, instance-specific view of model behaviour, explaining why a prediction was made for a single borrower (Instance 5). Unlike Information Value (IV), which captures global feature importance across the dataset, LIME focuses on the decision logic for an individual prediction.
+
+The results for Instance 5 across all five models (Extra Trees, Random Forest, Gradient Boosting, XGBoost, and MLP) strongly reinforce the earlier IV findings, particularly the dominance of income stability over income level.
+
+- **Primary Negative Driver (Across All Models):** The feature `regularity_of_inflows` is consistently the most influential driver in every model. This indicates that the absence of regular income inflows is the strongest factor pushing the prediction toward higher risk. It confirms that cash flow stability acts as a core decision anchor at the individual level, not just in aggregate feature importance.
+- **Income Consistency vs Income Level:** The LIME explanation clearly supports earlier IV-based findings that income regularity is more important than total income amount. Even when borrowers have relatively high income, irregular inflows significantly increase perceived default risk. This reinforces the model’s focus on financial stability rather than earnings magnitude.
+- **Asset and Collateral Protection Effect:** Features such as collateral and loan_to_value (LTV) consistently appear as strong explanatory drivers across all models. This aligns with global feature importance results and shows that, at the local level, models heavily rely on asset-backed security as a protective buffer against default risk. Higher LTV exposure and lack of collateral increase predicted risk, while secured lending positions reduce it..
+
+### **3. Model Selection: ADASYN as Preferred Resampling Method** ##
 To address the inherent class imbalance of credit default data, we benchmarked four advanced resampling techniques: SMOTE, ADASYN, SMOTE-ENN, and ROS-Tomek.
 
 | Method         | Optimal Threshold | Youden's Index | Test F1-Score | Test Recall | Test Precision | Train Size | Event Count (Train) |
@@ -148,7 +183,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 - Highest F1‑score (0.5424): Demonstrates the most effective trade‑off between recall (identifying actual defaulters) and precision (limiting false alarms).
 - Highest Youden’s Index (0.7703): Reflects superior overall discriminative capability, meaning the model is most effective at separating default from non‑default cases across all probability thresholds.
 
-### **3. Confusion Matrix and Classification Interpretation**
+### **4. Confusion Matrix and Classification Interpretation (White Box model)**
 
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
 <br>
@@ -173,7 +208,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | **Overall Accuracy** | 0.8510 | 85.10% of all predictions are correct. However, accuracy is less informative in this context due to class imbalance and the risk-sensitive objective of the model. |
 </br>
 
-### 4. Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov (KS) curve Interpretation
+### **5. Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov curve Interpretation (White Box model)**
 The following results assess how effectively the credit risk model distinguishes between defaulters and non-defaulters, and how well it ranks borrowers by risk. In a banking context, these metrics are critical because they directly determine the model’s reliability in supporting lending decisions, risk-based pricing, and portfolio risk mitigation—especially under stressed macroeconomic conditions.
 
 1. ROC-AUC Score (0.9524)
@@ -185,7 +220,7 @@ The following results assess how effectively the credit risk model distinguishes
 
 2. Gini Index and CAP curve(0.9048)
 
-<img width="844" height="546" alt="image" src="https://github.com/user-attachments/assets/fb4a95d2-a557-4406-bbcd-b29e3dacecb5" />
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/fb4a95d2-a557-4406-bbcd-b29e3dacecb5" />
 
 - The Gini index measures the “separation” between the two groups. A Gini of 0 means the model sees no difference; a Gini of 1 means every defaulter has a higher risk score than every non‑defaulter. 0.9048 is extraordinarily close to 1.
 - The CAP (Cumulative Accuracy Profile) curve shows that the model captures about 90% of all defaulters within the first 20% of the highest‑risk population.
@@ -194,11 +229,10 @@ The following results assess how effectively the credit risk model distinguishes
  - This means the bank can focus expensive manual underwriting on a very small fraction of applications while still catching almost all bad debt – a huge efficiency gain.
    
 3. Kolmogorov-Smirnov Statistic (0.7703)
-<img width="844" height="567" alt="image" src="https://github.com/user-attachments/assets/c05c169a-3efa-494e-9e8d-ab157af4d635" />
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/c05c169a-3efa-494e-9e8d-ab157af4d635" />
 
 - The Kolmogorov-Smirnov (KS) statistic measures the maximum vertical distance between the cumulative curves of defaulters and non‑defaulters. A value of 0.7703 means that at the optimal decision threshold, the model achieves a 77% difference in how it treats the two groups.
 - The red curve (defaulters) and blue curve (non‑defaulters) are far apart. The maximum gap of 0.7703 occurs at the threshold 0.6461. This visual confirms that the model does not confuse the two groups – a clear sign of high discriminatory power.
-
 
 
 
