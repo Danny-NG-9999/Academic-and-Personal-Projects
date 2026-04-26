@@ -174,74 +174,34 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 </br>
 
 ### 4. Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov (KS) curve Interpretation
+The following results assess how effectively the credit risk model distinguishes between defaulters and non-defaulters, and how well it ranks borrowers by risk. In a banking context, these metrics are critical because they directly determine the model’s reliability in supporting lending decisions, risk-based pricing, and portfolio risk mitigation—especially under stressed macroeconomic conditions.
+
+1. ROC-AUC Score (0.9524)
+
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/6a861bf8-f965-4ca8-9300-c94e8a736dc7" />
 
-Gini = 0.9048 – This value indicates near‑perfect discriminatory power. The model excels at ranking borrowers by risk, with very low probability of a randomly selected defaulter receiving a lower risk score than a randomly selected non‑defaulter.
+- The model achieves a ROC-AUC score of 0.9524, indicating excellent ranking performance.
+- In simple terms, this means that 95.24% of the time, the model assigns a higher risk score to a borrower who will default than to one who will not. This reflects a very high level of separability between risky and safe customers.
 
-1. ROC-AUC Score (0.9524): Ranking Reliability
-The Receiver Operating Characteristic - Area Under Curve (ROC-AUC) measures the model's ability to rank borrowers correctly.
-
-What it means: A score of 0.9524 means there is a 95.2% probability that the model will assign a higher risk score to a randomly chosen borrower who defaults than to a randomly chosen borrower who does not.
-
-The Interpretation: In the banking industry, any score above 0.80 is considered "Good," and above 0.90 is "Excellent." At 0.95, this model is near-perfect at ordering borrowers from lowest to highest risk. It ensures that the bank isn't just guessing, but is making highly informed decisions.
-
-2. Gini Index (0.9048): Separation Excellence
-The Gini Index (directly derived from the AUC) measures the "inequality" between the scores of defaulters and non-defaulters. It tells us how well the model separates the two groups.
-
-What it means: A Gini of 0.9048 indicates that the model has outstanding discriminatory power. It creates a very clear "gap" between safe and risky applicants.
-
-The Interpretation: In credit scoring, a Gini between 0.60 and 0.70 is often the target for a robust model. Achieving a Gini above 0.90 suggests that the variables used (such as Loan-to-Value, Interest Rates, and Income Stability) are incredibly strong predictors of a borrower’s future behavior.
+2. Gini Index and CAP curve(0.9048)
 
 <img width="844" height="546" alt="image" src="https://github.com/user-attachments/assets/fb4a95d2-a557-4406-bbcd-b29e3dacecb5" />
 
+- The Gini index measures the “separation” between the two groups. A Gini of 0 means the model sees no difference; a Gini of 1 means every defaulter has a higher risk score than every non‑defaulter. 0.9048 is extraordinarily close to 1.
+- The CAP (Cumulative Accuracy Profile) curve shows that the model captures about 90% of all defaulters within the first 20% of the highest‑risk population.
+ - Random selection would require checking 50% of applicants to find 50% of defaulters.
+ - Our model finds 9 out of 10 defaulters by looking at only the riskiest 20% of applicants.
+ - This means the bank can focus expensive manual underwriting on a very small fraction of applications while still catching almost all bad debt – a huge efficiency gain.
+   
+3. Kolmogorov-Smirnov Statistic (0.7703)
+<img width="844" height="567" alt="image" src="https://github.com/user-attachments/assets/c05c169a-3efa-494e-9e8d-ab157af4d635" />
+
+- The Kolmogorov-Smirnov (KS) statistic measures the maximum vertical distance between the cumulative curves of defaulters and non‑defaulters. A value of 0.7703 means that at the optimal decision threshold, the model achieves a 77% difference in how it treats the two groups.
+- The red curve (defaulters) and blue curve (non‑defaulters) are far apart. The maximum gap of 0.7703 occurs at the threshold 0.6461. This visual confirms that the model does not confuse the two groups – a clear sign of high discriminatory power.
 
 
 
 
-| **Gini Coefficient** | 0.9048 | Indicates near-perfect discriminatory power. The model is highly effective at ranking borrowers by risk, providing strong support for credit scoring and risk-based pricing decisions. |
-
-
-Precision (Default) = 0.3833
-Only about 4 out of every 10 flagged customers actually default. This implies a significant number of false positives, requiring manual review and potentially rejecting creditworthy applicants. In practical terms, for every 2.6 customers labelled as high‑risk, only 1 truly defaults.
-
-Recall (Default) = 0.9273
-The model correctly identifies approximately 9 out of 10 actual defaulters. False negatives are very rare, meaning almost no high‑risk borrowers go undetected. This makes the model highly effective for risk mitigation and audit assurance.
-
-F1‑Score (Default) = 0.5424
-Reflects the inherent trade‑off: strong recall is partially offset by lower precision. This balance is deliberately chosen given the macroeconomic environment.
-
-Overall Accuracy = 0.8510
-While accuracy is high, it is less informative than recall and precision due to class imbalance.
 
 
 
-Precision (Default): 0.3833
-- Only about 4 out of 10 flagged customers actually default (A significant number of false positives, requiring additional review and potentially rejecting creditworthy customers)
-- In practical terms, for every ~2.6 customers flagged as high-risk, only 1 truly defaults
-Recall (Default): 0.9273
-- The model correctly identifies approximately 9 out of 10 defaulters
-- Implies very few false negatives, meaning almost no high-risk customers go undetected
-- Highly effective for risk mitigation and audit assurance
-F1-Score (Default): 0.5424
-- Reflects the inherent trade-off: Strong recall is partially offset by lower precision
-Overall Accuracy: 0.8510
-
-Recall (92.73%): The model captures over 9 out of 10 defaulters. This exceptional sensitivity ensures that nearly all high-risk exposures are flagged, providing high levels of audit assurance and risk mitigation.
-
-Precision (38.33%): For every ~2.6 customers flagged as high-risk, one truly defaults. While this indicates a higher rejection rate for safe customers, it serves as a necessary "safety buffer" in a fragile economy.
-
-Gini Coefficient (0.9048): A Gini score exceeding 0.90 indicates near-perfect discrimination. This confirms that the model’s ranking of borrower risk is statistically robust and provides an excellent foundation for risk-based pricing.
-
-Overall Accuracy (85.10%): Despite the aggressive pursuit of defaults, the model maintains a high degree of total correct classifications.
-
-
-
-In a high-risk economic environment, a risk-averse strategy is both appropriate and justified. The model prioritizes minimizing false negatives (missed defaulters), aligning with the bank’s objective of protecting its loan portfolio. While this approach leads to a higher incidence of false positives, the trade-off is acceptable given the need to maintain financial stability during periods of elevated uncertainty.
-
-GINI coefficient 
-- 0.9048 which is near perfect discrimination
-
-CAP curve
-- Baseline: A random selection (diagonal line) would require sampling 50% of the data to find 50% of defaults.
-Model Efficiency: Our model (orange) captures approximately 90% of defaults within the first 20% of the sampled population.
-Conclusion: The model shows significant "lift" over the random baseline, making it highly effective for targeted intervention and risk mitigation.
