@@ -118,7 +118,7 @@ The preprocessing stage generates separate input (features) and target (labels) 
 ## Key Results, Summary, and Strategic Interpretation
 The current macroeconomic environment—defined by an economic downturn, subdued growth, and elevated uncertainty driven by external shocks such as an oil crisis—has materially increased systemic credit risk within the banking sector. For a UK retail and commercial bank such as Lloyds, this translates into higher probabilities of default (PD), increased portfolio volatility, and more constrained risk appetite.
 
-### **1. Risk Strategy and Model Objective**
+### **Risk Strategy and Model Objective**
 In response to a stressed macroeconomic environment, the modeling strategy shifts from a neutral posture to a risk‑averse, capital‑preservation framework. The primary objective is early and reliable identification of credit defaults to protect the bank’s balance sheet and maintain financial stability. Consequently, the model is deliberately optimized to maximize recall (sensitivity to defaults), even at the cost of a higher number of false positives.
 
 This design reflects the asymmetric cost structure of credit risk errors:
@@ -134,7 +134,7 @@ In practical terms:
 
 While this approach inevitably increases false positives, the trade‑off is strategically acceptable: the marginal loss from rejected or reviewed low‑risk customers is outweighed by the reduction in credit losses from undetected defaults.
 
-### **2. Model Interpretation: Key Drivers of Credit Risk Predictions**
+### **Model Interpretation: Key Drivers of Credit Risk Predictions**
 To ensure the model is both robust and interpretable, we evaluate features based on their ability to distinguish between classes. The selection is driven by two primary metrics:
 - Weight of Evidence (WoE): Measures the "strength" of a specific grouping (bin) of a feature in predicting the target.
 - Information Value (IV): Provides a score to rank the overall predictive power of the entire feature.
@@ -159,7 +159,7 @@ To ensure the model is both robust and interpretable, we evaluate features based
 - For a more detailed assessment of potential data leakage risks, including feature selection decisions and preprocessing safeguards, please refer to the notebook `credit_loan_preprocess.ipynb`, which provides a comprehensive walkthrough of the data preparation pipeline and highlights key steps taken to ensure model integrity and prevent information leakage.
   
 **LIME prediction (Black Box)**
-<img width="1589" height="1840" alt="image" src="https://github.com/user-attachments/assets/a4250837-b7b6-4b6e-9f55-6df95dc9ff08" />
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a4250837-b7b6-4b6e-9f55-6df95dc9ff08" />
 
 LIME (Local Interpretable Model-Agnostic Explanations) provides a local, instance-specific view of model behaviour, explaining why a prediction was made for a single borrower (Instance 5). Unlike Information Value (IV), which captures global feature importance across the dataset, LIME focuses on the decision logic for an individual prediction.
 
@@ -169,7 +169,7 @@ The results for Instance 5 across all five models (Extra Trees, Random Forest, G
 - **Income Consistency vs Income Level:** The LIME explanation clearly supports earlier IV-based findings that income regularity is more important than total income amount. Even when borrowers have relatively high income, irregular inflows significantly increase perceived default risk. This reinforces the model’s focus on financial stability rather than earnings magnitude.
 - **Asset and Collateral Protection Effect:** Features such as collateral and loan_to_value (LTV) consistently appear as strong explanatory drivers across all models. This aligns with global feature importance results and shows that, at the local level, models heavily rely on asset-backed security as a protective buffer against default risk. Higher LTV exposure and lack of collateral increase predicted risk, while secured lending positions reduce it..
 
-### **3. Model Selection: ADASYN as Preferred Resampling Method** ##
+### **Model Selection: ADASYN as Preferred Resampling Method** ##
 To address the inherent class imbalance of credit default data, we benchmarked four advanced resampling techniques: SMOTE, ADASYN, SMOTE-ENN, and ROS-Tomek.
 
 | Method         | Optimal Threshold | Youden's Index | Test F1-Score | Test Recall | Test Precision | Train Size | Event Count (Train) |
@@ -183,7 +183,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 - Highest F1‑score (0.5424): Demonstrates the most effective trade‑off between recall (identifying actual defaulters) and precision (limiting false alarms).
 - Highest Youden’s Index (0.7703): Reflects superior overall discriminative capability, meaning the model is most effective at separating default from non‑default cases across all probability thresholds.
 
-### **4. Confusion Matrix and Classification Interpretation (White Box model)**
+### **Confusion Matrix and Classification Interpretation (White Box model)**
 
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
 <br>
@@ -208,7 +208,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | **Overall Accuracy** | 0.8510 | 85.10% of all predictions are correct. However, accuracy is less informative in this context due to class imbalance and the risk-sensitive objective of the model. |
 </br>
 
-### **5. Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov curve Interpretation (White Box model)**
+### **Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov curve Interpretation (White Box model)**
 The following results assess how effectively the credit risk model distinguishes between defaulters and non-defaulters, and how well it ranks borrowers by risk. In a banking context, these metrics are critical because they directly determine the model’s reliability in supporting lending decisions, risk-based pricing, and portfolio risk mitigation—especially under stressed macroeconomic conditions.
 
 1. ROC-AUC Score (0.9524)
@@ -234,8 +234,114 @@ The following results assess how effectively the credit risk model distinguishes
 - The Kolmogorov-Smirnov (KS) statistic measures the maximum vertical distance between the cumulative curves of defaulters and non‑defaulters. A value of 0.7703 means that at the optimal decision threshold, the model achieves a 77% difference in how it treats the two groups.
 - The red curve (defaulters) and blue curve (non‑defaulters) are far apart. The maximum gap of 0.7703 occurs at the threshold 0.6461. This visual confirms that the model does not confuse the two groups – a clear sign of high discriminatory power.
 
+### **Credit Score Transformation & Scorecard Interpretation**
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/353d663e-c388-4c89-8d9d-5f9938c1ce73" />
+
+Machine learning models like Logistic Regression output a Probability of Default (PD)—a decimal between 0 and 1. To make these results actionable for credit officers and customers, we transform these probabilities into a Credit Score using following components.
+
+| Component                       | High Value Means                           | Low Value Means                            | Business Interpretation                                               |
+| ------------------------------- | ------------------------------------------ | ------------------------------------------ | --------------------------------------------------------------------- |
+| **Probability of Default (PD)** | High risk of default                       | Low risk of default                        | Direct risk likelihood; used for prediction but not decision-friendly |
+| **Log-Odds**                    | Safer borrower                             | Riskier borrower                           | Better separation of risk levels; used for scoring transformation     |
+| **PDO Scaling**                 | Small score change = large risk difference | Large score change = lower risk difference | Converts statistical output into meaningful business intervals        |
+| **Credit Score**                | Low risk / strong borrower                 | High risk / weak borrower                  | Final interpretable output used for lending decisions                 |
 
 
+The final credit score is calculated using a linear transformation of the log-odds:
+$$Score = Offset + (Factor \times \ln(Odds))$$
 
+Alternatively, expressed using the Probability of Default (PD):
+$$Score = A - B \times \ln\left(\frac{PD}{1 - PD}\right)$$
 
+The dashboard serves as the operational layer of the project, turning the mathematical scaling logic into a functional rating system.
 
+1. Top 10 Risk Drivers (Point Deductions)
+- Major Point Deductions: loan_to_value is the single most aggressive risk driver, resulting in a deduction of nearly 80 points when values are unfavorable. This confirms that high leverage is the primary indicator of default risk in our model.
+- Positive Score Impact: Features like lower interest bands (6.4-7.5) and specific grades contribute positive points, helping borrowers move into higher rating tiers.
+
+2. Score vs. Probability of Default (PD)
+- Inverse Relationship: As the Credit Score increases, the Probability of Default (PD) drops exponentially.
+- Rating Tiers: Borrowers are segmented into four distinct buckets:
+
+3. Portfolio Distribution & Volume
+- Portfolio Volume by Rating: The majority of the portfolio falls into the Fair (32,199) and Good (24,420) categories. The "Poor" category is the smallest (5,339), suggesting that the underlying lending criteria are relatively selective.
+- Overall Score Distribution: The histogram shows a multi-modal distribution with significant density at the higher end of the scale (900+).
+
+### **LGD, EAD, and Expected Loss (EL) Estimation Framework**
+This section summarises the credit risk modelling approach used to estimate Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) for loan applicants. The framework combines borrower purpose, loan characteristics, and repayment dynamics to support risk-based credit decisions.
+
+1. Loss Given Default (LGD) Assumptions by Loan Purpose
+
+LGD is derived from expected recovery rates, which vary depending on the loan purpose and underlying collateral quality.
+
+| Loan Purpose | Recovery Rate (RR) | LGD (1 − RR) | Risk Interpretation |
+|--------------|--------------------|--------------|----------------------|
+| Home Improvement | 45% | 55% | Moderate risk due to strong collateral support (e.g., property-linked borrowing) |
+| Debt Consolidation | 25% | 75% | High risk as borrowers are already financially stressed |
+| Car Purchase | 40% | 60% | Moderate recovery potential through vehicle repossession |
+| Major Purchase | 30% | 70% | Higher risk due to rapid asset depreciation |
+| Small Business | 20% | 80% | Highest risk due to low recoverability of business assets |
+
+2. Exposure at Default (EAD) Estimation
+
+EAD is calculated using loan structure and amortisation dynamics (using features such as `loan_amount`, `int_rate`, `term` and `term_remaining`), capturing the remaining exposure at the point of default:
+$$EAD = P \times \frac{(1 + r)^n - (1 + r)^p}{(1 + r)^n - 1}$$
+Where:
+- $P$ = Original Loan Amount
+- $r$ = Monthly Interest Rate (Annual Rate / 12)
+- $n$ = Total Number of Terms (Months)
+- $p$ = Number of installments already paid ($n - \text{terms\_remaining}$)
+
+3. Expected Loss (EL) Framework
+
+Expected Loss is computed by combining risk probability and loss severity:
+
+$$EL = PD × LGD × EAD$$
+
+This allows the model to translate borrower characteristics into monetary credit risk estimates, enabling consistent comparison across applicants.
+
+4. Real-Time High vs Low Risk Borrower Comparison
+   
+**Input Characteristics**
+| Sample | int_rate | loan_to_value | ead | interest_band | grade | collateral | regularity_of_inflows | ltv_group | purpose |
+|--------|----------|---------------|-----|---------------|-------|------------|----------------------|-----------|---------|
+| 1. High Risk (Small Business, 80% LGD) | 24.5 | 0.95 | 50000 | 20.0+ | G | No | No | Critical | Small Business |
+| 2. Low Risk (Home Improvement, 55% LGD) | 6.2 | 0.35 | 20000 | 5.0-7.5 | A | Yes | Yes | Low | Home Improvement |
+
+**Model Output and Decision**
+| Metric | Sample 1: Small Business | Sample 2: Home Improvement |
+|--------|---------------------------|----------------------------|
+| Credit Score | 641 (High Risk) | 947 (Excellent) |
+| Prob. of Default (PD) | 99.36% | 0.38% |
+| Exposure (EAD) | £50,000 | £20,000 |
+| Loss Factor (LGD) | 80% | 55% |
+| Expected Loss (EL) | £39,746.34 | £42.10 |
+| Final Decision | 🚨 REJECT | ✅ APPROVE |
+
+**Execution of code**
+```python
+# Sample 1: High Risk (Small Business - 80% LGD)
+sample_business = {
+    'int_rate': 24.5, 'loan_to_value': 0.95, 'ead': 50000,
+    'interest_band': '20.0+', 'grade': 'G', 'collateral': 'No',
+    'regularity_of_inflows': 'No', 'ltv_group': 'Critical', 
+    'purpose': 'Small Business'
+}
+
+# Sample 2: Low Risk (Home Improvement - 55% LGD)
+sample_home = {
+    'int_rate': 6.2, 'loan_to_value': 0.35, 'ead': 20000,
+    'interest_band': '5.0-7.5', 'grade': 'A', 'collateral': 'Yes',
+    'regularity_of_inflows': 'Yes', 'ltv_group': 'Low', 
+    'purpose': 'Home Improvement'
+}
+
+# Execution
+print("Generating Risk Dashboards...")
+predict_and_score_visual(sample_business, loaded_artifacts)
+predict_and_score_visual(sample_home, loaded_artifacts)
+```
+
+<img width="383" height="724" alt="image" src="https://github.com/user-attachments/assets/8e5f0cec-589a-45ef-bec2-cc31d797a4d8" />
+
+**Note:** Full implementation details, including model logic and visual dashboards, are available in: `LGD and EL computation.ipynb`
