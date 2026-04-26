@@ -20,10 +20,36 @@ The primary objective of this project is to build a high-performance classificat
 ## **Data Sources and Structure**
 The dataset is designed to replicate realistic borrower profiles within the UK consumer credit market, representative of a private banking institution such as Lloyds. It captures the interaction between demographic, financial, and behavioural factors that collectively influence creditworthiness. The synthetic structure is intentionally constructed to reflect economically plausible relationships; for example, higher interest rates and unstable or insufficient income streams are associated with an increased probability of default.
 
-- **Dataset Name:** `credit_loan_generation.csv`  
-- **Type:** Synthetic (self-generated based on UK lending research and risk structure)  
-- **Number of Observations:** 500,000
+- **Dataset Name:** `credit_loan_dataset.csv`
+- **Type:** Synthetic dataset, constructed based on UK consumer lending research and realistic credit risk structures typical of private UK banks
+- **Number of Observations:** 400,000 records
+
 - **Key Features:**
+| Category        | Column Name                 | Description                                                                 | Predictive Value / Information Provided |
+|----------------|-----------------------------|-----------------------------------------------------------------------------|------------------------------------------|
+| Demographics   | person_age                  | Age of the applicant.                                                       | Helps identify life-stage risk and age-based credit patterns. |
+| Demographics   | gender                      | Gender of the borrower.                                                     | Demographic identifier for segmentation analysis. |
+| Demographics   | marriage_status             | Marital status (e.g., Single, Married).                                    | Often used as a proxy for financial stability or shared obligations. |
+| Employment     | annual_inc                 | Total gross annual income.                                                  | Primary indicator of the borrower's capacity to repay. |
+| Employment     | emp_length                 | Years in current employment.                                                | Measures career stability and consistency of income. |
+| Employment     | emp_title                  | Job title or profession.                                                    | Identifies high-risk or stable industries (e.g., Teacher vs. Freelancer). |
+| Financials     | home_ownership             | Type of tenure (RENT, MORTGAGE, OWN).                                      | Indicates asset backing and existing monthly housing overhead. |
+| Financials     | addr_cities                | Residential city of the borrower.                                           | Captures regional economic factors or cost-of-living variances. |
+| Financials     | fixed_obligation           | Total monthly non-loan expenses.                                            | Essential for calculating residual income after living costs. |
+| Credit History  | mths_since_earliest_cr_line | Age of the borrower's credit history.                                      | Measures credit maturity; longer history usually implies lower risk. |
+| Credit History  | existing_loans             | Boolean flag for other active loans.                                        | Indicates existing debt burden and credit appetite. |
+| Credit History  | existing_emi               | Monthly installment for current debts.                                      | Directly impacts the Debt-to-Income (DTI) ratio. |
+| Loan Details   | loan_amount                | Total principal requested.                                                  | The total exposure at risk for the lender. |
+| Loan Details   | term                       | Length of the loan (in months).                                            | Determines the repayment horizon and interest sensitivity. |
+| Loan Details   | int_rate                   | Annual interest rate percentage.                                            | Reflects the risk premium assigned to the borrower. |
+| Loan Details   | interest_band              | Binned ranges of interest rates.                                            | Used for categorical analysis in the White Box model. |
+| Loan Details   | grade                      | Internal risk rating (e.g., A, B, C, D).                                   | The bank's synthetic assessment of borrower quality. |
+| Loan Details   | loan_to_value             | (LTV) Ratio of loan to asset value.                                         | Measures the "skin in the game" and collateral adequacy. |
+| Loan Details   | collateral                | Flag for pledged assets.                                                    | Provides a secondary source of repayment in case of default. |
+| Loan Details   | regularity_of_inflows     | Consistency of monthly income.                                              | Validates the reliability of the capacity to repay. |
+| Target         | default_status            | Binary indicator (0 = Good, 1 = Bad).                                      | The target variable for PD (Probability of Default) modeling. |
+
+
   - `person_age` — Applicant’s age in years.
   - `person_income` — Annual income of the applicant, measured in GBP.
   - `person_home_ownership` — Housing status of the applicant (Rent, Own, or Mortgage).
