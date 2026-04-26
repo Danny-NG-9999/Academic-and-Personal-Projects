@@ -25,6 +25,7 @@ The dataset is designed to replicate realistic borrower profiles within the UK c
 - **Number of Observations:** 400,000 records
 
 - **Key Features:**
+- 
 | Category        | Column Name                 | Description                                                                 | Predictive Value / Information Provided |
 |----------------|-----------------------------|-----------------------------------------------------------------------------|------------------------------------------|
 | Demographics   | person_age                  | Age of the applicant.                                                       | Helps identify life-stage risk and age-based credit patterns. |
