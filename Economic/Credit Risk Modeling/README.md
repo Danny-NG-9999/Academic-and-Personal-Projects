@@ -160,7 +160,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | True Positive (TP) | Predicted 1, Actual 1 | 7,063 | Loss Avoidance: Risky borrowers correctly identified and blocked. |
 | False Positive (FP) | Predicted 1, Actual 0 | 11,364 | Opportunity Cost: Safe borrowers rejected; requires secondary manual review. |
 | False Negative (FN) | Predicted 0, Actual 1 | 554 | Credit Loss: Defaulters wrongly approved; represents a direct capital hit. |
-
+</br>
  
 <img width="467" height="199" alt="image" src="https://github.com/user-attachments/assets/ec026787-0e76-4b2a-8597-023a2e7ab95e" />
 <br>
@@ -171,7 +171,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | **Recall (Default)** | 0.9273 | The model correctly identifies over 92% of actual defaulters. False negatives are minimal, meaning very few high-risk borrowers are missed. This makes the model highly effective for risk mitigation, portfolio protection, and audit assurance. |
 | **F1-Score (Default)** | 0.5424 | Reflects a deliberate trade-off between high recall and moderate precision. The model prioritises capturing defaults while accepting some loss in classification precision, which is appropriate in a stressed macroeconomic environment. |
 | **Overall Accuracy** | 0.8510 | 85.10% of all predictions are correct. However, accuracy is less informative in this context due to class imbalance and the risk-sensitive objective of the model. |
-
+</br>
 
 
 
