@@ -148,12 +148,11 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 - Highest F1‑score (0.5424): Demonstrates the most effective trade‑off between recall (identifying actual defaulters) and precision (limiting false alarms).
 - Highest Youden’s Index (0.7703): Reflects superior overall discriminative capability, meaning the model is most effective at separating default from non‑default cases across all probability thresholds.
 
-## **3. Confusion Matrix Interpretation**
+## **3. Confusion Matrix and Classification Interpretation**
 
 
 <img width="776" height="584" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
-
-/n
+ 
 
 | Classification | Mapping | Count | Financial Meaning |
 |----------------|--------|-------|-------------------|
@@ -162,14 +161,35 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | False Positive (FP) | Predicted 1, Actual 0 | 11,364 | Opportunity Cost: Safe borrowers rejected; requires secondary manual review. |
 | False Negative (FN) | Predicted 0, Actual 1 | 554 | Credit Loss: Defaulters wrongly approved; represents a direct capital hit. |
 
-
- Classification Results
-
-
+ 
+<img width="467" height="199" alt="image" src="https://github.com/user-attachments/assets/ec026787-0e76-4b2a-8597-023a2e7ab95e" />
 
 
-Key Performance Insights based on classification model:
+| Metric | Value | Interpretation |
+|--------|------|----------------|
+| **Precision (Default)** | 0.3833 | Only ~38% of customers flagged as high-risk actually default. This indicates a relatively high false positive rate, meaning some creditworthy borrowers may be incorrectly rejected. In practical terms, for every ~2.6 customers classified as high-risk, only 1 defaults. |
+| **Recall (Default)** | 0.9273 | The model correctly identifies over 92% of actual defaulters. False negatives are minimal, meaning very few high-risk borrowers are missed. This makes the model highly effective for risk mitigation, portfolio protection, and audit assurance. |
+| **F1-Score (Default)** | 0.5424 | Reflects a deliberate trade-off between high recall and moderate precision. The model prioritises capturing defaults while accepting some loss in classification precision, which is appropriate in a stressed macroeconomic environment. |
+| **Overall Accuracy** | 0.8510 | 85.10% of all predictions are correct. However, accuracy is less informative in this context due to class imbalance and the risk-sensitive objective of the model. |
 
+
+
+
+
+| **Gini Coefficient** | 0.9048 | Indicates near-perfect discriminatory power. The model is highly effective at ranking borrowers by risk, providing strong support for credit scoring and risk-based pricing decisions. |
+
+
+Precision (Default) = 0.3833
+Only about 4 out of every 10 flagged customers actually default. This implies a significant number of false positives, requiring manual review and potentially rejecting creditworthy applicants. In practical terms, for every 2.6 customers labelled as high‑risk, only 1 truly defaults.
+
+Recall (Default) = 0.9273
+The model correctly identifies approximately 9 out of 10 actual defaulters. False negatives are very rare, meaning almost no high‑risk borrowers go undetected. This makes the model highly effective for risk mitigation and audit assurance.
+
+F1‑Score (Default) = 0.5424
+Reflects the inherent trade‑off: strong recall is partially offset by lower precision. This balance is deliberately chosen given the macroeconomic environment.
+
+Overall Accuracy = 0.8510
+While accuracy is high, it is less informative than recall and precision due to class imbalance.
 
 
 
@@ -183,6 +203,16 @@ Recall (Default): 0.9273
 F1-Score (Default): 0.5424
 - Reflects the inherent trade-off: Strong recall is partially offset by lower precision
 Overall Accuracy: 0.8510
+
+Recall (92.73%): The model captures over 9 out of 10 defaulters. This exceptional sensitivity ensures that nearly all high-risk exposures are flagged, providing high levels of audit assurance and risk mitigation.
+
+Precision (38.33%): For every ~2.6 customers flagged as high-risk, one truly defaults. While this indicates a higher rejection rate for safe customers, it serves as a necessary "safety buffer" in a fragile economy.
+
+Gini Coefficient (0.9048): A Gini score exceeding 0.90 indicates near-perfect discrimination. This confirms that the model’s ranking of borrower risk is statistically robust and provides an excellent foundation for risk-based pricing.
+
+Overall Accuracy (85.10%): Despite the aggressive pursuit of defaults, the model maintains a high degree of total correct classifications.
+
+
 
 In a high-risk economic environment, a risk-averse strategy is both appropriate and justified. The model prioritizes minimizing false negatives (missed defaulters), aligning with the bank’s objective of protecting its loan portfolio. While this approach leads to a higher incidence of false positives, the trade-off is acceptable given the need to maintain financial stability during periods of elevated uncertainty.
 
