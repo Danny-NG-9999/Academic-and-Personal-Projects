@@ -149,8 +149,8 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 - Highest Youden’s Index (0.7703): Reflects superior overall discriminative capability, meaning the model is most effective at separating default from non‑default cases across all probability thresholds.
 
 ## **3. Confusion Matrix and Classification Interpretation**
- 
-<img width="776" height="584" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
+
+<img width="776" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
 <br>
 
 
@@ -162,7 +162,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | False Negative (FN) | Predicted 0, Actual 1 | 554 | Credit Loss: Defaulters wrongly approved; represents a direct capital hit. |
 </br>
  
-<img width="467" height="199" alt="image" src="https://github.com/user-attachments/assets/ec026787-0e76-4b2a-8597-023a2e7ab95e" />
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/ec026787-0e76-4b2a-8597-023a2e7ab95e" />
 <br>
 
 | Metric | Value | Interpretation |
