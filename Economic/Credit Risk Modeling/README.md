@@ -56,22 +56,47 @@ The dataset is designed to replicate realistic borrower profiles within the UK c
 
 ---
 
-## **Data Preprocessing**
-1. **Exploratory Data Analysis (EDA):**
-   - Conducted a detailed exploratory assessment using `pandas`, `matplotlib`, and `seaborn` to understand variable distributions and detect outliers.
-   - Descriptive statistics and data visualization using `matplotlib` and `seaborn`.
-   - Utilized `missingno` visualizations to assess the extent and structure of missing data patterns, ensuring early identification of potential data quality concerns.
+## **Data Preprocessing and Engineering**
+The preprocessing pipeline is designed to systematically transform raw borrower data into a clean, structured, and model-ready format, while preserving statistical consistency across all data subsets. A robust triple-split validation framework (Train, Test, and Holdout) is implemented to ensure unbiased model development and evaluation. In particular, the holdout dataset is kept entirely unseen during model training and tuning, enabling a realistic assessment of out-of-sample performance and closely simulating real-world deployment conditions.
 
-2. **Data Cleaning:**
-   - Removed duplicate and inconsistent records to maintain data integrity.
-   - Missing value imputation (mean for continuous, mode for categorical variables).
-   - Verified data type consistency and standardized categorical label formats for reliable downstream processing.
+**Notebook Name:** `credit_loan_preprocess.ipynb`
+**Output Datasets:**
+The preprocessing stage generates separate input (features) and target (labels) datasets for each data split, ensuring clear separation of modelling components and preventing data leakage:
+- `loan_inputs_train.csv` – Training features used for model fitting
+- `loan_targets_train.csv` – Training labels (default outcomes)
+- `loan_inputs_test.csv` – Test features used for model evaluation and tuning
+- `loan_targets_test.csv` – Test labels for performance validation
+- `loan_inputs_holdout.csv` – Holdout features reserved for final, unbiased evaluation
+- `loan_targets_holdout.csv` – Holdout labels for true out-of-sample assessment
 
-3. **Feature Engineering:**
-   - Applied one-hot encoding to transform categorical variables into binary indicator columns suitable for machine learning algorithms.
-   - Standardization of numeric variables for optimized model convergence.
+**Preprocessing Pipeline Key Processes:**
+| Category            | Process                  | Description                                                                                                                                               |
+| ------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data Cleaning       | Missing Value Imputation | Handles missing values in features (if any) using mode (categorical) and median (numerical) to reduce the impact of outliers.                             |
+| Feature Engineering | LTV Grouping             | Segments feature such as `loan_to_value` into risk tiers (Low, Moderate, High) to better capture non-linear increases in default risk.                    |
+| Feature Engineering | Interest Rate Banding    | Converts continuous feature such as `int_rate` into categorical bands to support interpretability and enable WoE transformation.                          |
+| Exposure Modelling  | EAD Computation          | Estimates Exposure at Default (EAD) as the remaining loan exposure, representing total capital at risk.                                                   |
+| Encoding            | One-Hot Encoding         | Transforms categorical variables (e.g., `home_ownership`, `purpose`) into numerical format for model compatibility.                                       |
+| Scaling             | Standardisation          | Normalises numerical features (e.g., `annual_inc`, `loan_amount`) to ensure balanced contribution across variables.                                       |
+| Audit               | Stability Audit          | Validates that feature distributions remain consistent across Train, Test, and Holdout datasets to ensure robustness.                                     |
 
-4. **Data Partitioning:**
-   - Split the cleaned dataset into training (60%) and testing (40%) subsets using `train_test_split` from `scikit-learn`.
-   - Maintained class distribution consistency across both sets through stratified sampling, ensuring representative model evaluation.
+
+---
+
+## **Modeling Approach & Implementation**
+
+| Stage                          | Action                        | Technical Detail                                                                                                                                                                                                                                                        |
+| ------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Class Imbalance Handling       | Resampling Techniques         | Applied advanced resampling methods including SMOTE, ADASYN, and Tomek Links to address class imbalance and improve the model’s ability to detect rare default events, reducing bias toward the majority (non-default) class.                            |
+| Baseline Modelling (White Box) | Logistic Regression           | Implemented Logistic Regression as an interpretable baseline model to ensure regulatory compliance. Enabled clear feature impact analysis through coefficients and statistical significance (e.g., p-values), supporting transparent credit decisioning. |
+| Advanced Modelling (Black Box) | Ensemble & Non-Linear Models  | Developed and compared multiple high-performance models, including XGBoost, CatBoost, Random Forest, and Multi-Layer Perceptron (MLP), to capture complex non-linear relationships and interaction effects in borrower behaviour.                        |
+| Model Optimisation             | Hyperparameter Tuning         | Performed systematic hyperparameter tuning (e.g., grid search / random search) to optimise model performance, improve generalisation, and prevent overfitting across different algorithms.                                                               |
+| Model Evaluation               | Multi-Metric Assessment       | Evaluated models using a comprehensive set of metrics, including Accuracy, Precision, Recall, F1-Score, and ROC-AUC, ensuring balanced performance assessment across classification dimensions.                                                          |
+| Risk-Focused Validation        | False Negative Minimisation   | Prioritised the reduction of False Negatives (i.e., misclassifying defaulters as non-defaulters), aligning model performance with real-world credit risk management objectives.                                                                          |
+| Model Selection                | Champion Model Identification | Selected the optimal model based on a combination of predictive performance, stability, and business relevance, ensuring suitability for deployment in a credit risk environment.                                                                        |
+| Model Explainability           | Post-hoc Interpretation       | Applied explainability techniques such as SHAP and LIME to interpret Black Box models, providing both global feature importance and local decision-level insights.                                                                                       |
+| Deployment Readiness           | Model Packaging               | Prepared final model artefacts (e.g., `.pkl` files) for deployment, ensuring reproducibility and seamless integration into production or decision-support systems.                                                                                       |
+
+
+
   
