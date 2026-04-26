@@ -5,7 +5,7 @@ To model default risk effectively, a dual-modelling strategy is applied to balan
 
 The modelling pipeline includes rigorous preprocessing steps such as missing value treatment, outlier handling, and variable transformation. Feature engineering and selection are performed using Weight of Evidence (WoE) encoding and Information Value (IV) metrics to ensure predictive strength, monotonicity, and interpretability. To ensure the model performs reliably in real-world applications, a triple-split validation framework (Train, Test, and Holdout datasets) is implemented. This approach enables robust out-of-sample evaluation, confirming that model performance is not only strong on training and test data but also generalises well to unseen data. 
 
-Beyond Probability of Default (PD) modelling, the framework is extended to include Loss Given Default (LGD) and Exposure at Default (EAD), enabling the computation of Expected Loss (EL). This provides a full portfolio-level view of credit risk and supports more informed risk management and capital allocation decisions. Overall, the project progresses through three stages: data preprocessing and feature selection, PD modelling using both interpretable and ensemble methods, and final credit risk quantification through LGD, EAD, and credit score derivation.
+Beyond Probability of Default (PD) modelling, the framework is extended to include Loss Given Default (LGD) and Exposure at Default (EAD), enabling the computation of Expected Loss (EL). This provides a full portfolio-level view of credit risk and supports more informed risk management and capital allocation decisions. Overall, the project progresses through these main stages: data preprocessing and feature selection, PD modelling using both interpretable and ensemble methods, and final credit risk quantification through LGD, EAD, and credit score derivation.
 
 ---
 
@@ -60,6 +60,7 @@ The dataset is designed to replicate realistic borrower profiles within the UK c
 The preprocessing pipeline is designed to systematically transform raw borrower data into a clean, structured, and model-ready format, while preserving statistical consistency across all data subsets. A robust triple-split validation framework (Train, Test, and Holdout) is implemented to ensure unbiased model development and evaluation. In particular, the holdout dataset is kept entirely unseen during model training and tuning, enabling a realistic assessment of out-of-sample performance and closely simulating real-world deployment conditions.
 
 **Notebook Name:** `credit_loan_preprocess.ipynb`
+
 **Output Datasets:**
 The preprocessing stage generates separate input (features) and target (labels) datasets for each data split, ensuring clear separation of modelling components and preventing data leakage:
 - `loan_inputs_train.csv` – Training features used for model fitting
@@ -69,7 +70,7 @@ The preprocessing stage generates separate input (features) and target (labels) 
 - `loan_inputs_holdout.csv` – Holdout features reserved for final, unbiased evaluation
 - `loan_targets_holdout.csv` – Holdout labels for true out-of-sample assessment
 
-**Preprocessing Pipeline Key Processes:**
+**Preprocessing Pipeline: Key Processes**
 | Category            | Process                  | Description                                                                                                                                               |
 | ------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Data Cleaning       | Missing Value Imputation | Handles missing values in features (if any) using mode (categorical) and median (numerical) to reduce the impact of outliers.                             |
@@ -85,6 +86,20 @@ The preprocessing stage generates separate input (features) and target (labels) 
 
 ## **Modeling Approach & Implementation**
 
+**Notebook Name:** `credit_risk_PD_model.ipynb`
+**Modeling Output:**
+- `credit_risk_pd_model.pkl`
+- `final_scoring_results.csv`
+
+**Notebook Name:** `credit_risk_PD_model (part 2).ipynb`
+**Modeling Output:**
+- `extra_trees_pipeline.pkl`
+- `random_forest_pipeline.pkl`
+- `gradient_boosting_pipeline.pkl`
+- `xgboost_pipeline.pkl`
+- `mlp_neural_net_pipeline.pkl`
+
+**Modeling Stages and Key Details**
 | Stage                          | Action                        | Technical Detail                                                                                                                                                                                                                                                        |
 | ------------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Class Imbalance Handling       | Resampling Techniques         | Evaluated multiple resampling techniques—including SMOTE, ADASYN, and Tomek Links—through a comparative analysis framework using optimal Youden thresholds. This approach enabled the selection of the most effective method for addressing class imbalance, improving the model’s ability to accurately identify rare default events while maintaining balanced classification performance.|
@@ -93,6 +108,9 @@ The preprocessing stage generates separate input (features) and target (labels) 
 | Credit Score Generation | Application of PD Model for Credit Scoring | Transformed model-derived Probability of Default (PD) into a standardized credit score using log-odds transformation and Points-to-Double-Odds (PDO) scaling. The scoring framework is aligned with established UK credit bureau methodologies (e.g., Experian-style scorecards), enabling consistent interpretation of borrower risk and facilitating actionable credit decisioning through a calibrated scorecard system. |
 | Expected Loss (EL) computation | Estimation of expected credit loss using available exposure, default probability, and recovery assumptions | Calculate EL using available dataset inputs and apply a standard assumed average recovery rate where specific recovery data is not provided. Combine observed or estimated default risk with exposure at default to derive a consistent EL estimate. | 
 | Deployment Readiness           | Model Packaging               | Prepared final model artefacts (e.g., `.pkl` files) for deployment, ensuring reproducibility and seamless integration into production or decision-support systems. |
+
+## Key Results and Visualization
+
 
 
 
