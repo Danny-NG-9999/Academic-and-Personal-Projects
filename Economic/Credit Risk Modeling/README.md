@@ -150,7 +150,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 
 ## **3. Confusion Matrix and Classification Interpretation**
 
-<img width="776" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
 <br>
 
 
