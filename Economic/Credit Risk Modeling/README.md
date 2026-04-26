@@ -148,7 +148,7 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 - Highest F1‑score (0.5424): Demonstrates the most effective trade‑off between recall (identifying actual defaulters) and precision (limiting false alarms).
 - Highest Youden’s Index (0.7703): Reflects superior overall discriminative capability, meaning the model is most effective at separating default from non‑default cases across all probability thresholds.
 
-## **3. Confusion Matrix and Classification Interpretation**
+### **3. Confusion Matrix and Classification Interpretation**
 
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a0b8c32b-e496-40c5-bc2b-13abad2eb8e9" />
 <br>
@@ -172,6 +172,28 @@ Among these, ADASYN (Adaptive Synthetic Sampling) demonstrates the strongest ove
 | **F1-Score (Default)** | 0.5424 | Reflects a deliberate trade-off between high recall and moderate precision. The model prioritises capturing defaults while accepting some loss in classification precision, which is appropriate in a stressed macroeconomic environment. |
 | **Overall Accuracy** | 0.8510 | 85.10% of all predictions are correct. However, accuracy is less informative in this context due to class imbalance and the risk-sensitive objective of the model. |
 </br>
+
+### 4. Discrimation Power: ROC-AUC, GINI coefficient, CAP curve and Kolmogorov-Smirnov (KS) curve Interpretation
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/6a861bf8-f965-4ca8-9300-c94e8a736dc7" />
+
+Gini = 0.9048 – This value indicates near‑perfect discriminatory power. The model excels at ranking borrowers by risk, with very low probability of a randomly selected defaulter receiving a lower risk score than a randomly selected non‑defaulter.
+
+1. ROC-AUC Score (0.9524): Ranking Reliability
+The Receiver Operating Characteristic - Area Under Curve (ROC-AUC) measures the model's ability to rank borrowers correctly.
+
+What it means: A score of 0.9524 means there is a 95.2% probability that the model will assign a higher risk score to a randomly chosen borrower who defaults than to a randomly chosen borrower who does not.
+
+The Interpretation: In the banking industry, any score above 0.80 is considered "Good," and above 0.90 is "Excellent." At 0.95, this model is near-perfect at ordering borrowers from lowest to highest risk. It ensures that the bank isn't just guessing, but is making highly informed decisions.
+
+2. Gini Index (0.9048): Separation Excellence
+The Gini Index (directly derived from the AUC) measures the "inequality" between the scores of defaulters and non-defaulters. It tells us how well the model separates the two groups.
+
+What it means: A Gini of 0.9048 indicates that the model has outstanding discriminatory power. It creates a very clear "gap" between safe and risky applicants.
+
+The Interpretation: In credit scoring, a Gini between 0.60 and 0.70 is often the target for a robust model. Achieving a Gini above 0.90 suggests that the variables used (such as Loan-to-Value, Interest Rates, and Income Stability) are incredibly strong predictors of a borrower’s future behavior.
+
+<img width="844" height="546" alt="image" src="https://github.com/user-attachments/assets/fb4a95d2-a557-4406-bbcd-b29e3dacecb5" />
+
 
 
 
