@@ -1,3 +1,26 @@
+# Credit Risk Modelling | Calculation of PD, LGD, EAD and EL with Machine Learning in Python
+
+Table of contents
+Background
+Project
+Pipeline
+Key documents
+Datasets
+Model performances
+Deliverables
+Getting Started
+Technologies
+Top-directory layout
+License
+Author
+
+- [Project Overview](#project-overview)
+- [Model Objectives](#model-objectives)
+- [Data Sources and Structure)](#data-sources-and-structure)
+- [Data Preprocessing and Engineering](#data-preprocessing-and-engineering)
+
+
+- 
 ## **Project Overview**
 This project develops an advanced credit risk assessment framework designed to estimate borrower default risk with high accuracy and translate it into interpretable credit scores based on customer profiles. The analysis is conducted on a large dataset of approximately 400,000 observations and 23 variables capturing borrower demographics, employment history, socioeconomic indicators, and detailed loan characteristics, including loan-to-value (LTV) ratios, interest rates, and collateral information.
 
