@@ -1,50 +1,53 @@
-# Credit Risk Modelling | Calculation of PD, LGD, EAD and EL with Machine Learning in Python
+# Credit Risk Modelling | Calculation of PD, LGD, EAD and EL in Python
 
-Table of contents
-Background
-Project
-Pipeline
-Key documents
-Datasets
-Model performances
-Deliverables
-Getting Started
-Technologies
-Top-directory layout
-License
-Author
-
-- [Project Overview](#project-overview)
-- [Model Objectives](#model-objectives)
-- [Data Sources and Structure)](#data-sources-and-structure)
+## **Table of Contents**
+- [Project Background](#project-background)
+- [Project Overview and Objectives](#project-overview-and-objectives)
+- [Key Documents and Notebooks](#key-documents-and-notebooks)
+- [Deliverables](#deliverables)
+- [Data Sources and Structure](#data-sources-and-structure)
 - [Data Preprocessing and Engineering](#data-preprocessing-and-engineering)
+- [Key Results, Summary, and Strategic Interpretation](#key-results-summary-and-strategic-interpretation)
+- [Author](#author)
 
+## **Project Background**
+The study is conducted within the context of a typical UK private bank operating in a challenging macroeconomic environment characterised by economic downturn, subdued growth, and heightened uncertainty, partly driven by an oil price shock. These conditions materially increase credit risk exposure, placing greater pressure on banks to adopt robust, data-driven credit decision frameworks that are consistent with prudential standards under Basel II and Basel III.
 
-- 
-## **Project Overview**
-This project develops an advanced credit risk assessment framework designed to estimate borrower default risk with high accuracy and translate it into interpretable credit scores based on customer profiles. The analysis is conducted on a large dataset of approximately 400,000 observations and 23 variables capturing borrower demographics, employment history, socioeconomic indicators, and detailed loan characteristics, including loan-to-value (LTV) ratios, interest rates, and collateral information.
+Credit risk modelling plays a central role in this process. It refers to the assessment of the likelihood that a borrower will fail to meet their contractual debt obligations, whether fully or partially. Defaults may involve complete non-repayment or situations where only a portion of the principal and interest is recovered. Accurately quantifying this risk is critical for maintaining portfolio quality, pricing loans appropriately, and ensuring adequate capital provisioning.
+
+In this context, both statistical techniques and machine learning methods are essential. They enable financial institutions to process large and complex datasets, identify risk patterns, and build predictive models that support more accurate and consistent credit decisions.
 
 The study is set within the context of a typical UK private bank operating under current macroeconomic conditions characterised by economic downturn, sluggish growth, and heightened uncertainty driven in part by an oil crisis. These conditions increase overall credit risk exposure, reinforcing the need for robust, data-driven credit decisioning aligned with Basel II and Basel III regulatory frameworks.
 
-To effectively model default risk, a dual-modelling strategy is adopted to balance interpretability and predictive performance. A transparent “white-box” Logistic Regression model is implemented to ensure explainability and regulatory compliance, while “black-box” ensemble methods such as XGBoost, Random Forest, and Gradient Boosting are used to capture complex, non-linear relationships and interaction effects in borrower behaviour, thereby improving predictive accuracy.
+---
 
-The modelling pipeline incorporates rigorous data preprocessing, including missing value treatment, outlier detection and handling, and appropriate variable transformations. Feature engineering and selection are guided by Weight of Evidence (WoE) encoding and Information Value (IV) metrics to ensure strong predictive power, monotonic relationships, and interpretability of variables. To validate model robustness and ensure generalisability, a triple-split framework is employed, dividing the dataset into training, test, and holdout samples. This approach ensures that performance is consistently evaluated not only in-sample but also on truly unseen data.
+## **Project Overview and Objectives**
+This project develops a comprehensive credit risk assessment framework for a UK private bank operating in a challenging macroeconomic environment. The objective is to accurately estimate borrower default risk and translate it into interpretable credit scores that support data-driven lending decisions. The analysis is based on a large dataset of approximately 400,000 observations and 23 variables, covering borrower demographics, employment history, socioeconomic factors, and detailed loan characteristics such as loan-to-value (LTV), interest rates, and collateral.
 
-The framework extends beyond Probability of Default (PD) modelling to incorporate Loss Given Default (LGD) and Exposure at Default (EAD), enabling the computation of Expected Loss (EL). This provides a comprehensive, portfolio-level measure of credit risk, supporting improved risk management, capital allocation, and strategic decision-making.
+To balance regulatory requirements with predictive performance, a dual-modelling strategy is adopted. A transparent “white-box” Logistic Regression model ensures interpretability and compliance by providing clear reasoning behind credit decisions, while “black-box” ensemble methods—including XGBoost, Random Forest, and Gradient Boosting—are implemented to capture complex, non-linear relationships and enhance predictive accuracy.
 
-Overall, the project progresses through a structured pipeline: data preprocessing and feature selection, PD modelling using both interpretable and ensemble approaches, and final credit risk quantification through LGD, EAD, and credit score derivation.
+The modelling pipeline incorporates rigorous data preprocessing, including missing value treatment, outlier handling, and variable transformation. Feature engineering and selection are guided by Weight of Evidence (WoE) encoding and Information Value (IV), ensuring strong predictive power, stability, and interpretability. Model robustness and generalisability are validated through a triple-split framework (training, test, and holdout datasets), enabling consistent performance evaluation on unseen data.
+
+The primary goal is to build a high-performance classification system that distinguishes between “good” and “bad” borrowers. This is achieved by generating Probability of Default (PD) scores for risk segmentation, identifying key predictive drivers, and ensuring model stability across different data segments. Beyond PD modelling, the framework integrates Loss Given Default (LGD) and Exposure at Default (EAD) to compute Expected Loss (EL), providing a complete and actionable measure of credit risk.
+
+Overall, the framework supports effective decision-making by improving risk identification, enhancing underwriting efficiency, reducing reliance on manual processes, and minimising exposure to non-performing loans through consistent and scalable credit assessment.
+
+--- 
+
+## **Key Documents and Notebooks**
+The project is supported by a series of structured Jupyter notebooks, each focusing on a specific stage of the credit risk modelling pipeline:
+- **Notebook 1:** `credit_loan_preprocess.ipynb` (Covers end-to-end data preprocessing, including data cleaning, missing value treatment, outlier handling, and feature engineering. Feature selection is conducted using Weight of Evidence (WoE) encoding and Information Value (IV) to ensure strong predictive power and interpretability.)
+- **Notebook 2:** `credit_risk_PD_model.ipynb`** (Focuses on the development of Probability of Default (PD) models. This includes both logistic regression (for interpretability) and machine learning approaches, along with the construction of a credit scorecard for risk-based decision-making.)
+- **Notebook 3:** `LGD and EL computation.ipynb` (Implements the estimation of Loss Given Default (LGD) and Exposure at Default (EAD), and integrates these with PD to compute Expected Loss (EL), providing a comprehensive measure of credit risk.)
+- **Notebook 4:** `credit_risk_PD_model (part 2).ipynb` (Extends the PD modelling by applying LIME (Local Interpretable Model-Agnostic Explanations) to interpret black-box machine learning models, enabling deeper insights into feature importance and model decision behaviour at the individual prediction level.)
 
 ---
 
-## **Model Objectives**
-The primary objective of this project is to build a high-performance classification system that accurately distinguishes between "Good" and "Bad" (default) loan applicants. The specific goals include:
-- **Risk Quantification:** Develop a probability-of-default (PD) score for each applicant to facilitate tiered risk management.
-- **Explainability (White Box):** Implement interpretable models (such as Logistic Regression) to satisfy regulatory compliance and provide clear "reason codes" for loan denials or approvals.
-- **Predictive Discrimination (Black Box Modelling):** Apply advanced machine learning algorithms such as XGBoost and Random Forest to effectively capture complex non-linear relationships and interaction effects between variables, thereby understanding the model’s ability to accurately distinguish between good and bad credit risk.
-- **Feature Robustness and Stability:** Identify and validate key predictive drivers to ensure strong predictive performance and consistency across different data segments. This is reinforced through triple-split validation (Train, Test, and Holdout), ensuring that feature behaviour remains stable and generalises reliably across time and population subgroups.
-- **Decision Support:** Deliver a scalable and efficient credit risk tool that streamlines underwriting processes, reduces reliance on manual decision-making, and improves risk management by minimising exposure to non-performing loans (NPLs) through more accurate and consistent credit assessments.
+## Deliverables
+1. Scorecard, easy to interpret in comliance with the requirements
+2. Models on loss given default (LGD), exposure at default (EAD) and expected loss (EL)
 
---- 
+---
 
 ## **Data Sources and Structure**
 The dataset is designed to replicate realistic borrower profiles within the UK consumer credit market, representative of a private banking institution such as Lloyds. It captures the interaction between demographic, financial, and behavioural factors that collectively influence creditworthiness. The synthetic structure is intentionally constructed to reflect economically plausible relationships; for example, higher interest rates and unstable or insufficient income streams are associated with an increased probability of default.
@@ -368,3 +371,6 @@ predict_and_score_visual(sample_home, loaded_artifacts)
 <img width="383" height="724" alt="image" src="https://github.com/user-attachments/assets/8e5f0cec-589a-45ef-bec2-cc31d797a4d8" />
 
 **Note:** Full implementation details, including model logic and visual dashboards, are available in: `LGD and EL computation.ipynb`
+
+## Author
+[Daniel (Viet) Nguyen](https://github.com/Danny-NG-9999)
