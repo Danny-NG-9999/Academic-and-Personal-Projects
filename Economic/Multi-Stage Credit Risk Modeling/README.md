@@ -136,9 +136,21 @@ Although the model has limited loan-level explanatory power, it produces low pre
 - **R² = 0.35** – The model explains 35% of the variation in exposure at default (EAD). This is a reasonably strong result for retail credit risk modeling. Unlike loss given default (LGD), EAD is more predictable because it depends on observable factors such as remaining loan balance, payment history, and credit utilization patterns.
 
 ## Model Performance: Test vs. Holdout Comparison
-- **PD model generalises well** – ROC‑AUC difference is only 0.0039 (0.77 on both sets), indicating stable discriminatory power.
-- **Recall increased on holdout** (0.72 → 0.79) – model catches more actual defaults on unseen data, which is positive for risk avoidance.
-- **Precision dropped slightly** (0.14 → 0.13) – more false alarms on holdout, but acceptable given the recall gain.
-- **F1‑score difference is small** (0.0165) – the trade‑off between recall and precision remains consistent.
-- **LGD model errors are higher on holdout** – MAE rose from 0.046 to 0.058, RMSE from 0.057 to 0.080. This is expected because recovery outcomes are noisier and less predictable in new data.
-- **Overall, both models perform robustly** – no severe overfitting; performance degradation is within reasonable limits for credit risk modeling.
+### PD Model (Probability of Default):
+- **ROC-AUC** decreased only from 0.7666 to 0.7627 (Δ = 0.0039), demonstrating highly stable discriminatory power.
+- **F1-Score** declined marginally (Δ = 0.0165), suggesting only a small reduction in classification effectiveness.
+- **Recall** improved from 72.1% to 78.9%, indicating the holdout model captured an even larger proportion of actual defaults.
+- **Precision** decreased slightly (Δ = 0.0136), which is expected when recall increases and remains acceptable for an imbalanced credit-risk dataset.
+
+### LGD Model (Loss Given Default):
+- **MAE** increased from 4.61% to 5.79% (Δ = 1.19 percentage points), indicating a modest increase in the average LGD prediction error on unseen data.
+- **RMSE** increased from 5.70% to 7.99% (Δ = 2.29 percentage points), suggesting that a small number of larger prediction errors occurred within the holdout sample.
+
+## EAD Model (Exposure at Default):
+- **MAE** decreased slightly from 0.0837 to 0.0817 (Δ = 0.0020), indicating a marginal improvement in average prediction accuracy on the holdout sample.
+- **RMSE** decreased from 0.1154 to 0.1100 (Δ = 0.0055), suggesting that larger prediction errors became slightly less frequent in the unseen dataset.
+
+**Overall Framework Assessment:** Holdout validation demonstrates that the Basel-aligned PD–LGD–EAD framework generalizes effectively to unseen data, with performance metrics remaining closely aligned to those observed in the original test set. The minimal performance deterioration across all three risk components indicates strong model stability, limited evidence of overfitting, and consistent predictive behaviour outside the development sample. Collectively, these results suggest that the framework is robust, well-calibrated, and sufficiently reliable for portfolio-level credit risk measurement, Expected Loss (EL) estimation, and stress-testing applications.
+
+## Author
+Daniel (Viet) Nguyen
