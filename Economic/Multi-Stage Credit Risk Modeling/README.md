@@ -27,7 +27,18 @@ In modern lending, accurately measuring credit risk is essential for making smar
 - **Probability of Default (PD):** A class-weighted model that calculates how likely a borrower is to default, using an optimized threshold (Youden's Index) to catch high-risk profiles early.
 - **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
 - **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
-  
+
+## 📂 Repository Architecture
+
+```text
+.
+├── NoteBooks            # Jupyter notebooks for modelling code
+├── Dataset              # Datasets for the model
+├── Preprocessed Data    # Preprocessed and Cleaned data for modelling
+├── README.md            # Project documentation and executive summary
+└── Model Deployment     # Saved model files for production use
+```
+
 ## Context & Data Framework
 This project develops and applies a Basel-aligned credit risk modeling framework using historical loan-level data from LendingClub, one of the largest peer-to-peer lending platforms in the United States. The analysis focuses on a specific portfolio vintage: loans originated between 2017 and 2018. This specific timeframe provides two distinct advantages for credit risk analysis:
 
