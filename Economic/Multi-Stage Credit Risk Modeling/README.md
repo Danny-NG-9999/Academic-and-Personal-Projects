@@ -41,45 +41,50 @@ A comprehensive data preparation process was performed prior to model developmen
 - Predictive power evaluation using Weight of Evidence (WoE) and Information Value (IV)
 - Removal of redundant, highly correlated, and low-information variables
 
-| **Column**                  | **Meaning**                                                    | **Data Type** |
-| --------------------------- | -------------------------------------------------------------- | ------------- |
-| funded_amnt                 | Original loan amount funded by investors                       | Numerical     |
-| installment                 | Monthly loan repayment amount                                  | Numerical     |
-| total_acc                   | Total number of credit accounts currently held by the borrower | Numerical     |
-| total_rev_hi_lim            | Total revolving credit limit available to the borrower         | Numerical     |
-| open_acc                    | Number of open credit accounts                                 | Numerical     |
-| revol_util                  | Revolving credit utilization rate                              | Numerical     |
-| mths_since_issue_d          | Number of months since loan issuance                           | Numerical     |
-| all_util                    | Overall utilization rate across all credit lines               | Numerical     |
-| fico_mean                   | Average FICO credit score of the borrower                      | Numerical     |
-| tot_cur_bal                 | Total current balance across all accounts                      | Numerical     |
-| pub_rec_bankruptcies        | Number of public bankruptcy records                            | Numerical     |
-| pub_rec                     | Number of derogatory public records                            | Numerical     |
-| mort_acc                    | Number of mortgage accounts                                    | Numerical     |
-| int_rate                    | Interest rate assigned to the loan                             | Numerical     |
-| mo_sin_rcnt_tl              | Months since the most recent credit account was opened         | Numerical     |
-| mo_sin_rcnt_rev_tl_op       | Months since the most recent revolving account was opened      | Numerical     |
-| mths_since_earliest_cr_line | Months since the borrower's earliest credit line was opened    | Numerical     |
-| delinq_2yrs                 | Number of delinquencies within the last two years              | Numerical     |
-| mths_since_last_delinq      | Months since the last delinquency event                        | Numerical     |
-| annual_inc                  | Reported annual income of the borrower                         | Numerical     |
-| inq_last_6mths              | Number of credit inquiries in the previous six months          | Numerical     |
-| dti                         | Debt-to-income ratio                                           | Numerical     |
-| emp_length                  | Length of employment (years)                                   | Numerical     |
-| recovery_rate               | Proportion of the funded loan amount recovered 
-after default recovered through collections, repayments, or recovery actions.                  | Numerical     |
-| CCF
+Following feature selection, the dataset was reduced from 152 variables to 34 highly predictive features suitable for multi-staged modeling. Details are presented below:
+| **Feature**             | **Count**          |
+| ----------------------- | -------------------|
+| Numerical Features      | 25                 |
+| Categorical Features    | 9                  |
+| Total Selected Features | 34                 |
 
 
-| term                        | Loan repayment term (e.g., 36 or 60 months)                    | Categorical   |
-| grade                       | Lending Club assigned credit grade                             | Categorical   |
-| sub_grade                   | Detailed sub-grade within each credit grade                    | Categorical   |
-| home_ownership              | Home ownership status of the borrower                          | Categorical   |
-| verification_status         | Income verification status                                     | Categorical   |
-| purpose                     | Declared purpose of the loan                                   | Categorical   |
-| initial_list_status         | Initial listing status of the loan                             | Categorical   |
-| application_type            | Individual or joint loan application                           | Categorical   |
-| int_rate_tier               | Interest rate band or tier derived from loan pricing           | Categorical   |
+| Column                        | Meaning                                                                                                           | Data Type   |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
+| funded_amnt                   | Original loan amount funded by investors                                                                          | Numerical   |
+| installment                   | Monthly loan repayment amount                                                                                     | Numerical   |
+| total_acc                     | Total number of credit accounts currently held by the borrower                                                    | Numerical   |
+| total_rev_hi_lim              | Total revolving credit limit available to the borrower                                                            | Numerical   |
+| open_acc                      | Number of open credit accounts                                                                                    | Numerical   |
+| revol_util                    | Revolving credit utilization rate                                                                                 | Numerical   |
+| mths_since_issue_d            | Number of months since loan issuance                                                                              | Numerical   |
+| all_util                      | Overall utilization rate across all credit lines                                                                  | Numerical   |
+| fico_mean                     | Average FICO credit score of the borrower                                                                         | Numerical   |
+| tot_cur_bal                   | Total current balance across all accounts                                                                         | Numerical   |
+| pub_rec_bankruptcies          | Number of public bankruptcy records                                                                               | Numerical   |
+| pub_rec                       | Number of derogatory public records                                                                               | Numerical   |
+| mort_acc                      | Number of mortgage accounts                                                                                       | Numerical   |
+| int_rate                      | Interest rate assigned to the loan                                                                                | Numerical   |
+| mo_sin_rcnt_tl                | Months since the most recent credit account was opened                                                            | Numerical   |
+| mo_sin_rcnt_rev_tl_op         | Months since the most recent revolving account was opened                                                         | Numerical   |
+| mths_since_earliest_cr_line   | Months since the borrower's earliest credit line was opened                                                       | Numerical   |
+| delinq_2yrs                   | Number of delinquencies within the last two years                                                                 | Numerical   |
+| mths_since_last_delinq        | Months since the last delinquency event                                                                           | Numerical   |
+| annual_inc                    | Reported annual income of the borrower                                                                            | Numerical   |
+| inq_last_6mths                | Number of credit inquiries in the previous six months                                                             | Numerical   |
+| dti                           | Debt-to-income ratio                                                                                              | Numerical   |
+| emp_length                    | Length of employment (years)                                                                                      | Numerical   |
+| recovery_rate                 | Proportion of the funded loan amount recovered after default through collections, repayments, or recovery actions | Numerical   |
+| CCF                           | Measures the proportion of the committed credit exposure expected to be utilized at the time of default           | Numerical   |
+| term                          | Loan repayment term (e.g., 36 or 60 months)                                                                       | Categorical |
+| grade                         | Lending Club assigned credit grade                                                                                | Categorical |
+| sub_grade                     | Detailed sub-grade within each credit grade                                                                       | Categorical |
+| home_ownership                | Home ownership status of the borrower                                                                             | Categorical |
+| verification_status           | Income verification status                                                                                        | Categorical |
+| purpose                       | Declared purpose of the loan                                                                                      | Categorical |
+| initial_list_status           | Initial listing status of the loan                                                                                | Categorical |
+| application_type              | Individual or joint loan application                                                                              | Categorical |
+| int_rate_tier                 | Interest rate band or tier derived from loan pricing                                                              | Categorical |
 
 The final feature set captures key dimensions of borrower creditworthiness, indebtedness, repayment capacity, credit history, and loan structure. These variables serve as the foundation for developing the Probability of Default (PD), Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) models within the Basel-aligned credit risk framework.
 
