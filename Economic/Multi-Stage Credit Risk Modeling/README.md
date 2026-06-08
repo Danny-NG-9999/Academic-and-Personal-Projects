@@ -104,9 +104,9 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 | **N04 – Holdout Validation and Comparative Model Performance Assessment**                      | Independent out-of-sample validation using a holdout dataset to evaluate model robustness, stability, and generalization performance.                                                |
 
 ## Model performances
+### Probability of Default (PD) Model - Class-Weighted Logistic Regression
 <img width="984" height="578" alt="image" src="https://github.com/user-attachments/assets/f126b37c-02d3-48bd-b7b4-0be3c79510b2" />
 
-### Probability of Default (PD) Model - Class-Weighted Logistic Regression
 - **ROC‑AUC = 0.77** – The model has good discriminatory power, correctly ranking a randomly selected defaulted borrower above a non‑defaulted borrower approximately 77% of the time. In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
 - **Gini Index = 0.53** – This indicates a meaningful separation between good and bad borrowers. A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
 - **KS Statistic = 0.40** – Demonstrates good differentiation between defaulting and non‑defaulting borrowers, as values above 0.30 are typically considered acceptable in the industry.
@@ -115,6 +115,8 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 - **F1 Score = 0.23** – The low F1 score is a direct result of the precision-recall imbalance, reflecting a deliberate modeling decision to prioritize catching defaults (high recall) at the expense of a higher false-alarm rate
 
 ### Loss Given Default (LGD) Model - Stage 1: Classweighted Logistic Regression
+<img width="984" height="576" alt="image" src="https://github.com/user-attachments/assets/d31c230e-79a9-437b-95d8-49fb35e22925" />
+
 - **ROC-AUC = 0.72** – Indicates good ability to distinguish between accounts with no recovery and those with some recovery after default.  
 - **Gini Index = 0.44** – Shows moderate predictive power
 - **Recall = 0.84** – The model captures 84% of accounts that eventually experience recovery, a strong result for recovery identification.  
