@@ -16,6 +16,12 @@ This project develops and applies a Basel-aligned credit risk modeling framework
 By grounding the framework in this mature, real-world data window, the resulting models simulate the actual data pipelines and auditing standards required by institutional lending teams.
 
 ## Data Structure Overview
+Original Dataset
+
+Source: Washington house sales data in 2014 from Kaggle
+Initial Size: ~4,600+ records with 18 columns
+Key Variables: Property characteristics (e.g. size, rooms, condition, etc.), location details (e.g. city, statezip, etc.), temporal information (e.g. sale date, year built, year renovated), and sale price.
+
 
 ## Key documents
 Notebooks shown below:
