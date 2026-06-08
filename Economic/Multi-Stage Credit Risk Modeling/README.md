@@ -16,9 +16,10 @@ From a business perspective, the framework supports credit underwriting, portfol
    - [Original Dataset](#passenger-activity-and-regional-productivity-a-time-dependent-relationship)  
    - [Data for Modelling and Feature Selection](#data_for_modelling--feature-selection)
    - [Data for holdout testing](#data_for_holdout_testing)
-10. [Data Limitations and Measurement Challenges](#data-limitations-and-measurement-challenges)  
-11. [Conclusion](#conclusion)  
-12. [Acknowledgements & Support](#acknowledgements--support)
+4. [Project Notebooks](#project-notebook)
+5. [Model performances](#model-performances)
+6. [Model Performance: Test vs. Holdout Comparison](#model-performance:-test-vs.-holdout-comparision)
+7. [Acknowledgements & Support](#acknowledgements--support)
 
 ## Introduction
 In modern lending, accurately measuring credit risk is essential for making smart lending decisions, managing portfolios, allocating capital, and meeting regulatory standards. This repository contains a production-grade credit risk framework designed around the Basel Committee’s Internal Ratings-Based (IRB) guidelines. While standard credit models usually stop after predicting whether a borrower will default, this framework goes a step further. It uses an integrated, multi-stage pipeline to analyze the entire risk lifecycle by breaking credit risk down into three industry-standard metrics
