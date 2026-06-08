@@ -11,15 +11,16 @@ From a business perspective, the framework supports credit underwriting, portfol
 
 ## 📚 Table of Contents
 1. [Introduction](#introduction)
-2. [Context & Data Framework](#context--data-framework)
-3. [Data Structure Overview](#data-structure-overview)  
+2. [Repository Architecture](#repository-architecture)
+3. [Context & Data Framework](#context--data-framework)
+4. [Data Structure Overview](#data-structure-overview)  
    - [Original Dataset](#passenger-activity-and-regional-productivity-a-time-dependent-relationship)  
    - [Data for Modelling and Feature Selection](#data_for_modelling--feature-selection)
    - [Data for holdout testing](#data_for_holdout_testing)
-4. [Project Notebooks](#project-notebook)
-5. [Model performances](#model-performances)
-6. [Model Performance: Test vs. Holdout Comparison](#model-performance-test-vs-holdout-comparison)
-7. [Acknowledgements & Support](#acknowledgements--support)
+5. [Project Notebooks](#project-notebook)
+6. [Model performances](#model-performances)
+7. [Model Performance: Test vs. Holdout Comparison](#model-performance-test-vs-holdout-comparison)
+8. [Acknowledgements & Support](#acknowledgements--support)
 
 ## Introduction
 In modern lending, accurately measuring credit risk is essential for making smart lending decisions, managing portfolios, allocating capital, and meeting regulatory standards. This repository contains a production-grade credit risk framework designed around the Basel Committee’s Internal Ratings-Based (IRB) guidelines. While standard credit models usually stop after predicting whether a borrower will default, this framework goes a step further. It uses an integrated, multi-stage pipeline to analyze the entire risk lifecycle by breaking credit risk down into three industry-standard metrics
@@ -28,15 +29,14 @@ In modern lending, accurately measuring credit risk is essential for making smar
 - **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
 - **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
 
-## 📂 Repository Architecture
-
+## Repository Architecture
 ```text
 .
-├── NoteBooks            # Jupyter notebooks for modelling code
 ├── Dataset              # Datasets for the model
+├── Model Deployment     # Saved model files for production use
+├── NoteBooks            # Jupyter notebooks for modelling code
 ├── Preprocessed Data    # Preprocessed and Cleaned data for modelling
-├── README.md            # Project documentation and executive summary
-└── Model Deployment     # Saved model files for production use
+└── README.md            # Project documentation and executive summary
 ```
 
 ## Context & Data Framework
