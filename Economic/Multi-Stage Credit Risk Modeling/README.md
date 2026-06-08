@@ -9,7 +9,16 @@ Model performance was strong and stable across both development and holdout data
 
 From a business perspective, the framework supports credit underwriting, portfolio monitoring, risk-based pricing, stress testing, capital planning, and expected credit loss estimation. By converting borrower-level characteristics into expected monetary losses through the Basel equation (EL = PD × LGD × EAD), the framework provides a practical and scalable solution for portfolio-level credit risk management.
 
----
+## 📚 Table of Contents
+1. [Introduction](#introduction)
+2. [Context & Data Framework](#context--data-framework)
+3. [Data Structure Overview](#data-structure-overview)  
+   - [Original Dataset](#passenger-activity-and-regional-productivity-a-time-dependent-relationship)  
+   - [Data for Modelling and Feature Selection](#data_for_modelling--feature-selection)
+   - [Data for holdout testing](#data_for_holdout_testing)
+10. [Data Limitations and Measurement Challenges](#data-limitations-and-measurement-challenges)  
+11. [Conclusion](#conclusion)  
+12. [Acknowledgements & Support](#acknowledgements--support)
 
 ## Introduction
 In modern lending, accurately measuring credit risk is essential for making smart lending decisions, managing portfolios, allocating capital, and meeting regulatory standards. This repository contains a production-grade credit risk framework designed around the Basel Committee’s Internal Ratings-Based (IRB) guidelines. While standard credit models usually stop after predicting whether a borrower will default, this framework goes a step further. It uses an integrated, multi-stage pipeline to analyze the entire risk lifecycle by breaking credit risk down into three industry-standard metrics
@@ -18,8 +27,6 @@ In modern lending, accurately measuring credit risk is essential for making smar
 - **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
 - **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
   
----
-
 ## Context & Data Framework
 This project develops and applies a Basel-aligned credit risk modeling framework using historical loan-level data from LendingClub, one of the largest peer-to-peer lending platforms in the United States. The analysis focuses on a specific portfolio vintage: loans originated between 2017 and 2018. This specific timeframe provides two distinct advantages for credit risk analysis:
 
@@ -28,15 +35,11 @@ This project develops and applies a Basel-aligned credit risk modeling framework
 
 By grounding the framework in this mature, real-world data window, the resulting models simulate the actual data pipelines and auditing standards required by institutional lending teams.
 
----
-
 ## Data Structure Overview
 **Dataset:** Lending Club Loan Data
 **Source:** https://www.kaggle.com/datasets/wordsforthewise/lending-club/data
 **Observation Period:** 2017–2018
 **Domain:** Consumer Lending and Credit Risk Analytics
-
----
 
 ### Original Dataset
 The original Lending Club dataset comprises over 1.2 million loan records issued between 2007 and 2018, containing approximately 152 variables that capture borrower demographics, credit characteristics, loan attributes, repayment behavior, and recovery outcomes.
@@ -171,5 +174,9 @@ Although the model has limited loan-level explanatory power, it produces low pre
 
 **Overall Framework Assessment:** Holdout validation demonstrates that the Basel-aligned PD–LGD–EAD framework generalizes effectively to unseen data, with performance metrics remaining closely aligned to those observed in the original test set. The minimal performance deterioration across all three risk components indicates strong model stability, limited evidence of overfitting, and consistent predictive behaviour outside the development sample. Collectively, these results suggest that the framework is robust, well-calibrated, and sufficiently reliable for portfolio-level credit risk measurement, Expected Loss (EL) estimation, and stress-testing applications.
 
-## Author
-Daniel (Viet) Nguyen
+## Acknowledgements & Support
+**Author:** [Daniel (Viet) Nguyen](https://github.com/Danny-NG-9999)
+
+**Copyright:** © 2025 Daniel (Viet) Nguyen. All rights reserved.  
+
+If you found this project useful or insightful, please **consider giving it a ⭐ on GitHub** — your support helps me continue creating open-source projects and sharing knowledge! 🙏🙏🙏
