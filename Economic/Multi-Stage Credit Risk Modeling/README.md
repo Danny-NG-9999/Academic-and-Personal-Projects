@@ -3,9 +3,9 @@
 ## Introduction
 In modern lending, accurately measuring credit risk is essential for making smart lending decisions, managing portfolios, allocating capital, and meeting regulatory standards. This repository contains a production-grade credit risk framework designed around the Basel Committee’s Internal Ratings-Based (IRB) guidelines. While standard credit models usually stop after predicting whether a borrower will default, this framework goes a step further. It uses an integrated, multi-stage pipeline to analyze the entire risk lifecycle by breaking credit risk down into three industry-standard metrics
 
-- Probability of Default (PD): A class-weighted model that calculates how likely a borrower is to default, using an optimized threshold (Youden's Index) to catch high-risk profiles early.
-- Loss Given Default (LGD): A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
-- Exposure at Default (EAD): A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
+- **Probability of Default (PD):** A class-weighted model that calculates how likely a borrower is to default, using an optimized threshold (Youden's Index) to catch high-risk profiles early.
+- **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
+- **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
 
 ## Context & Data Framework
 This project develops and applies a Basel-aligned credit risk modeling framework using historical loan-level data from LendingClub, one of the largest peer-to-peer lending platforms in the United States. The analysis focuses on a specific portfolio vintage: loans originated between 2017 and 2018. This specific timeframe provides two distinct advantages for credit risk analysis:
@@ -33,26 +33,14 @@ For this project, a representative sample of approximately 250,000 loans origina
 | Selected Observation Period | Jan-2017 to Dec-2018    |
 | Working Sample Size         | ~250,000 Loans          |
 
-
 ### Data Cleaning and Feature Selection
-
 A comprehensive data preparation process was performed prior to model development, including:
+- Missing value treatment and data quality checks
+- Feature engineering and business-driven variable creation
+- Multicollinearity assessment using Variance Inflation Factor (VIF) and Condition Index (CI)
+- Predictive power evaluation using Weight of Evidence (WoE) and Information Value (IV)
+- Removal of redundant, highly correlated, and low-information variables
 
-Missing value treatment and data quality checks
-Feature engineering and business-driven variable creation
-Multicollinearity assessment using Variance Inflation Factor (VIF) and Condition Index (CI)
-Predictive power evaluation using Weight of Evidence (WoE) and Information Value (IV)
-Removal of redundant, highly correlated, and low-information variables
-- **Source:** [Lending Club loan data from Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club/data)
-
-**Original Dataset**
-- Initial Size: ~250,000 records between 2017-2018 (out of 1.2 million records) with 152 columns initially
-
-**Cleaned Dataset**
-- Cleaned Size: ~250,000 records between 2017-2018 with 32 columns after cleaning and feature selection processing using VIF, CI, WOE and IV. Following Weight of Evidence (WoE) transformation and Information Value (IV) analysis, a total of **32 predictive features** were retained for model development, consisting of **23 numerical variables** and **9 categorical variables**.
-
-
-Final Feature Selection & Schema Dictionary
 | **Column**                  | **Meaning**                                                    | **Data Type** |
 | --------------------------- | -------------------------------------------------------------- | ------------- |
 | funded_amnt                 | Original loan amount funded by investors                       | Numerical     |
@@ -78,6 +66,11 @@ Final Feature Selection & Schema Dictionary
 | inq_last_6mths              | Number of credit inquiries in the previous six months          | Numerical     |
 | dti                         | Debt-to-income ratio                                           | Numerical     |
 | emp_length                  | Length of employment (years)                                   | Numerical     |
+| recovery_rate               | Proportion of the funded loan amount recovered 
+after default recovered through collections, repayments, or recovery actions.                  | Numerical     |
+| CCF
+
+
 | term                        | Loan repayment term (e.g., 36 or 60 months)                    | Categorical   |
 | grade                       | Lending Club assigned credit grade                             | Categorical   |
 | sub_grade                   | Detailed sub-grade within each credit grade                    | Categorical   |
@@ -88,17 +81,7 @@ Final Feature Selection & Schema Dictionary
 | application_type            | Individual or joint loan application                           | Categorical   |
 | int_rate_tier               | Interest rate band or tier derived from loan pricing           | Categorical   |
 
-### Feature Summary
-
-| Feature Category     | Count  |
-| -------------------- | ------ |
-| Numerical Features   | 23     |
-| Categorical Features | 9      |
-| **Total Features**   | **32** |
-
-
-Key Variables: Property characteristics (e.g. size, rooms, condition, etc.), location details (e.g. city, statezip, etc.), temporal information (e.g. sale date, year built, year renovated), and sale price.
-
+The final feature set captures key dimensions of borrower creditworthiness, indebtedness, repayment capacity, credit history, and loan structure. These variables serve as the foundation for developing the Probability of Default (PD), Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) models within the Basel-aligned credit risk framework.
 
 ## Key documents
 Notebooks shown below:
