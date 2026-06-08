@@ -48,7 +48,7 @@ Following feature selection, the dataset was reduced from 152 variables to 34 hi
 | Categorical Features    | 9                  |
 | Total Selected Features | 34                 |
 
-
+**Column breakdown**
 | Column                        | Meaning                                                                                                           | Data Type   |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
 | funded_amnt                   | Original loan amount funded by investors                                                                          | Numerical   |
