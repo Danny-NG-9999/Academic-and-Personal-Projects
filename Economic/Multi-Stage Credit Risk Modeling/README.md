@@ -37,6 +37,17 @@ In modern lending, accurately measuring credit risk is essential for making smar
 ├── README.md 
 └── requirements.txt
 
+## 📂 Repository Architecture
+
+```text
+.
+├── NoteBooks            # Jupyter notebooks for modelling code
+├── Dataset              # Datasets for the model
+├── Preprocessed Data    # Preprocessed and Cleaned data for modelling
+├── README.md            # Project documentation and executive summary
+└── Model Deployment     # Saved model files for production use
+```
+
 ## Context & Data Framework
 This project develops and applies a Basel-aligned credit risk modeling framework using historical loan-level data from LendingClub, one of the largest peer-to-peer lending platforms in the United States. The analysis focuses on a specific portfolio vintage: loans originated between 2017 and 2018. This specific timeframe provides two distinct advantages for credit risk analysis:
 
