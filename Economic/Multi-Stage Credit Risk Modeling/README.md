@@ -16,10 +16,87 @@ This project develops and applies a Basel-aligned credit risk modeling framework
 By grounding the framework in this mature, real-world data window, the resulting models simulate the actual data pipelines and auditing standards required by institutional lending teams.
 
 ## Data Structure Overview
-Original Dataset
+**Dataset:** Lending Club Loan Data
+**Source:** https://www.kaggle.com/datasets/wordsforthewise/lending-club/data
+**Observation Period:** 2017–2018
+**Domain:** Consumer Lending and Credit Risk Analytics
 
-Source: Washington house sales data in 2014 from Kaggle
-Initial Size: ~4,600+ records with 18 columns
+### Original Dataset
+The original Lending Club dataset contains over 1.2 million loan records and approximately 152 variables spanning borrower characteristics, loan attributes, payment performance, and recovery information.
+
+For this project, a representative sample of approximately 250,000 loans originated between 2017 and 2018 was extracted to construct and validate the credit risk modeling framework.
+
+| **Metric**                  | **Value**               |
+| --------------------------- | ------------------------|
+| Original Dataset Size       | ~1.2 Million Loans      |
+| Original Feature Count      | 152 Columns             |
+| Selected Observation Period | Jan-2017 to Dec-2018    |
+| Working Sample Size         | ~250,000 Loans          |
+
+
+### Data Cleaning and Feature Selection
+
+A comprehensive data preparation process was performed prior to model development, including:
+
+Missing value treatment and data quality checks
+Feature engineering and business-driven variable creation
+Multicollinearity assessment using Variance Inflation Factor (VIF) and Condition Index (CI)
+Predictive power evaluation using Weight of Evidence (WoE) and Information Value (IV)
+Removal of redundant, highly correlated, and low-information variables
+- **Source:** [Lending Club loan data from Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club/data)
+
+**Original Dataset**
+- Initial Size: ~250,000 records between 2017-2018 (out of 1.2 million records) with 152 columns initially
+
+**Cleaned Dataset**
+- Cleaned Size: ~250,000 records between 2017-2018 with 32 columns after cleaning and feature selection processing using VIF, CI, WOE and IV. Following Weight of Evidence (WoE) transformation and Information Value (IV) analysis, a total of **32 predictive features** were retained for model development, consisting of **23 numerical variables** and **9 categorical variables**.
+
+
+Final Feature Selection & Schema Dictionary
+| **Column**                  | **Meaning**                                                    | **Data Type** |
+| --------------------------- | -------------------------------------------------------------- | ------------- |
+| funded_amnt                 | Original loan amount funded by investors                       | Numerical     |
+| installment                 | Monthly loan repayment amount                                  | Numerical     |
+| total_acc                   | Total number of credit accounts currently held by the borrower | Numerical     |
+| total_rev_hi_lim            | Total revolving credit limit available to the borrower         | Numerical     |
+| open_acc                    | Number of open credit accounts                                 | Numerical     |
+| revol_util                  | Revolving credit utilization rate                              | Numerical     |
+| mths_since_issue_d          | Number of months since loan issuance                           | Numerical     |
+| all_util                    | Overall utilization rate across all credit lines               | Numerical     |
+| fico_mean                   | Average FICO credit score of the borrower                      | Numerical     |
+| tot_cur_bal                 | Total current balance across all accounts                      | Numerical     |
+| pub_rec_bankruptcies        | Number of public bankruptcy records                            | Numerical     |
+| pub_rec                     | Number of derogatory public records                            | Numerical     |
+| mort_acc                    | Number of mortgage accounts                                    | Numerical     |
+| int_rate                    | Interest rate assigned to the loan                             | Numerical     |
+| mo_sin_rcnt_tl              | Months since the most recent credit account was opened         | Numerical     |
+| mo_sin_rcnt_rev_tl_op       | Months since the most recent revolving account was opened      | Numerical     |
+| mths_since_earliest_cr_line | Months since the borrower's earliest credit line was opened    | Numerical     |
+| delinq_2yrs                 | Number of delinquencies within the last two years              | Numerical     |
+| mths_since_last_delinq      | Months since the last delinquency event                        | Numerical     |
+| annual_inc                  | Reported annual income of the borrower                         | Numerical     |
+| inq_last_6mths              | Number of credit inquiries in the previous six months          | Numerical     |
+| dti                         | Debt-to-income ratio                                           | Numerical     |
+| emp_length                  | Length of employment (years)                                   | Numerical     |
+| term                        | Loan repayment term (e.g., 36 or 60 months)                    | Categorical   |
+| grade                       | Lending Club assigned credit grade                             | Categorical   |
+| sub_grade                   | Detailed sub-grade within each credit grade                    | Categorical   |
+| home_ownership              | Home ownership status of the borrower                          | Categorical   |
+| verification_status         | Income verification status                                     | Categorical   |
+| purpose                     | Declared purpose of the loan                                   | Categorical   |
+| initial_list_status         | Initial listing status of the loan                             | Categorical   |
+| application_type            | Individual or joint loan application                           | Categorical   |
+| int_rate_tier               | Interest rate band or tier derived from loan pricing           | Categorical   |
+
+### Feature Summary
+
+| Feature Category     | Count  |
+| -------------------- | ------ |
+| Numerical Features   | 23     |
+| Categorical Features | 9      |
+| **Total Features**   | **32** |
+
+
 Key Variables: Property characteristics (e.g. size, rooms, condition, etc.), location details (e.g. city, statezip, etc.), temporal information (e.g. sale date, year built, year renovated), and sale price.
 
 
