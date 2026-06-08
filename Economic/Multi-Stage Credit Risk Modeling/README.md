@@ -22,9 +22,9 @@ By grounding the framework in this mature, real-world data window, the resulting
 **Domain:** Consumer Lending and Credit Risk Analytics
 
 ### Original Dataset
-The original Lending Club dataset contains over 1.2 million loan records and approximately 152 variables spanning borrower characteristics, loan attributes, payment performance, and recovery information.
+The original Lending Club dataset comprises over 1.2 million loan records issued between 2007 and 2018, containing approximately 152 variables that capture borrower demographics, credit characteristics, loan attributes, repayment behavior, and recovery outcomes.
 
-For this project, a representative sample of approximately 250,000 loans originated between 2017 and 2018 was extracted to construct and validate the credit risk modeling framework.
+To develop and validate the Basel-aligned credit risk modeling framework, a representative sample of approximately 250,000 loans originated between 2017 and 2018 was extracted. Focusing on the most recent lending period ensures that the models are trained on borrower behavior and underwriting practices that are more reflective of contemporary credit risk conditions while maintaining a sufficiently large sample for robust statistical analysis.
 
 | **Metric**                  | **Value**               |
 | --------------------------- | ------------------------|
@@ -33,7 +33,7 @@ For this project, a representative sample of approximately 250,000 loans origina
 | Selected Observation Period | Jan-2017 to Dec-2018    |
 | Working Sample Size         | ~250,000 Loans          |
 
-### Data Cleaning and Feature Selection
+### Data for Modelling and Feature Selection
 A comprehensive data preparation process was performed prior to model development, including:
 - Missing value treatment and data quality checks
 - Feature engineering and business-driven variable creation
@@ -88,9 +88,22 @@ Following feature selection, the dataset was reduced from 152 variables to 34 hi
 
 The final feature set captures key dimensions of borrower creditworthiness, indebtedness, repayment capacity, credit history, and loan structure. These variables serve as the foundation for developing the Probability of Default (PD), Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) models within the Basel-aligned credit risk framework.
 
-## Key documents
-Notebooks shown below:
-L01 - A preprocessing notebook and feature engineering
-L02 - A notebook on modelling probability of default (PD), delivering scorecard and calculating cutoff rate
-L03 - A notebook on modelling loss given default (LGD), exposure at default (EAD) and expected loss (EL)
-L04 - A notebook on checking population stability index
+### Data for holdout testing
+To assess the robustness and generalizability of the developed models, an independent holdout dataset comprising 50,000 loans was extracted from the same observation period (January 2017 to December 2018).
+
+This dataset was completely excluded from the model development process, including feature selection, training, validation, and hyperparameter tuning. As a result, it serves as an unbiased benchmark for evaluating model performance on previously unseen data.
+
+The holdout sample was used to assess the stability and predictive accuracy of the Probability of Default (PD), Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) models. Comparing performance metrics between the development dataset and the holdout dataset provides insight into the models' ability to generalize to new lending portfolios and helps identify potential overfitting or performance degradation.
+
+## Project Notebooks
+### Project Notebooks
+
+| Notebook                                                                                       | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **N01 – Data Preprocessing and Feature Engineering for Credit Risk Modeling**                  | Data acquisition, cleaning, exploratory analysis, feature engineering, and variable selection using VIF, Condition Index (CI), Weight of Evidence (WoE), and Information Value (IV). |
+| **N02 – Probability of Default (PD) Modeling and Credit Scorecard Development**                | Development of the Probability of Default model, scorecard construction, model evaluation, calibration, and performance assessment.                                                  |
+| **N03 – Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) Modeling** | Development of Basel-aligned LGD and EAD models, integration of risk parameters, and construction of the Expected Loss framework.                                                    |
+| **N04 – Holdout Validation and Comparative Model Performance Assessment**                      | Independent out-of-sample validation using a holdout dataset to evaluate model robustness, stability, and generalization performance.                                                |
+
+
+## 
