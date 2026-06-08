@@ -96,14 +96,75 @@ This dataset was completely excluded from the model development process, includi
 The holdout sample was used to assess the stability and predictive accuracy of the Probability of Default (PD), Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) models. Comparing performance metrics between the development dataset and the holdout dataset provides insight into the models' ability to generalize to new lending portfolios and helps identify potential overfitting or performance degradation.
 
 ## Project Notebooks
-### Project Notebooks
-
 | Notebook                                                                                       | Description                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **N01 – Data Preprocessing and Feature Engineering for Credit Risk Modeling**                  | Data acquisition, cleaning, exploratory analysis, feature engineering, and variable selection using VIF, Condition Index (CI), Weight of Evidence (WoE), and Information Value (IV). |
+| **N01 – Data Preprocessing and Feature Engineering for Credit Risk Modeling**                  | Data acquisition, cleaning, Exploratory Data Analysis (EDA), feature engineering, and variable selection using VIF, Condition Index (CI), Weight of Evidence (WoE), and Information Value (IV). |
 | **N02 – Probability of Default (PD) Modeling and Credit Scorecard Development**                | Development of the Probability of Default model, scorecard construction, model evaluation, calibration, and performance assessment.                                                  |
 | **N03 – Loss Given Default (LGD), Exposure at Default (EAD), and Expected Loss (EL) Modeling** | Development of Basel-aligned LGD and EAD models, integration of risk parameters, and construction of the Expected Loss framework.                                                    |
 | **N04 – Holdout Validation and Comparative Model Performance Assessment**                      | Independent out-of-sample validation using a holdout dataset to evaluate model robustness, stability, and generalization performance.                                                |
 
+## Model performances
 
-## 
+### Probability of Default (PD) Model - Class-Weighted Logistic Regression
+- ROC-AUC = 0.77
+  - The model has good discriminatory power.
+  - It can correctly rank a randomly selected defaulted borrower above a non-defaulted borrower approximately 77% of the time.
+  - In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
+Gini Index = 0.53
+Indicates a meaningful separation between good and bad borrowers.
+A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
+KS Statistic = 0.40
+Demonstrates good differentiation between defaulting and non-defaulting borrowers.
+Values above 0.30 are typically considered acceptable in banking applications.
+Following models are trained for the use in our case
+
+Probability of default (PD)
+Model: Classweighted Logistic regression
+Metrics: 
+0	Optimal Threshold	0.50
+1	Youden's Index	0.40
+2	ROC-AUC	0.77
+Gini Index	0.53
+0	KS Statistic	0.40
+1	KS Threshold	0.50
+3	F1 Score	0.23
+4	Recall	0.72
+5	Precision	0.14
+Calibration model
+Brier Score                : 0.0594
+Mean Absolute Calib Error  : 0.0052
+
+Loss given default (LGD)
+Stage 1 Model: Classweighted Logistic Regression
+0	Optimal Threshold	0.42
+1	Youden's Index	0.33
+2	ROC-AUC	0.72
+3	F1 Score	0.61
+4	Recall	0.84
+5	Precision	0.48
+0	ROC-AUC Score	0.72
+1	Gini Index	0.44
+
+Stage 2 Model: Linear Regression (OLS)
+	Model	MAE	MSE	RMSE	R2
+0	OLS	0.03	0.00	0.05	0.02
+
+LGD Model: Linear Regression (OLS)
+
+Metric	Value
+0	Mean Actual LGD	0.96
+1	Mean Predicted LGD	0.95
+2	Mean Absolute Error (MAE)	0.05
+3	Mean Squared Error (MSE)	0.00
+4	Root Mean Squared Error (RMSE)	0.06
+5	R² Coefficient of Determination	0.03
+6	Systemic Bias (Mean Residual)	0.01
+
+
+
+
+
+
+Exposure at default (EAD)
+Model: Linear regression
+Metric: Accuracy: 0.658
