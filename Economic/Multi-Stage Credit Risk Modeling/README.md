@@ -1,11 +1,24 @@
 # Basel-Aligned Multi-Stage Credit Risk Modeling Framework: Development and Application (White-Box model)
 
+## Executive Summary
+This project develops a Basel-aligned multi-stage credit risk modeling framework using approximately 250,000 Lending Club loans originated between 2017 and 2018, with an independent 50,000-loan holdout dataset for validation. The framework estimates the three core credit risk parameters used in the Basel Internal Ratings-Based (IRB) approach—Probability of Default (PD), Loss Given Default (LGD), and Exposure at Default (EAD)—and combines them to calculate Expected Loss (EL) at both the loan and portfolio levels.
+
+The modeling architecture separates credit risk into its key components rather than treating it as a single prediction problem. A class-weighted logistic regression model estimates default probability, a two-stage LGD framework models recovery behaviour after default, and a regression-based Credit Conversion Factor (CCF) model estimates exposure at the point of default. Together, these models provide a transparent and interpretable framework for credit loss estimation.
+
+Model performance was strong and stable across both development and holdout datasets. The PD model achieved a ROC-AUC of 0.77, identifying approximately 72% of default events, while the LGD recovery model achieved a ROC-AUC of 0.72 and captured 84% of recoverable accounts. The EAD model explained approximately 35% of exposure variability, demonstrating solid predictive capability for exposure estimation. Holdout validation showed minimal performance deterioration, indicating strong generalization and limited evidence of overfitting.
+
+From a business perspective, the framework supports credit underwriting, portfolio monitoring, risk-based pricing, stress testing, capital planning, and expected credit loss estimation. By converting borrower-level characteristics into expected monetary losses through the Basel equation (EL = PD × LGD × EAD), the framework provides a practical and scalable solution for portfolio-level credit risk management.
+
+---
+
 ## Introduction
 In modern lending, accurately measuring credit risk is essential for making smart lending decisions, managing portfolios, allocating capital, and meeting regulatory standards. This repository contains a production-grade credit risk framework designed around the Basel Committee’s Internal Ratings-Based (IRB) guidelines. While standard credit models usually stop after predicting whether a borrower will default, this framework goes a step further. It uses an integrated, multi-stage pipeline to analyze the entire risk lifecycle by breaking credit risk down into three industry-standard metrics
 
 - **Probability of Default (PD):** A class-weighted model that calculates how likely a borrower is to default, using an optimized threshold (Youden's Index) to catch high-risk profiles early.
 - **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
 - **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
+  
+---
 
 ## Context & Data Framework
 This project develops and applies a Basel-aligned credit risk modeling framework using historical loan-level data from LendingClub, one of the largest peer-to-peer lending platforms in the United States. The analysis focuses on a specific portfolio vintage: loans originated between 2017 and 2018. This specific timeframe provides two distinct advantages for credit risk analysis:
@@ -15,11 +28,15 @@ This project develops and applies a Basel-aligned credit risk modeling framework
 
 By grounding the framework in this mature, real-world data window, the resulting models simulate the actual data pipelines and auditing standards required by institutional lending teams.
 
+---
+
 ## Data Structure Overview
 **Dataset:** Lending Club Loan Data
 **Source:** https://www.kaggle.com/datasets/wordsforthewise/lending-club/data
 **Observation Period:** 2017–2018
 **Domain:** Consumer Lending and Credit Risk Analytics
+
+---
 
 ### Original Dataset
 The original Lending Club dataset comprises over 1.2 million loan records issued between 2007 and 2018, containing approximately 152 variables that capture borrower demographics, credit characteristics, loan attributes, repayment behavior, and recovery outcomes.
@@ -137,6 +154,8 @@ Although the model has limited loan-level explanatory power, it produces low pre
 
 ## Model Performance: Test vs. Holdout Comparison
 ### PD Model (Probability of Default):
+<img width="984" height="576" alt="image" src="https://github.com/user-attachments/assets/90b51594-9b01-46e9-9a22-87902b10e3fc" />
+
 - **ROC-AUC** decreased only from 0.7666 to 0.7627 (Δ = 0.0039), demonstrating highly stable discriminatory power.
 - **F1-Score** declined marginally (Δ = 0.0165), suggesting only a small reduction in classification effectiveness.
 - **Recall** improved from 72.1% to 78.9%, indicating the holdout model captured an even larger proportion of actual defaults.
