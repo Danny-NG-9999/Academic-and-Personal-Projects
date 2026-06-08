@@ -105,43 +105,48 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 
 ## Model performances
 <img width="984" height="578" alt="image" src="https://github.com/user-attachments/assets/f126b37c-02d3-48bd-b7b4-0be3c79510b2" />
+
 ### Probability of Default (PD) Model - Class-Weighted Logistic Regression
+
 - **ROC-AUC = 0.77**
   - The model has good discriminatory power.
-  - It can correctly rank a randomly selected defaulted borrower above a non-defaulted borrower approximately 77% of the time.
+  - It can correctly rank a randomly selected defaulted borrower above a non‑defaulted borrower approximately 77% of the time.
   - In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
-- Gini Index = 0.53
- - Indicates a meaningful separation between good and bad borrowers.
- - A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
-- KS Statistic = 0.40
-  - Demonstrates good differentiation between defaulting and non-defaulting borrowers.
-  - Values above 0.30 are typically considered acceptable in the industry
-- Recall = 0.72
-	- The model successfully identifies 72% of actual defaults.
-- Precision = 0.14
-	- Only 14% of borrowers predicted as defaults actually default.
-- F1 Score = 0.23
- - Reflects the trade-off between high recall and low precision.
- - The model prioritizes capturing defaults rather than minimizing false alarms.
 
-Probability of default (PD)
-Model: Classweighted Logistic regression
-Metrics: 
-0	Optimal Threshold	0.50
-1	Youden's Index	0.40
-2	ROC-AUC	0.77
-Gini Index	0.53
-0	KS Statistic	0.40
-1	KS Threshold	0.50
-3	F1 Score	0.23
-4	Recall	0.72
-5	Precision	0.14
-Calibration model
-Brier Score                : 0.0594
-Mean Absolute Calib Error  : 0.0052
+- **Gini Index = 0.53**
+  - Indicates a meaningful separation between good and bad borrowers.
+  - A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
 
-Loss given default (LGD)
-Stage 1 Model: Classweighted Logistic Regression
+- **KS Statistic = 0.40**
+  - Demonstrates good differentiation between defaulting and non‑defaulting borrowers.
+  - Values above 0.30 are typically considered acceptable in the industry.
+
+- **Recall = 0.72**
+  - The model successfully identifies 72% of actual defaults.
+
+- **Precision = 0.14**
+  - Only 14% of borrowers predicted as defaults actually default.
+
+- **F1 Score = 0.23**
+  - Reflects the trade‑off between high recall and low precision.
+  - The model prioritizes capturing defaults rather than minimizing false alarms.
+
+- **ROC‑AUC = 0.77** – The model has good discriminatory power, correctly ranking a randomly selected defaulted borrower above a non‑defaulted borrower approximately 77% of the time. In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
+
+- **Gini Index = 0.53** – This indicates a meaningful separation between good and bad borrowers. A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
+
+- **KS Statistic = 0.40** – Demonstrates good differentiation between defaulting and non‑defaulting borrowers, as values above 0.30 are typically considered acceptable in the industry.
+
+- **Recall = 0.72** – The model successfully identifies 72% of actual defaults.
+
+- **Precision = 0.14** – Only 14% of borrowers predicted as defaults actually default.
+
+- **F1 Score = 0.23** – Reflects the trade‑off between high recall and low precision; the model prioritizes capturing defaults rather than minimizing false alarms.
+
+- 
+### Loss given default (LGD) Model - Stage 1: Classweighted Logistic Regression
+
+
 0	Optimal Threshold	0.42
 1	Youden's Index	0.33
 2	ROC-AUC	0.72
