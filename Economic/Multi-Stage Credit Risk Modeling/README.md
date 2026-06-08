@@ -107,70 +107,29 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 <img width="984" height="578" alt="image" src="https://github.com/user-attachments/assets/f126b37c-02d3-48bd-b7b4-0be3c79510b2" />
 
 ### Probability of Default (PD) Model - Class-Weighted Logistic Regression
-
-- **ROC-AUC = 0.77**
-  - The model has good discriminatory power.
-  - It can correctly rank a randomly selected defaulted borrower above a non‑defaulted borrower approximately 77% of the time.
-  - In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
-
-- **Gini Index = 0.53**
-  - Indicates a meaningful separation between good and bad borrowers.
-  - A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
-
-- **KS Statistic = 0.40**
-  - Demonstrates good differentiation between defaulting and non‑defaulting borrowers.
-  - Values above 0.30 are typically considered acceptable in the industry.
-
-- **Recall = 0.72**
-  - The model successfully identifies 72% of actual defaults.
-
-- **Precision = 0.14**
-  - Only 14% of borrowers predicted as defaults actually default.
-
-- **F1 Score = 0.23**
-  - Reflects the trade‑off between high recall and low precision.
-  - The model prioritizes capturing defaults rather than minimizing false alarms.
-
 - **ROC‑AUC = 0.77** – The model has good discriminatory power, correctly ranking a randomly selected defaulted borrower above a non‑defaulted borrower approximately 77% of the time. In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
-
 - **Gini Index = 0.53** – This indicates a meaningful separation between good and bad borrowers. A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
-
 - **KS Statistic = 0.40** – Demonstrates good differentiation between defaulting and non‑defaulting borrowers, as values above 0.30 are typically considered acceptable in the industry.
-
 - **Recall = 0.72** – The model successfully identifies 72% of actual defaults.
+- **Precision = 0.14** – Only 14% of borrowers predicted as defaults actually default. While low, this is expected in highly imbalanced portfolios, especially when utilizing class weights to prioritize risk detection over false alarms
+- **F1 Score = 0.23** – The low F1 score is a direct result of the precision-recall imbalance, reflecting a deliberate modeling decision to prioritize catching defaults (high recall) at the expense of a higher false-alarm rate
 
-- **Precision = 0.14** – Only 14% of borrowers predicted as defaults actually default.
+### Loss Given Default (LGD) Model - Stage 1: Classweighted Logistic Regression
+- **ROC-AUC = 0.72** – Indicates good ability to distinguish between accounts with no recovery and those with some recovery after default.  
+- **Gini Index = 0.44** – Shows moderate predictive power
+- **Recall = 0.84** – The model captures 84% of accounts that eventually experience recovery, a strong result for recovery identification.  
+- **Precision = 0.48** – Nearly half (48%) of the accounts predicted to have recovery potential do yield recoveries. This represents a high-efficiency rate for a recovery classification framework.
+- **F1 Score = 0.61** – Represents a balanced and practical model, confirming that Stage 1 effectively separates recovery and non‑recovery cases.  
 
-- **F1 Score = 0.23** – Reflects the trade‑off between high recall and low precision; the model prioritizes capturing defaults rather than minimizing false alarms.
+### Loss Given Default (LGD) Model - Stage 2: Linear Regression (OLS)
+- **MAE = 0.03** – On average, the model's predictions deviate from actual recovery rates by an average of just 3 percentage points. From a portfolio management perspective, this represents a highly acceptable margin of error. It allows the business to forecast aggregate recovery inflows with strong operational confidence.
+- **RMSE = 0.05** – Since RMSE penalizes large mistakes more heavily than MAE, the fact that RMSE is only modestly higher than MAE suggests the model is not generating a large number of extreme prediction errors. This indicates reasonable stability and consistency across the recovery-rate distribution.
+- **R² = 0.02** – The model explains only a small proportion of recovery-rate variability, reflecting the inherently unpredictable nature of post-default recoveries. Recovery outcomes depend on many unobserved factors not present in Lending Club's loan application data — such as legal actions, collection strategies, and borrower financial circumstances and broader economic conditions
 
-- 
-### Loss given default (LGD) Model - Stage 1: Classweighted Logistic Regression
+Although the model has limited loan-level explanatory power, it produces low prediction errors and provides stable estimates of average recovery behaviour. Consequently, it is more valuable for portfolio-level LGD forecasting and Expected Loss estimation than for predicting exact recoveries on individual loans.
 
-
-0	Optimal Threshold	0.42
-1	Youden's Index	0.33
-2	ROC-AUC	0.72
-3	F1 Score	0.61
-4	Recall	0.84
-5	Precision	0.48
-0	ROC-AUC Score	0.72
-1	Gini Index	0.44
-
-Stage 2 Model: Linear Regression (OLS)
-	Model	MAE	MSE	RMSE	R2
-0	OLS	0.03	0.00	0.05	0.02
-
-LGD Model: Linear Regression (OLS)
-
-Metric	Value
-0	Mean Actual LGD	0.96
-1	Mean Predicted LGD	0.95
-2	Mean Absolute Error (MAE)	0.05
-3	Mean Squared Error (MSE)	0.00
-4	Root Mean Squared Error (RMSE)	0.06
-5	R² Coefficient of Determination	0.03
-6	Systemic Bias (Mean Residual)	0.01
-
+### EAD Model - Linear Regression (OLS)
+MetricValueInterpretation & Operational MeaningMean Actual EAD0.82On average, defaulting borrowers have drawn down 82% of their total credit limit at the moment of default.Mean Predicted EAD0.82The model is perfectly calibrated in the aggregate. On average, it matches the actual exposure of the portfolio exactly, meaning there is no systemic over- or under-estimation bias.Mean Absolute Error (MAE)0.08On a loan-by-loan basis, the model’s predictions deviate from the true EAD by an average of 8 percentage points.Mean Squared Error (MSE)0.01The average squared variance of errors is low, indicating a stable predictive baseline.Root Mean Squared Error (RMSE)0.12The standard deviation of the residuals is 12%. Because this is higher than the MAE (0.08), it indicates that the model experiences occasional large errors (outliers) when predicting individual loans.$R^2$ Coefficient of Determination0.35The model explains 35% of the total variance in EAD based on the features provided.
 
 
 
