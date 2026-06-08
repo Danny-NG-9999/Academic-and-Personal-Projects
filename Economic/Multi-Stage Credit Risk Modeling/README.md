@@ -28,15 +28,6 @@ In modern lending, accurately measuring credit risk is essential for making smar
 - **Loss Given Default (LGD):** A conditional two-stage model that activates only when a default occurs. It first estimates the likelihood of recovering zero money, and then uses a continuous regressor to forecast the actual recovery rate.
 - **Exposure at Default (EAD):** A regression model that predicts exactly how much outstanding credit the borrower will owe at the moment they break their contract.By tying these three models together conditionally ($PD \times LGD \times EAD$), the system creates a comprehensive Expected Loss (EL) engine. This engine translates statistical probabilities into clear, real-world dollar loss projections across the loan portfolio.
 
-## Directory (File) layout
-.
-├── NoteBooks               # Jupyter notebooks   
-├── src                     # Scripts on functions 
-├── data                    # Datasets (some data are stored in Gdrive)    
-├── LICENSE
-├── README.md 
-└── requirements.txt
-
 ## 📂 Repository Architecture
 
 ```text
