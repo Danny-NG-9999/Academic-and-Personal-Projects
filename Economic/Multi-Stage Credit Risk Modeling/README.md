@@ -48,10 +48,10 @@ This project develops and applies a Basel-aligned credit risk modeling framework
 By grounding the framework in this mature, real-world data window, the resulting models simulate the actual data pipelines and auditing standards required by institutional lending teams.
 
 ## Data Structure Overview
-**Dataset:** Lending Club Loan Data
-**Source:** https://www.kaggle.com/datasets/wordsforthewise/lending-club/data
-**Observation Period:** 2017–2018
-**Domain:** Consumer Lending and Credit Risk Analytics
+- **Dataset:** Lending Club Loan Data
+- **Source:** https://www.kaggle.com/datasets/wordsforthewise/lending-club/data
+- **Observation Period:** 2017–2018
+- **Domain:** Consumer Lending and Credit Risk Analytics
 
 ### Original Dataset
 The original Lending Club dataset comprises over 1.2 million loan records issued between 2007 and 2018, containing approximately 152 variables that capture borrower demographics, credit characteristics, loan attributes, repayment behavior, and recovery outcomes.
@@ -68,10 +68,14 @@ To develop and validate the Basel-aligned credit risk modeling framework, a repr
 ### Data for Modelling and Feature Selection
 A comprehensive data preparation process was performed prior to model development, including:
 - Missing value treatment and data quality checks
+- Exploratory Data Analysis (EDA)
 - Feature engineering and business-driven variable creation
 - Multicollinearity assessment using Variance Inflation Factor (VIF) and Condition Index (CI)
 - Predictive power evaluation using Weight of Evidence (WoE) and Information Value (IV)
 - Removal of redundant, highly correlated, and low-information variables
+
+<img width="2539" height="1722" alt="image" src="https://github.com/user-attachments/assets/e939ef36-3761-4be2-a809-53b2f3d82e73" />
+
 
 Following feature selection, the dataset was reduced from 152 variables to 34 highly predictive features suitable for multi-staged modeling. Details are presented below:
 | **Feature**             | **Count**          |
