@@ -104,19 +104,25 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 | **N04 – Holdout Validation and Comparative Model Performance Assessment**                      | Independent out-of-sample validation using a holdout dataset to evaluate model robustness, stability, and generalization performance.                                                |
 
 ## Model performances
-
+<img width="984" height="578" alt="image" src="https://github.com/user-attachments/assets/f126b37c-02d3-48bd-b7b4-0be3c79510b2" />
 ### Probability of Default (PD) Model - Class-Weighted Logistic Regression
-- ROC-AUC = 0.77
+- **ROC-AUC = 0.77**
   - The model has good discriminatory power.
   - It can correctly rank a randomly selected defaulted borrower above a non-defaulted borrower approximately 77% of the time.
   - In retail credit risk modeling, an AUC above 0.75 is generally considered strong.
-Gini Index = 0.53
-Indicates a meaningful separation between good and bad borrowers.
-A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
-KS Statistic = 0.40
-Demonstrates good differentiation between defaulting and non-defaulting borrowers.
-Values above 0.30 are typically considered acceptable in banking applications.
-Following models are trained for the use in our case
+- Gini Index = 0.53
+ - Indicates a meaningful separation between good and bad borrowers.
+ - A Gini above 0.50 is often viewed as a solid result for consumer lending portfolios.
+- KS Statistic = 0.40
+  - Demonstrates good differentiation between defaulting and non-defaulting borrowers.
+  - Values above 0.30 are typically considered acceptable in the industry
+- Recall = 0.72
+	- The model successfully identifies 72% of actual defaults.
+- Precision = 0.14
+	- Only 14% of borrowers predicted as defaults actually default.
+- F1 Score = 0.23
+ - Reflects the trade-off between high recall and low precision.
+ - The model prioritizes capturing defaults rather than minimizing false alarms.
 
 Probability of default (PD)
 Model: Classweighted Logistic regression
