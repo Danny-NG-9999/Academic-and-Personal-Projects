@@ -129,12 +129,14 @@ The holdout sample was used to assess the stability and predictive accuracy of t
 Although the model has limited loan-level explanatory power, it produces low prediction errors and provides stable estimates of average recovery behaviour. Consequently, it is more valuable for portfolio-level LGD forecasting and Expected Loss estimation than for predicting exact recoveries on individual loans.
 
 ### EAD Model - Linear Regression (OLS)
-MetricValueInterpretation & Operational MeaningMean Actual EAD0.82On average, defaulting borrowers have drawn down 82% of their total credit limit at the moment of default.Mean Predicted EAD0.82The model is perfectly calibrated in the aggregate. On average, it matches the actual exposure of the portfolio exactly, meaning there is no systemic over- or under-estimation bias.Mean Absolute Error (MAE)0.08On a loan-by-loan basis, the model’s predictions deviate from the true EAD by an average of 8 percentage points.Mean Squared Error (MSE)0.01The average squared variance of errors is low, indicating a stable predictive baseline.Root Mean Squared Error (RMSE)0.12The standard deviation of the residuals is 12%. Because this is higher than the MAE (0.08), it indicates that the model experiences occasional large errors (outliers) when predicting individual loans.$R^2$ Coefficient of Determination0.35The model explains 35% of the total variance in EAD based on the features provided.
+- **MAE	= 0.08** - On average, the model’s predictions deviate from the true EAD by an average of 8 percentage points. This level of error is relatively low given the variability in borrower utilization behaviour prior to default.
+- **RMSE = 0.12**	- The standard deviation of the residuals is 12%. Because this is higher than the MAE (0.08), it indicates that the model experiences occasional large errors (outliers) when predicting individual loans.
+- **R² = 0.35** – The model explains 35% of the variation in exposure at default (EAD). This is a reasonably strong result for retail credit risk modeling. Unlike loss given default (LGD), EAD is more predictable because it depends on observable factors such as remaining loan balance, payment history, and credit utilization patterns.
 
-
-
-
-
-Exposure at default (EAD)
-Model: Linear regression
-Metric: Accuracy: 0.658
+## Model Performance: Test vs. Holdout Comparison
+- **PD model generalises well** – ROC‑AUC difference is only 0.0039 (0.77 on both sets), indicating stable discriminatory power.
+- **Recall increased on holdout** (0.72 → 0.79) – model catches more actual defaults on unseen data, which is positive for risk avoidance.
+- **Precision dropped slightly** (0.14 → 0.13) – more false alarms on holdout, but acceptable given the recall gain.
+- **F1‑score difference is small** (0.0165) – the trade‑off between recall and precision remains consistent.
+- **LGD model errors are higher on holdout** – MAE rose from 0.046 to 0.058, RMSE from 0.057 to 0.080. This is expected because recovery outcomes are noisier and less predictable in new data.
+- **Overall, both models perform robustly** – no severe overfitting; performance degradation is within reasonable limits for credit risk modeling.
