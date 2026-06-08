@@ -18,7 +18,7 @@ From a business perspective, the framework supports credit underwriting, portfol
    - [Data for holdout testing](#data_for_holdout_testing)
 4. [Project Notebooks](#project-notebook)
 5. [Model performances](#model-performances)
-6. [Model Performance: Test vs. Holdout Comparison](#model-performance:-test-vs.-holdout-comparision)
+6. [Model Performance: Test vs. Holdout Comparison](#model-performance-test-vs-holdout-comparison)
 7. [Acknowledgements & Support](#acknowledgements--support)
 
 ## Introduction
