@@ -57,7 +57,7 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 - Database & Warehousing: MySQL Workbench (Schema Design, PK/FK Constraints)
 - Business Intelligence: Microsoft Power BI (DAX, Power Query, UI/UX)
 
-5. Strategic Recommendations
+## Strategic Recommendations
 
 1.
 Logistics: Renegotiate carrier contracts for "Standard Class" in regions showing >15% delay risk, leveraging the granular shipping data.
