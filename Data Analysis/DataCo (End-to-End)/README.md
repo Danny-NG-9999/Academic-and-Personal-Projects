@@ -51,44 +51,11 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 | **Operations & Logistics** | Delivery efficiency and risk management. | Pinpoints root causes of late deliveries (e.g., Standard Class shipping bottlenecks). |
 | **Inventory Management** | Stock optimization and category health. | Highlights slow-moving inventory to trigger markdown strategies and improve turnover. |
 
-Dashboard Page
-Strategic Focus
-Business Value
-Sales & Profitability
-Financial health and growth momentum.
-Identifies high-margin regions vs. high-volume/low-profit zones to optimize pricing.
-Web Traffic & Conversion
-Customer journey and digital funnel.
-Correlates web activity with sales to optimize marketing spend and predict demand.
-Operations & Logistics
-Delivery efficiency and risk management.
-Pinpoints root causes of late deliveries (e.g., Standard Class shipping bottlenecks).
-Inventory Management
-Stock optimization and category health.
-Highlights slow-moving inventory to trigger markdown strategies and improve turnover.
 
-
-
-
-
-
-
-4. Technical Stack
-
-•
-ETL & Engineering: Python (Pandas, NumPy, SQLAlchemy)
-
-•
-Database & Warehousing: SQL Server / MySQL (T-SQL, Schema Design, PK/FK Constraints)
-
-•
-Business Intelligence: Microsoft Power BI (DAX, Power Query, UI/UX)
-
-•
-Environment: Jupyter Notebooks, SQL Server Management Studio / MySQL Workbench
-
-
-
+## Technical Stack
+- ETL & Engineering: Python (Pandas, NumPy, SQLAlchemy)
+- Database & Warehousing: MySQL Workbench (Schema Design, PK/FK Constraints)
+- Business Intelligence: Microsoft Power BI (DAX, Power Query, UI/UX)
 
 5. Strategic Recommendations
 
