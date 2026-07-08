@@ -23,86 +23,33 @@ The transition from Python to SQL was a critical step in establishing a producti
 - Schema Definition (Python to SQL): For each dimension and fact table, CREATE TABLE statements were executed, explicitly defining columns with precise data types (e.g., DECIMAL(15, 10) for financial precision, DATETIME for temporal accuracy, VARCHAR for categorical data). This step ensured that the Python-generated data conformed to a strict relational schema.
 - Schema Definition (Python to SQL): Designed SQL schemas for all dimension and fact tables by assigning appropriate data types (e.g., DECIMAL, DATETIME, and VARCHAR) to each column, ensuring data accuracy, relational consistency, and efficient storage. This established a robust database structure to support SQL analysis, business intelligence reporting, and interactive Power BI dashboards.
 - Data Ingestion: High-speed LOAD DATA LOCAL INFILE commands were utilized to efficiently import the Python-generated CSVs into their respective SQL tables, ensuring scalability for large datasets.
+- Defining Primary Keys: Each dimension table (e.g., DimCustomer, DimProduct) and fact table (FactSales, FactWebTraffic) had its unique identifier explicitly defined as a PRIMARY KEY during table creation, guaranteeing data uniqueness and support efficient data retrieval.
+- Defining Foreign Keys & Relationships: Established foreign key relationships between fact and dimension tables (e.g., FactSales.Customer_Id referencing DimCustomer.Customer_Id) to maintain referential integrity, enable accurate table joins, and support efficient analytical querying within the relational database.
+- Building the ERD: The Entity Relationship Diagram (ERD) was subsequently built and validated within the SQL environment (MySQL Workbench), visually confirming the integrity of the data model and ensuring efficient query paths for downstream BI tools.
 
-•
-Defining Primary Keys: Each dimension table (e.g., DimCustomer, DimProduct) and fact table (FactSales, FactWebTraffic) had its unique identifier explicitly defined as a PRIMARY KEY during table creation, guaranteeing data uniqueness and efficient indexing.
-
-•
-Defining Foreign Keys & Relationships: Relational integrity was established by defining FOREIGN KEY constraints between fact and dimension tables (ee.g., FactSales.Customer_Id referencing DimCustomer.Customer_Id). This process formally built the Fact Constellation Schema, ensuring referential integrity and enabling complex joins for analytical queries.
-
-•
-Building the ERD: The Entity Relationship Diagram (ERD) was subsequently built and validated within the SQL environment (e.g., MySQL Workbench or SSMS), visually confirming the integrity of the data model and ensuring efficient query paths for downstream BI tools.
-
-•
-Preparing the Analytical Database: This comprehensive schema definition, data ingestion, and relationship establishment prepared the SQL database as a robust, high-performance analytical source, optimized for Power BI consumption.
-
-Phase 3: Power BI Intelligence & Visualization
-
+### Phase 3: Power BI Intelligence & Visualization
 The SQL Server database served as the live source for the Power BI dashboard suite:
+- Data Connectivity: Power BI was connected directly to the MySQL WorkBench Server instance, importing the structured tables into the Power BI semantic model.
+- Semantic Modeling: The relationships defined in SQL were replicated and validated within Power BI's data model, ensuring consistent filtering and cross-highlighting behavior across all reports.
+- DAX Implementation: Advanced DAX measures were developed for time-intelligence (YoY/MoM growth), profitability ratios, and conditional formatting logic, enriching the analytical capabilities of the dashboard.
+- UI/UX Design: A 4-page executive dashboard was designed, focusing on Sales, Web Traffic, Operations, and Inventory, providing intuitive navigation and clear communication of insights.
 
-•
-Data Connectivity: Power BI was connected directly to the SQL Server instance, importing the structured tables into the Power BI semantic model.
-
-•
-Semantic Modeling: The relationships defined in SQL were replicated and validated within Power BI's data model, ensuring consistent filtering and cross-highlighting behavior across all reports.
-
-•
-DAX Implementation: Advanced DAX measures were developed for time-intelligence (YoY/MoM growth), profitability ratios, and conditional formatting logic, enriching the analytical capabilities of the dashboard.
-
-•
-UI/UX Design: A 4-page executive dashboard was designed, focusing on Sales, Web Traffic, Operations, and Inventory, providing intuitive navigation and clear communication of insights.
-
-
-
-
-2. Data Modeling (Fact Constellation Schema)
-
+## Data Modeling (Fact Constellation Schema)
 The architecture utilizes a Galaxy Schema to support complex analysis across sales, logistics, and web engagement through shared dimensions.
 
-Table Name
-Type
-Description
-Key Columns
-FactSales
-Fact
-Centralized transactions, revenue, and logistics details.
-Order_Item_Id (PK), Order_Id (FK), Customer_Id (FK), Product_Card_Id (FK), Sales, Profit
-FactWebTraffic
-Fact
-Captures web engagement data and clickstream logs.
-Log_Id (PK), Product_Card_Id (FK), Associated_Order_Id (FK), Timestamp
-DimCustomer
-Dimension
-Customer demographics and segmentation.
-Customer_Id (PK), Customer_Segment, Customer_City, Customer_Country
-DimProduct
-Dimension
-Product details and pricing.
-Product_Card_Id (PK), Product_Name, Product_Price, Product_Status
-DimShipping
-Dimension
-Shipping modes and delivery performance status.
-Shipping_Id (PK), Shipping_Mode, Delivery_Status, Late_delivery_risk
-DimDate
-Dimension
-Centralized time-intelligence calendar.
-Date_Key (PK), Full_Date, Year, Month, Quarter, Weekday
-DimLocation
-Dimension
-Geographical attributes for orders and shipping.
-Location_Id (PK), Order_City, Order_Country, Market
-DimOrderDetails
-Dimension
-Order-level attributes including status and payment type.
-Order_Id (PK), Order_Status, Payment_Type
 
 
 
 
 
 
-
-3. Dashboard Insights & Business Impact
+## Dashboard Insights & Business Impact
+| Dashboard Page | Strategic Focus | Business Value |
+| --- | --- | --- |
+| **Sales & Profitability** | Financial health and growth momentum. | Identifies high-margin regions vs. high-volume/low-profit zones to optimize pricing. |
+| **Web Traffic & Conversion** | Customer journey and digital funnel. | Correlates web activity with sales to optimize marketing spend and predict demand. |
+| **Operations & Logistics** | Delivery efficiency and risk management. | Pinpoints root causes of late deliveries (e.g., Standard Class shipping bottlenecks). |
+| **Inventory Management** | Stock optimization and category health. | Highlights slow-moving inventory to trigger markdown strategies and improve turnover. |
 
 Dashboard Page
 Strategic Focus
