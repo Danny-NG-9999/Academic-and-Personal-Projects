@@ -1,4 +1,4 @@
-DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
+# DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
 
 ## Executive Summary
 
