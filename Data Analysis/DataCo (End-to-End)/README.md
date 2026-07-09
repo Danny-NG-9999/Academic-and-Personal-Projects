@@ -1,10 +1,36 @@
 # DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
 
-## Executive Summary
+## Project Overview
 
 This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a simulated multinational retail corporation. The solution spans the entire data lifecycle: from raw data ingestion and transformation using Python, to structured data warehousing in SQL Server, and finally to executive-level intelligence in Power BI.
 
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
+
+## 📊 Executive Performance Summary & Strategic Insights
+While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines, it exposes systemic challenges in profit capture. The analysis below highlights the business’s operational footprint and provides strategic recommendations to reverse severe margin compression.
+
+While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines with a total revenue of $36.78M with a ~10.8% net profit margin. The business operates with strong commercial anchors in Apparel and Fan Shop departments, with Europe and LATAM acting as the primary revenue engines, while most of the order is a single-item orders, not low volume (<=3 items per orders) or medium volume (<=9 items per orders).
+
+
+
+## Strategic Value Proposition: Why This Project Exists
+In a modern global supply chain, data fragmentation is a primary barrier to growth. DataCo Global faced critical "blind spots" where disconnected web traffic, sales, and logistics data led to inefficient resource allocation. This project was conceived to provide a single source of truth that bridges these silos.
+
+Core Business Challenges Addressed:
+
+•
+Operational Visibility: Providing real-time insights into a global logistics footprint to mitigate late delivery risks.
+
+•
+Profitability Optimization: Identifying "profit leakage" where high sales volume was being offset by excessive discounts and operational costs.
+
+•
+Evidence-Based Decision Making: Moving away from "gut-feeling" procurement toward data-driven inventory and marketing strategies.
+
+•
+Customer Experience (CX): Correlating digital engagement (web traffic) with physical fulfillment to ensure a seamless customer journey.
+
+
 
 ## The End-to-End Pipeline
 
@@ -37,9 +63,27 @@ The SQL Server database served as the live source for the Power BI dashboard sui
 ## Data Modeling (Fact Constellation Schema)
 The architecture utilizes a Galaxy Schema to support complex analysis across sales, logistics, and web engagement through shared dimensions.
 
+| Table Name | Strategic Role | Business Value |
+| --- | --- | --- |
+| `FactSales` | Revenue & Logistics Core | Tracks the heartbeat of the business—sales, costs, and segment performance. |
+| `FactWebTraffic` | Digital Engagement | Captures the "pre-purchase" intent, linking web activity to final orders. |
+| `DimCustomer` | Market Segmentation | Enables targeted marketing and customer loyalty strategies. |
+| `DimProduct` | Portfolio Management | Drives product lifecycle and pricing decisions. |
+| `DimShipping` | Logistics Efficiency | Identifies bottlenecks in the "last mile" of the supply chain. |
+| `DimDate` | Performance Momentum | Supports time-intelligence for YoY/MoM growth and seasonal planning. |
 
-
-
+| Table Name        | Strategic Role                  | Business Value                                                                                                                                                                              |
+| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FactSales`       | Sales & Order Transactions      | Stores transactional sales data, including revenue, quantity, discounts, and market information, enabling comprehensive sales, profitability, and operational analysis. |
+| `FactWebTraffic`  | Web Traffic & Customer Activity | Records website activity and links customer interactions to completed orders, enabling analysis of customer engagement, conversion behaviour, and the relationship between online activity and sales outcomes. |
+| `DimCustomer`     | Customer Information            | Contains customer demographic and location attributes, enabling customer segmentation, geographic analysis, and purchasing behaviour analysis. |
+| `DimProduct`      | Product Information             | Stores product details, pricing, and category information, supporting product performance, pricing, and product portfolio analysis. |
+| `DimCategory`     | Product Classification          | Organises products into business categories, enabling category-level sales and product mix analysis. |
+| `DimDepartment`   | Department Classification       | Groups products by department to evaluate departmental sales and operational performance. |
+| `DimLocation`     | Geographic Information          | Stores regional and market information, supporting geographic sales analysis, regional performance monitoring, and market comparisons. |
+| `DimShipping`     | Shipping & Delivery Information | Captures shipping methods and delivery performance, enabling analysis of shipping efficiency, delivery delays, and logistics operations. |
+| `DimOrderDetails` | Order Information               | Stores order-level attributes such as payment type, order status, and order date, supporting order lifecycle and transaction analysis. |
+| `DimDate`         | Time Dimension                  | Provides a standardized date hierarchy for analysing business performance across days, months, quarters, and years, enabling trend and seasonality analysis. |
 
 
 
