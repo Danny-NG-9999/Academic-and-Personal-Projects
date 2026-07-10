@@ -7,9 +7,30 @@ This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
 
 ## 📊 Executive Performance Summary & Strategic Insights
-While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines, it exposes systemic challenges in profit capture. The analysis below highlights the business’s operational footprint and provides strategic recommendations to reverse severe margin compression.
+While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines with a total revenue of $36.78M with a ~10.8% net profit margin. The business operates with strong commercial anchors in Apparel and Fan Shop departments, with Europe and LATAM acting as the primary revenue engines, while most of the order is a single-item orders, not low volume (<=3 items per orders) or medium volume (<=9 items per orders) and driven primarily by consumer (approx 52% of total) and corporate segment (approx 30% of total)
 
-While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines with a total revenue of $36.78M with a ~10.8% net profit margin. The business operates with strong commercial anchors in Apparel and Fan Shop departments, with Europe and LATAM acting as the primary revenue engines, while most of the order is a single-item orders, not low volume (<=3 items per orders) or medium volume (<=9 items per orders).
+- Department Revenue Concentration: The Fan Shop and Apparel departments serve as the company's primary revenue engines, collectively contributing approximately 70% of total sales. While this confirms strong product-market fit, it also presents a structural concentration risk and highlights a reliance on a limited number of business units.
+- Strong Sales Performance in multiple markets globally: Europe and LATAM are the organization's strongest regional growth pillars, each generating over $10 million in sales**. Pacific Asia follows closely, contributing **more than $8 million, establishing a reliable, diversified global revenue pipeline across these three key regions.
+- High-Value Customer Segments: Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
+- Peak Digital Conversion Performance: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays—more than 2.4× higher. This identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
+Strong Regional Sales Performance: Europe and LATAM each generated over $10 million in sales, followed by Pacific Asia with more than $8 million, establishing these regions as the company's strongest revenue contributors and highest-priority growth markets.
+
+
+- Digital Behavioral Anomaly: Web conversion rates exhibit a severe, highly predictable weekly anomaly, peaking at 22.94% on Thursdays compared to a baseline average of roughly 9.5% on other weekdays. This near 2.5x uplift indicates a specific window of heightened customer purchase intent, offering a strategic lever to time promotional campaigns and marketing spend for maximum digital ROI.
+
+ The Fan Shop and Apparel departments generated approximately 70% of total sales revenue, identifying them as the company's primary revenue drivers. While this reflects strong market demand, it also highlights a reliance on a limited number of business units.
+
+
+### Notable Strengths and Opportunities
+- Department Performance: The Fan Shop and Apparel departments collectively generated approximately 70% of total sales revenue, making them the company's highest-performing business units. This concentration of revenue highlights strong product-market demand while also indicating a potential dependency on a limited number of departments for overall financial performance.
+- High-Value Customer Segments: Corporate and Consumer customers consistently engage in high-value, single-item purchases, indicating strong opportunities for premium product offerings, targeted promotions, and customer retention strategies.
+- Digital Conversion Behavior: The web channel exhibits a distinct, highly concentrated conversion peak on Thursdays, signaling a specific customer readiness that can be systematically exploited.
+- Digital Conversion Behavior (Thursday Flash): Digital engagement features an extraordinary behavioral anomaly on Thursdays, where the conversion rate spikes to 22.94% (compared to a baseline average of ~9.5% on other days).
+
+Powerful Core Market Sales: Exceptional market Sales in Europe and LATAM ($10M+), followed by Pacific Asia ($8.0M+), establishing reliable global distribution pipelines.
+
+Thursday Conversion Peak: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays, highlighting a significant opportunity to optimise promotional campaigns and marketing activities around peak purchasing behaviour.
+Leading Regional Markets: Europe and LATAM each generated over $10 million in sales, followed by Pacific Asia with more than $8 million, demonstrating strong international demand and identifying these regions as key revenue drivers.
 
 
 
@@ -63,17 +84,8 @@ The SQL Server database served as the live source for the Power BI dashboard sui
 ## Data Modeling (Fact Constellation Schema)
 The architecture utilizes a Galaxy Schema to support complex analysis across sales, logistics, and web engagement through shared dimensions.
 
-| Table Name | Strategic Role | Business Value |
-| --- | --- | --- |
-| `FactSales` | Revenue & Logistics Core | Tracks the heartbeat of the business—sales, costs, and segment performance. |
-| `FactWebTraffic` | Digital Engagement | Captures the "pre-purchase" intent, linking web activity to final orders. |
-| `DimCustomer` | Market Segmentation | Enables targeted marketing and customer loyalty strategies. |
-| `DimProduct` | Portfolio Management | Drives product lifecycle and pricing decisions. |
-| `DimShipping` | Logistics Efficiency | Identifies bottlenecks in the "last mile" of the supply chain. |
-| `DimDate` | Performance Momentum | Supports time-intelligence for YoY/MoM growth and seasonal planning. |
-
-| Table Name        | Strategic Role                  | Business Value                                                                                                                                                                              |
-| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Table Name        | Strategic Role                  | Business Value |
+| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `FactSales`       | Sales & Order Transactions      | Stores transactional sales data, including revenue, quantity, discounts, and market information, enabling comprehensive sales, profitability, and operational analysis. |
 | `FactWebTraffic`  | Web Traffic & Customer Activity | Records website activity and links customer interactions to completed orders, enabling analysis of customer engagement, conversion behaviour, and the relationship between online activity and sales outcomes. |
 | `DimCustomer`     | Customer Information            | Contains customer demographic and location attributes, enabling customer segmentation, geographic analysis, and purchasing behaviour analysis. |
@@ -84,8 +96,6 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 | `DimShipping`     | Shipping & Delivery Information | Captures shipping methods and delivery performance, enabling analysis of shipping efficiency, delivery delays, and logistics operations. |
 | `DimOrderDetails` | Order Information               | Stores order-level attributes such as payment type, order status, and order date, supporting order lifecycle and transaction analysis. |
 | `DimDate`         | Time Dimension                  | Provides a standardized date hierarchy for analysing business performance across days, months, quarters, and years, enabling trend and seasonality analysis. |
-
-
 
 ## Dashboard Insights & Business Impact
 | Dashboard Page | Strategic Focus | Business Value |
