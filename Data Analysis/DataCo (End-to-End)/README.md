@@ -7,7 +7,15 @@ This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
 
 ## 📊 Executive Performance Summary & Strategic Insights
-While the data reflects strong market demand, high transactional volumes, and reliable sales pipelines with a total revenue of $36.78M with a ~10.8% net profit margin. The business operates with strong commercial anchors in Apparel and Fan Shop departments, with Europe and LATAM acting as the primary revenue engines, while most of the order is a single-item orders, not low volume (<=3 items per orders) or medium volume (<=9 items per orders) and driven primarily by consumer (approx 52% of total) and corporate segment (approx 30% of total)
+Between 2015 and 2018, DataCo generated $36.78 million in total revenue while maintaining an approximate 10.8% net profit margin, indicating strong commercial performance and sustained customer demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand.
+
+
+
+
+The business was primarily supported by the Apparel and Fan Shop departments, with Europe and LATAM acting as its strongest regional revenue contributors. Customer activity was largely driven by the Consumer (≈52%) and Corporate (≈30%) segments, with single-item purchases accounting for the majority of transactions. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
+
+Between 2015 and 2018, DataCo achieved $36.78 million in total revenue with an approximate 10.8% net profit margin,. Revenue was heavily concentrated in the Apparel and Fan Shop departments, while Europe and LATAM served as the company's primary revenue-generating markets. Customer purchasing behaviour was dominated by the Consumer (≈52%) and Corporate (≈30%) segments, with single-item transactions representing the majority of orders, suggesting a business model driven by frequent, low-quantity purchases rather than bulk ordering.
+
 
 - Department Revenue Concentration: The Fan Shop and Apparel departments serve as the company's primary revenue engines, collectively contributing approximately 70% of total sales. While this confirms strong product-market fit, it also presents a structural concentration risk and highlights a reliance on a limited number of business units.
 - Strong Sales Performance in multiple markets globally: Europe and LATAM are the organization's strongest regional growth pillars, each generating over $10 million in sales**. Pacific Asia follows closely, contributing **more than $8 million, establishing a reliable, diversified global revenue pipeline across these three key regions.
@@ -15,41 +23,24 @@ While the data reflects strong market demand, high transactional volumes, and re
 - Digital Conversion Performance: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
 
 
-🔴 Key Business Challenges
-- The Omnichannel Disconnect: Despite a healthy e-commerce presence generating over 443K page views, the web channel operates almost exclusively as a "window shopping" catalog. Across all top-selling product lines, non-web traditional sales capture over 97% of total revenue, indicating a complete failure to finalize transactions digitally.
+### Key Business Challenges
+- Digital Channel Underperformance & Conversion Failure: Despite generating over 443K monthly page views, the e-commerce platform operates as a passive "window shopping" catalog rather than a revenue driver. The web channel contributes only 3.04% of total sales, and traditional non-web channels capture over 97% of revenue across all top-selling product lines. This indicates a severe deficiency in digital acquisition and checkout conversion, rather than a lack of market demand for the products themselves.
 
-Systemic Fulfillment Bottlenecks: A major logistics crisis exists, with 54.83% of all shipments arriving late. When orders fall behind schedule, delivery times stretch to an average of 4.09 days against an advertised expectation of 2.47 days—nearly doubling transit times and threatening customer retention. Logistical Crisis (Red Flag): The organization is facing a severe operational breakdown with a 54.83% late delivery rate (with only 17.84% on-time). Critically, logistics data confirms that these late deliveries are directly correlated with negative profitability, indicating that expensive expediting or failure penalties are completely eroding margins on affected shipments.
+- Severe Logistics & Fulfillment Bottlenecks: A systemic supply chain crisis is actively destroying margins, with 54.83% of all shipments arriving late and only 17.84% meeting on-time delivery targets. When orders fall behind schedule, actual transit times average 4.09 days versus an advertised expectation of 2.47 days—nearly doubling wait times. Critically, the data confirms that late deliveries correlate directly with negative profitability, meaning the costs of expediting and penalty fees are entirely eroding margins on affected orders.
 
-Digital Channel Underperformance: The web channel generates only 3.04% of total sales. This is driven by an exceptionally low unique visitor count, indicating a significant failure in digital acquisition rather than a lack of product interest.
+- Seasonal Margin Erosion (Q4 Unit-Mix Shift): While gross order volumes remain stable during November and December, total revenue declines significantly. This is driven by a dangerous shift in product composition: customers are substituting high-margin, premium items for low-value, medium-volume goods. This unit-mix compression actively erodes Q4 profitability, signaling that the current holiday promotional strategy is cannibalizing the bottom line.
 
-Seasonal Margin Erosion: While Q4 order volumes remain stable, total revenue drops significantly during November and December. This reveals a dangerous shift in product mix—customers are swapping high-margin, premium items for low-value, medium-volume goods, actively compressing the company’s Q4 profitability.
+### Strategic Recommendations
 
-Strategic Recommendations
-
-Immediate Logistics Overhaul: Audit "Standard Class" shipping partners and introduce strict operational penalties. The current 54.83% late rate is a direct profit killer. Optimize routing to ensure this metric is brought under 20% to stabilize margins.
+Immediate Logistics Overhaul: Audit "Standard Class" and "First Class" shipping partners and introduce strict operational penalties. The current 54.83% late rate is a direct profit killer. Optimize routing to ensure this metric is brought under 20% to stabilize margins.
 
 Protect Q4 Margins: Rethink the Q4 promotional strategy. Shift marketing focus away from driving high-volume, cheap unit sales and instead promote bundled high-margin premium goods to counteract the seasonal revenue drop.
 
 Revitalize Digital Funnel: Allocate specific marketing and advertising budgets to expand the top-of-funnel web acquisition. Optimize digital campaigns to drive traffic on Wednesdays in order to directly capitalize on the proven, high-converting Thursday purchase window.
 
-## Strategic Value Proposition: Why This Project Exists
-In a modern global supply chain, data fragmentation is a primary barrier to growth. DataCo Global faced critical "blind spots" where disconnected web traffic, sales, and logistics data led to inefficient resource allocation. This project was conceived to provide a single source of truth that bridges these silos.
+Capitalize on the Thursday Digital Spike: Launch targeted, digital-only purchase incentives exclusively on Thursdays. Channeling this existing 22.94% high-conversion traffic into finalized web sales will bypass traditional distribution costs and improve e-commerce margins.
 
-Core Business Challenges Addressed:
-
-•
-Operational Visibility: Providing real-time insights into a global logistics footprint to mitigate late delivery risks.
-
-•
-Profitability Optimization: Identifying "profit leakage" where high sales volume was being offset by excessive discounts and operational costs.
-
-•
-Evidence-Based Decision Making: Moving away from "gut-feeling" procurement toward data-driven inventory and marketing strategies.
-
-•
-Customer Experience (CX): Correlating digital engagement (web traffic) with physical fulfillment to ensure a seamless customer journey.
-
-
+Establish a Promotional Discount Cap: Implement strict administrative controls on overlapping promotional codes. Reducing current price reductions by just 1.5% will capture operational leakage and return +$550K straight to the net profit margin.
 
 ## The End-to-End Pipeline
 
