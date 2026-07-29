@@ -18,26 +18,14 @@ Between 2015 and 2018, DataCo generated approximately $36.78 million in total re
 
 - **High-Value Customer Segments**: Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
 
-- Demand Growth Does Not Explain Delivery Performance: The monthly trend shows that Monthly order volumes fluctuate throughout the year, yet delivery performance remains largely unchanged. The logistics network demonstrates sufficient scalability to manage higher order volumes. However, the inability to improve delivery performance during lower-demand periods indicates that the underlying issues stem from operational processes rather than capacity constraints. Existing logistics capacity appears sufficient, but execution efficiency is lacking.
+- **Delivery Delays Are Operational Rather Than Capacity-Driven:** Although order volumes vary throughout the year, delivery performance remains largely unchanged. This indicates that delays are more likely caused by inefficiencies in fulfillment and delivery operations than by insufficient logistics capacity.
 
-- High-Volume Shipments Are More Susceptible to Delays: The fulfillment performance chart shows that late deliveries dominate the largest order volumes and item quantities, while on-time deliveries are concentrated around moderate order sizes. As shipment size increases, the likelihood of delivery delays also increases, suggesting that large or complex orders place greater strain on fulfillment operations. Prioritize high-volume orders for enhanced monitoring and earlier dispatch.
+- **High-Volume Shipments Are More Susceptible to Delays:** Late deliveries are concentrated among high-volume shipments, while on-time deliveries are more common for moderate-sized orders. This patterns suggest that fulfillment processes become less efficient as shipment complexity increases, highlighting the need for proactive monitoring and priority handling of large orders.
 
-- Delivery Reliability Has a Direct Impact on Profitability: Orders delivered on time consistently achieve the strongest financial performance, while cancelled shipments generate the weakest returns. Although late deliveries still produce positive margins, delivery failures gradually erode profitability. Therefore, Improving delivery reliability offers a direct path to higher profit margins without increasing product prices or sales volume
+- **Delivery Reliability Drives Profitability:** On-time deliveries consistently generate the highest profit margins, while cancelled orders deliver the weakest financial returns. Although late deliveries remain profitable, recurring delivery delays gradually reduce overall margins and customer value. This highlights delivery reliability as a key driver of financial performance, where improving fulfillment efficiency can increase profitability without requiring additional sales or price increases.
 
-- Product Price Is Not the Primary Driver of Profitability: Operational execution and discount promotional strategy has a greater influence on realized profitability than product price. Many lower-priced products outperform premium products when delivered reliably.
+- **Product Price Is Not the Primary Driver of Profitability:** Profitability is influenced more by operational execution and discounting strategy than by product price. Products delivered on time with well-managed discounts consistently achieve stronger margins, indicating that improving fulfillment performance and optimizing promotional strategies can generate greater profit gains than focusing solely on selling higher-priced products.
 
-- Cancelled orders account for only 2,855 orders (approximately 4%), yet they exhibit the lowest adjusted profit margin and the greatest variability in profitability. Investigate cancellation drivers such as:
-
-Inventory shortages
-Processing delays
-Payment failures
-Customer abandonment
-Carrier disruptions
-
-Reducing cancellations will immediately improve realized revenue and operational efficiency.
-
-
-- 
 ### Key Business Challenges
 - **Digital Channel Underperformance & Conversion Failure:** Despite generating over 443K monthly page views, the e-commerce platform operates as a passive "window shopping" catalog rather than a revenue driver. The web channel contributes only 3.04% of total sales, and traditional non-web channels capture over 97% of revenue across all top-selling product lines. This indicates a severe deficiency in digital acquisition and checkout conversion, rather than a lack of market demand for the products themselves.
 
@@ -46,9 +34,10 @@ Reducing cancellations will immediately improve realized revenue and operational
 - **Seasonal Margin Erosion (Q4 Unit-Mix Shift):** While gross order volumes remain stable during November and December, total revenue declines significantly. This is driven by a dangerous shift in product composition: customers are substituting high-margin, premium items for low-value, medium-volume goods. This unit-mix compression actively erodes Q4 profitability, signaling that the current holiday promotional strategy is cannibalizing the bottom line.
 
 ### Data-driven Recommendations
-- **Immediate Logistics Overhaul:** Audit "Standard Class, First Classand Second Class" shipping providers and implement strict carrier penalties or new partnerships. A clear mandate must be set to reduce the 54.83% late delivery rate to below 20% to protect base profitability immediately.
-- **Targeted Q4 Margin Defense:** Restructure the holiday marketing strategy to steer traffic away from steep discounting of medium-volume goods. Implement bundled high-margin premium kits to increase Average Order Value (AOV) while maintaining order volume.
-- **Revitalize the Digital Acquisition Funnel:** Allocate specific marketing budgets to drive web traffic on Wednesdays in order to systematically exploit the proven, high-converting Thursday purchase window. Simultaneously, audit the checkout process to remove friction points hindering digital sales.
+- **Discount Optimization (Immediate ROI):** Eliminate promotional code stacking and enforce managerial approval thresholds for inelastic product categories (e.g., Fitness Accessories) to stop margin erosion and maximize promotional profitability.
+- **SLA Performance & Risk Dashboard (Strategic Investment): **Implement automated checkpoint monitoring and early exception escalation across high-risk shipping modes (First Class, Same Day) and volatile regions to eliminate late delivery delays and protect customer SLAs.
+- **Checkout & Traffic Optimization (Strategic Investment):** Streamline checkout steps and redesign product landing pages for low-converting categories (e.g., Trade-In, Women's Golf Clubs) to boost web conversion rates by 2–5 percentage points without increasing acquisition costs.
+- **Post-Purchase & Return Rate Reduction (Tactical Optimization):** Deploy automated in-transit tracking notifications and conduct return root-cause analytics for high-cancellation categories (e.g., Kids' Golf Clubs, Pet Supplies) to cut return logistics overhead by 10–15%.
 - **Capitalize on the Thursday Peak:** Deploy exclusive, digital-only flash sales and time-sensitive incentives on Thursdays. Channeling the 22.94% high-intent traffic into finalized web sales will reduce reliance on traditional distribution networks and expand overall e-commerce profitability.
 
 ## The End-to-End Pipeline
@@ -104,12 +93,23 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 | **Inventory Management** | Stock optimization and category health. | Highlights slow-moving inventory to trigger markdown strategies and improve turnover. |
 
 
+### 📊 Business Performance Dashboard Summary
+
+| Dashboard Page | Strategic Focus | Business Value |
+| :--- | :--- | :--- |
+| **Overview** | High-level business health monitoring across core financial metrics (Sales, Costs, Profit), volume indicators, category/market distribution, customer segmentation, and monthly sales seasonality. | Provides executive visibility into top-line revenue performance, identifying top sales drivers by category/market, payment preferences, and seasonal demand fluctuations to guide annual budgeting and commercial planning. |
+| **Discounts** | Evaluation of promotional discount depth, discount elasticity, margin erosion per 1% discount, and order discount rates across price segments and categories. | Prevents margin leakage by identifying inelastic or high-erosion product categories (e.g., *Basketball*), enabling targeted discount capping to preserve overall profitability while maintaining strategic promotional depth. |
+| **Web Traffic** | Digital channel effectiveness, web conversion rates by day of week, category-level conversion performance, and web vs. non-web sales channel breakdown by product. | Pinpoints conversion bottlenecks on digital platforms, optimizes marketing spend across high-performing sales days (e.g., Thursday peak), and guides targeted UX/UI improvements on low-converting product landing pages. |
+| **Shipping** | Fulfillment performance analysis tracking late vs. canceled order trends, variance between scheduled and actual delivery days, and profitability by shipping status and mode. | Minimizes logistics inefficiencies and SLA breach risks by identifying carrier/mode delays (e.g., *Late Delivery* average variance of +1.5 days), optimizing shipping choices to protect customer satisfaction and unit margins. |
+| **Recommendation** | Strategic prioritization via an Impact vs. Effort matrix covering key initiatives: Discount Optimization, SLA Performance & Risk, Checkout/Traffic, and Post-Purchase/Return Reduction. | Translates complex operational data into actionable, prioritized business initiatives—enabling leadership to execute immediate high-ROI quick wins while structuring long-term strategic investments. |
+
 ## Technical Stack
 - ETL & Engineering: Python (Pandas, NumPy, SQLAlchemy)
 - Database & Warehousing: MySQL Workbench (Schema Design, PK/FK Constraints)
-- Business Intelligence: Microsoft Power BI (DAX, Power Query, UI/UX)
+- Business Intelligence: Microsoft Power BI (DAX, SVG, Power Query, UI/UX)
 
-Author: [Your Name/Portfolio Link]
-Role: Senior BI Consultant / Data Engineer / Supply Chain Specialist
+---
+Author: Daniel (Viet) Nguyen
+Role: Senior BI Consultant
 Date: July 2026
 
