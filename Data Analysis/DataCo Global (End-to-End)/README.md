@@ -7,21 +7,41 @@ This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
 
 ## 📊 Executive Performance Summary & Strategic Insights
-Between 2015 and 2018, DataCo generated $36.78 million in total revenue while maintaining an approximate 10.8% net profit margin, indicating strong commercial performance and sustained customer demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand. From a regional perspective, Europe and LATAM emerged as the company's most significant markets, contributing the largest share of sales. Customer demand was primarily concentrated within the Consumer (≈52%) and Corporate (≈30%) segments, with single-item orders representing the dominant purchasing behaviour. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
+Between 2015 and 2018, DataCo generated approximately $36.78 million in total revenue while maintaining an average net profit margin of 10.8%, reflecting strong financial performance and sustained market demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand. From a regional perspective, Europe and LATAM emerged as the company's most significant markets, contributing the largest share of sales. Customer demand was primarily concentrated within the Consumer (≈52%) and Corporate (≈30%) segments, with single-item orders representing the dominant purchasing behaviour. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
 
 ### Insights
-**Good Global Market Penetration:** Europe and LATAM serve as the dominant revenue pillars, each generating over $10 million in sales. Pacific Asia follows closely with $8 million, confirming a strong, diversified global footprint with significant international demand.
+- **Good Global Market Penetration:** Europe and LATAM serve as the dominant revenue pillars, each generating over $10 million in sales. Pacific Asia follows closely with $8 million, confirming a strong, diversified global footprint with significant international demand.
 
-**Core Departmental Revenue Concentration:** The Fan Shop and Apparel departments function as the company's primary commercial engines, collectively contributing approximately 70% of total sales. While this reflects strong customer demand and product performance, it also indicates a high revenue concentration, meaning that disruptions to product availability, supply chain operations, or changes in customer demand within these two departments could have a significant impact on overall business performance.
+- **Core Departmental Revenue Concentration:** The Fan Shop and Apparel departments function as the company's primary commercial engines, collectively contributing approximately 70% of total sales. While this reflects strong customer demand and product performance, it also indicates a high revenue concentration, meaning that disruptions to product availability, supply chain operations, or changes in customer demand within these two departments could have a significant impact on overall business performance.
 
-**Digital Conversion Performance**: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
+- **Digital Conversion Performance**: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
 
-**High-Value Customer Segments**: Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
+- **High-Value Customer Segments**: Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
 
+- Demand Growth Does Not Explain Delivery Performance: The monthly trend shows that Monthly order volumes fluctuate throughout the year, yet delivery performance remains largely unchanged. The logistics network demonstrates sufficient scalability to manage higher order volumes. However, the inability to improve delivery performance during lower-demand periods indicates that the underlying issues stem from operational processes rather than capacity constraints. Existing logistics capacity appears sufficient, but execution efficiency is lacking.
+
+- High-Volume Shipments Are More Susceptible to Delays: The fulfillment performance chart shows that late deliveries dominate the largest order volumes and item quantities, while on-time deliveries are concentrated around moderate order sizes. As shipment size increases, the likelihood of delivery delays also increases, suggesting that large or complex orders place greater strain on fulfillment operations. Prioritize high-volume orders for enhanced monitoring and earlier dispatch.
+
+- Delivery Reliability Has a Direct Impact on Profitability: Orders delivered on time consistently achieve the strongest financial performance, while cancelled shipments generate the weakest returns. Although late deliveries still produce positive margins, delivery failures gradually erode profitability. Therefore, Improving delivery reliability offers a direct path to higher profit margins without increasing product prices or sales volume
+
+- Product Price Is Not the Primary Driver of Profitability: Operational execution and discount promotional strategy has a greater influence on realized profitability than product price. Many lower-priced products outperform premium products when delivered reliably.
+
+- Cancelled orders account for only 2,855 orders (approximately 4%), yet they exhibit the lowest adjusted profit margin and the greatest variability in profitability. Investigate cancellation drivers such as:
+
+Inventory shortages
+Processing delays
+Payment failures
+Customer abandonment
+Carrier disruptions
+
+Reducing cancellations will immediately improve realized revenue and operational efficiency.
+
+
+- 
 ### Key Business Challenges
 - **Digital Channel Underperformance & Conversion Failure:** Despite generating over 443K monthly page views, the e-commerce platform operates as a passive "window shopping" catalog rather than a revenue driver. The web channel contributes only 3.04% of total sales, and traditional non-web channels capture over 97% of revenue across all top-selling product lines. This indicates a severe deficiency in digital acquisition and checkout conversion, rather than a lack of market demand for the products themselves.
 
-- **Severe Logistics & Fulfillment Bottlenecks:** A systemic supply chain crisis is actively destroying margins, with 54.83% of all shipments arriving late and only 17.84% meeting on-time delivery targets. When orders fall behind schedule, actual transit times average 4.09 days versus an advertised expectation of 2.47 days—nearly doubling wait times. Critically, the data confirms that late deliveries correlate directly with negative profitability, meaning the costs of expediting and penalty fees are entirely eroding margins on affected orders.
+- **Severe Logistics & Fulfillment Bottlenecks:** Between 2015 and 2017, DataCo fulfilled 65,752 orders, yet delivery performance remained a critical operational weakness. Approximately 54.8% of all shipments were delivered late, while only 17.8% arrived on time, indicating a persistent failure to meet customer delivery expectations. Delayed orders required an average of 4.09 days to arrive compared with the promised 2.0 to 4.0 days transit time. The analysis further shows that late deliveries are directly associated with lower profitability, as additional fulfillment costs, expedited shipping, penalty fees and service recovery efforts erode order margins. Since delivery delays remained consistently high despite stable order volumes, the root cause lies in systemic fulfillment inefficiencies rather than demand fluctuations.
 
 - **Seasonal Margin Erosion (Q4 Unit-Mix Shift):** While gross order volumes remain stable during November and December, total revenue declines significantly. This is driven by a dangerous shift in product composition: customers are substituting high-margin, premium items for low-value, medium-volume goods. This unit-mix compression actively erodes Q4 profitability, signaling that the current holiday promotional strategy is cannibalizing the bottom line.
 
