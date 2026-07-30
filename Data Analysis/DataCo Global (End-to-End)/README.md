@@ -84,21 +84,12 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 | `DimOrderDetails` | Order Information               | Stores order-level attributes such as payment type, order status, and order date, supporting order lifecycle and transaction analysis. |
 | `DimDate`         | Time Dimension                  | Provides a standardized date hierarchy for analysing business performance across days, months, quarters, and years, enabling trend and seasonality analysis. |
 
-## Dashboard Insights & Business Impact
-| Dashboard Page | Strategic Focus | Business Value |
-| --- | --- | --- |
-| **Sales & Profitability** | Financial health and growth momentum. | Identifies high-margin regions vs. high-volume/low-profit zones to optimize pricing. |
-| **Web Traffic & Conversion** | Customer journey and digital funnel. | Correlates web activity with sales to optimize marketing spend and predict demand. |
-| **Operations & Logistics** | Delivery efficiency and risk management. | Pinpoints root causes of late deliveries (e.g., Standard Class shipping bottlenecks). |
-| **Inventory Management** | Stock optimization and category health. | Highlights slow-moving inventory to trigger markdown strategies and improve turnover. |
-
-
-### 📊 Business Performance Dashboard Summary
+## Business Performance Dashboard Summary
 
 | Dashboard Page | Strategic Focus | Business Value |
 | :--- | :--- | :--- |
 | **Overview** | High-level business health monitoring across core financial metrics (Sales, Costs, Profit), volume indicators, category/market distribution, customer segmentation, and monthly sales seasonality. | Provides executive visibility into top-line revenue performance, identifying top sales drivers by category/market, payment preferences, and seasonal demand fluctuations to guide annual budgeting and commercial planning. |
-| **Discounts** | Evaluation of promotional discount depth, discount elasticity, margin erosion per 1% discount, and order discount rates across price segments and categories. | Prevents margin leakage by identifying inelastic or high-erosion product categories (e.g., *Basketball*), enabling targeted discount capping to preserve overall profitability while maintaining strategic promotional depth. |
+| **Discounts** | Evaluation of promotional discount depth, discount elasticity, margin erosion per 1% discount, and order discount rates across price segments and categories. | Prevents margin leakage by identifying inelastic or high-erosion product categories, enabling targeted discount capping to preserve overall profitability while maintaining strategic promotional depth. |
 | **Web Traffic** | Digital channel effectiveness, web conversion rates by day of week, category-level conversion performance, and web vs. non-web sales channel breakdown by product. | Pinpoints conversion bottlenecks on digital platforms, optimizes marketing spend across high-performing sales days (e.g., Thursday peak), and guides targeted UX/UI improvements on low-converting product landing pages. |
 | **Shipping** | Fulfillment performance analysis tracking late vs. canceled order trends, variance between scheduled and actual delivery days, and profitability by shipping status and mode. | Minimizes logistics inefficiencies and SLA breach risks by identifying carrier/mode delays (e.g., *Late Delivery* average variance of +1.5 days), optimizing shipping choices to protect customer satisfaction and unit margins. |
 | **Recommendation** | Strategic prioritization via an Impact vs. Effort matrix covering key initiatives: Discount Optimization, SLA Performance & Risk, Checkout/Traffic, and Post-Purchase/Return Reduction. | Translates complex operational data into actionable, prioritized business initiatives—enabling leadership to execute immediate high-ROI quick wins while structuring long-term strategic investments. |
