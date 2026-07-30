@@ -132,7 +132,6 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 *Senior BI Consultant*  
 - **Date:** July 2026
 - **Portfolio / Projects:** [Link to Github Portfolio](https://github.com/Danny-NG-9999/Academic-and-Personal-Projects)
-- **LinkedIn:** [Link to LinkedIn Profile](www.linkedin.com/in/danielviet24)
 - **Email:** daniel.h.nguyen24@gmail.com
 
 ---
