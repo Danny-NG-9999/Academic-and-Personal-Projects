@@ -10,6 +10,7 @@
   - [Phase 2: SQL Server Data Warehousing & Schema Enforcement](#phase-2-sql-server-data-warehousing--schema-enforcement)
   - [Phase 3: Power BI Intelligence & Visualization](#phase-3-power-bi-intelligence--visualization)
 - [Data Modeling (Fact Constellation Schema)](#data-modeling-fact-constellation-schema)
+- [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
 - [Business Performance Dashboard Summary](#business-performance-dashboard-summary)
 - [Technical Stack](#technical-stack)
 - [Author & Professional Contact](#author--professional-contact)
@@ -104,6 +105,9 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 | `DimShipping` | Shipping & Delivery Information | Captures shipping methods and delivery performance, enabling analysis of shipping efficiency, delivery delays, and logistics operations. |
 | `DimOrderDetails` | Order Information | Stores order-level attributes such as payment type, order status, and order date, supporting order lifecycle and transaction analysis. |
 | `DimDate` | Time Dimension | Provides a standardized date hierarchy for analysing business performance across days, months, quarters, and years, enabling trend and seasonality analysis. |
+
+## Entity Relationship Diagram (ERD)
+<img width="2209" height="1124" alt="ERD (DataCo)" src="https://github.com/user-attachments/assets/3c356d89-98f9-4c03-a18c-2e7e3caf3a3b" />
 
 ---
 
