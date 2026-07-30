@@ -27,7 +27,11 @@ By transforming over 180,000 denormalized records into a robust Fact Constellati
 - **Access Link:** [Mendeley Data Dataset (Version 5)](https://data.mendeley.com/datasets/8gx2fvg2k6/5)
 - **Description:** Contains structured enterprise supply chain data, covering transactional sales, customer activity, web traffic logs, and shipping logistics metrics across global business units.
 
+---
+
 # DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
+<img width="1858" height="1038" alt="image" src="https://github.com/user-attachments/assets/59e0cbb8-2402-48b7-a02a-39a37aff6190" />
+
 
 ## Executive Performance Summary
 Between 2015 and 2018, DataCo generated approximately $36.78 million in total revenue while maintaining an average net profit margin of 10.8%, reflecting strong financial performance and sustained market demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand. From a regional perspective, Europe and LATAM emerged as the company's most significant markets, contributing the largest share of sales. Customer demand was primarily concentrated within the Consumer (≈52%) and Corporate (≈30%) segments, with single-item orders representing the dominant purchasing behaviour. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
