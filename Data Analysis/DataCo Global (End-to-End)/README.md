@@ -130,13 +130,10 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 
 **Daniel (Viet) Nguyen**  
 *Senior BI Consultant*  
-
-Specializing in end-to-end business intelligence architecture, advanced data modeling, and converting complex enterprise data into high-impact executive insights.
-
 - **Date:** July 2026
-- **Portfolio / Projects:** [Link to Portfolio/GitHub]
-- **LinkedIn:** [Link to LinkedIn Profile]
-- **Email:** [Contact Email]
+- **Portfolio / Projects:** [Link to Github Portfolio](https://github.com/Danny-NG-9999/Academic-and-Personal-Projects)
+- **LinkedIn:** [Link to LinkedIn Profile](www.linkedin.com/in/danielviet24)
+- **Email:** [Contact Email](daniel.h.nguyen24@gmail.com)
 
 ---
 *If you find this repository helpful or relevant to your enterprise BI architecture, feel free to give it a ⭐️!*
