@@ -1,6 +1,6 @@
 # DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
 
-## 📋 Table of Contents
+## Table of Contents
 - [Project Overview](#project-overview)
 - [Executive Performance Summary & Strategic Insights](#-executive-performance-summary--strategic-insights)
   - [Insights](#insights)
@@ -23,10 +23,10 @@ This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a
 
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
 
-## 📊 Executive Performance Summary & Strategic Insights
+## Executive Performance Summary
 Between 2015 and 2018, DataCo generated approximately $36.78 million in total revenue while maintaining an average net profit margin of 10.8%, reflecting strong financial performance and sustained market demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand. From a regional perspective, Europe and LATAM emerged as the company's most significant markets, contributing the largest share of sales. Customer demand was primarily concentrated within the Consumer (≈52%) and Corporate (≈30%) segments, with single-item orders representing the dominant purchasing behaviour. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
 
-### Insights
+### Strategic Insights
 - **Good Global Market Penetration:** Europe and LATAM serve as the dominant revenue pillars, each generating over $10 million in sales. Pacific Asia follows closely with $8 million, confirming a strong, diversified global footprint with significant international demand.
 - **Core Departmental Revenue Concentration:** The Fan Shop and Apparel departments function as the company's primary commercial engines, collectively contributing approximately 70% of total sales. While this reflects strong customer demand and product performance, it also indicates a high revenue concentration, meaning that disruptions to product availability, supply chain operations, or changes in customer demand within these two departments could have a significant impact on overall business performance.
 - **Digital Conversion Performance:** Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
