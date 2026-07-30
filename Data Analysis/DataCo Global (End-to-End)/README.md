@@ -139,4 +139,5 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 - **Email:** daniel.h.nguyen24@gmail.com
 
 ---
+Copyright: © 2026 Daniel (Viet) Nguyen. All rights reserved.
 *If you find this repository helpful or relevant to your enterprise BI architecture, feel free to give it a ⭐️!*
