@@ -14,9 +14,9 @@ Between 2015 and 2018, DataCo generated approximately $36.78 million in total re
 
 - **Core Departmental Revenue Concentration:** The Fan Shop and Apparel departments function as the company's primary commercial engines, collectively contributing approximately 70% of total sales. While this reflects strong customer demand and product performance, it also indicates a high revenue concentration, meaning that disruptions to product availability, supply chain operations, or changes in customer demand within these two departments could have a significant impact on overall business performance.
 
-- **Digital Conversion Performance**: Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
+- **Digital Conversion Performance:** Customer conversion reached 22.94% on Thursdays, compared with an average of approximately 9.5% on other weekdays. This near 2.5x uplift identifies Thursday as the most effective day for targeted promotions, product launches, and digital marketing campaigns.
 
-- **High-Value Customer Segments**: Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
+- **High-Value Customer Segments:** Corporate and Consumer customers consistently recorded the highest average order values through predominantly single-item purchases, presenting opportunities for premium product offerings, personalised marketing campaigns, and customer retention initiatives.
 
 - **Delivery Delays Are Operational Rather Than Capacity-Driven:** Although order volumes vary throughout the year, delivery performance remains largely unchanged. This indicates that delays are more likely caused by inefficiencies in fulfillment and delivery operations than by insufficient logistics capacity.
 
@@ -35,7 +35,7 @@ Between 2015 and 2018, DataCo generated approximately $36.78 million in total re
 
 ### Data-driven Recommendations
 - **Discount Optimization (Immediate ROI):** Eliminate promotional code stacking and enforce managerial approval thresholds for inelastic product categories (e.g., Fitness Accessories) to stop margin erosion and maximize promotional profitability.
-- **SLA Performance & Risk Dashboard (Strategic Investment): **Implement automated checkpoint monitoring and early exception escalation across high-risk shipping modes (First Class, Same Day) and volatile regions to eliminate late delivery delays and protect customer SLAs.
+- **SLA Performance & Risk Dashboard (Strategic Investment):** Implement automated checkpoint monitoring and early exception escalation across high-risk shipping modes (First Class, Same Day) and volatile regions to eliminate late delivery delays and protect customer SLAs.
 - **Checkout & Traffic Optimization (Strategic Investment):** Streamline checkout steps and redesign product landing pages for low-converting categories (e.g., Trade-In, Women's Golf Clubs) to boost web conversion rates by 2–5 percentage points without increasing acquisition costs.
 - **Post-Purchase & Return Rate Reduction (Tactical Optimization):** Deploy automated in-transit tracking notifications and conduct return root-cause analytics for high-cancellation categories (e.g., Kids' Golf Clubs, Pet Supplies) to cut return logistics overhead by 10–15%.
 - **Capitalize on the Thursday Peak:** Deploy exclusive, digital-only flash sales and time-sensitive incentives on Thursdays. Channeling the 22.94% high-intent traffic into finalized web sales will reduce reliance on traditional distribution networks and expand overall e-commerce profitability.
@@ -65,8 +65,8 @@ The transition from Python to SQL was a critical step in establishing a producti
 The SQL Server database served as the live source for the Power BI dashboard suite:
 - Data Connectivity: Power BI was connected directly to the MySQL WorkBench Server instance, importing the structured tables into the Power BI semantic model.
 - Semantic Modeling: The relationships defined in SQL were replicated and validated within Power BI's data model, ensuring consistent filtering and cross-highlighting behavior across all reports.
-- DAX Implementation: Advanced DAX measures were developed for time-intelligence (YoY/MoM growth), profitability ratios, and conditional formatting logic, enriching the analytical capabilities of the dashboard.
-- UI/UX Design: A 4-page executive dashboard was designed, focusing on Sales, Web Traffic, Operations, and Inventory, providing intuitive navigation and clear communication of insights.
+- DAX Implementation: Advanced DAX measures were developed for time-intelligence (MoM growth), profitability ratios, and conditional formatting logic, enriching the analytical capabilities of the dashboard.
+- UI/UX Design: A 5-page executive dashboard was designed, focusing on Sales, Web Traffic, Operations, and Inventory, providing intuitive navigation and clear communication of insights.
 
 ## Data Modeling (Fact Constellation Schema)
 The architecture utilizes a Galaxy Schema to support complex analysis across sales, logistics, and web engagement through shared dimensions.
