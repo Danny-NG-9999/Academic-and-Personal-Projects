@@ -1,9 +1,8 @@
-# DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
-
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [Executive Performance Summary & Strategic Insights](#-executive-performance-summary--strategic-insights)
-  - [Insights](#insights)
+- [Datasource](#datasource)
+- [Executive Performance Summary](#executive-performance-summary)
+  - [Strategic Insights](#strategic-insights)
   - [Key Business Challenges](#key-business-challenges)
   - [Data-Driven Recommendations](#data-driven-recommendations)
 - [The End-to-End Pipeline](#the-end-to-end-pipeline)
@@ -22,6 +21,13 @@
 This project demonstrates a complete End-to-End BI Pipeline for DataCo Global, a simulated multinational retail corporation. The solution spans the entire data lifecycle: from raw data ingestion and transformation using Python, to structured data warehousing in SQL Server, and finally to executive-level intelligence in Power BI.
 
 By transforming over 180,000 denormalized records into a robust Fact Constellation (Galaxy) Schema, this project provides actionable insights into logistics efficiency, profitability leakage, and customer conversion.
+
+## Datasource
+- **Source:** DataCo Smart Supply Chain for Big Data Analysis
+- **Access Link:** [Mendeley Data Dataset (Version 5)](https://data.mendeley.com/datasets/8gx2fvg2k6/5)
+- **Description:** Contains structured enterprise supply chain data, covering transactional sales, customer activity, web traffic logs, and shipping logistics metrics across global business units.
+
+# DataCo Global: An End-to-End Data Analysis & Business Intelligence Pipeline
 
 ## Executive Performance Summary
 Between 2015 and 2018, DataCo generated approximately $36.78 million in total revenue while maintaining an average net profit margin of 10.8%, reflecting strong financial performance and sustained market demand. The company's revenue was largely driven by the Apparel and Fan Shop departments, which generated the majority of total revenue and demonstrated strong product demand. From a regional perspective, Europe and LATAM emerged as the company's most significant markets, contributing the largest share of sales. Customer demand was primarily concentrated within the Consumer (≈52%) and Corporate (≈30%) segments, with single-item orders representing the dominant purchasing behaviour. This purchasing pattern suggests a business characterised by frequent, lower-volume orders rather than bulk purchases, providing valuable context for inventory planning, fulfilment operations, and targeted marketing strategies.
