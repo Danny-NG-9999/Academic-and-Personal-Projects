@@ -133,7 +133,7 @@ The architecture utilizes a Galaxy Schema to support complex analysis across sal
 - **Date:** July 2026
 - **Portfolio / Projects:** [Link to Github Portfolio](https://github.com/Danny-NG-9999/Academic-and-Personal-Projects)
 - **LinkedIn:** [Link to LinkedIn Profile](www.linkedin.com/in/danielviet24)
-- **Email:** [Contact Email](daniel.h.nguyen24@gmail.com)
+- **Email:** daniel.h.nguyen24@gmail.com
 
 ---
 *If you find this repository helpful or relevant to your enterprise BI architecture, feel free to give it a ⭐️!*
